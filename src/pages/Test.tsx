@@ -40,26 +40,26 @@ const Test = () => {
             </h1>
           </div>
 
-          {/* Variation 5: Strong Dark Shadow (Webflow Style) */}
+          {/* Variation 5: Codenest-Style Shadow (Accurate) */}
           <div className="text-center">
-            <h2 className="text-2xl font-medium mb-4">Variation 5: Strong Dark Shadow (Webflow Style)</h2>
-            <h1 className="text-6xl font-medium text-foreground inline-block bg-accent px-3 py-1 rounded-sm transform -rotate-1 font-work" style={{boxShadow: '0 6px 0 rgba(0, 0, 0, 0.8), 0 8px 15px rgba(0, 0, 0, 0.2)'}}>
+            <h2 className="text-2xl font-medium mb-4">Variation 5: Codenest-Style Shadow (Accurate)</h2>
+            <h1 className="text-6xl font-medium text-foreground inline-block bg-accent px-3 py-1 rounded-sm transform -rotate-1 font-work" style={{boxShadow: '0 6px 0 0 rgba(0, 0, 0, 0.9), 0 10px 25px 0 rgba(0, 0, 0, 0.15)'}}>
               Books into Podcasts
             </h1>
           </div>
 
-          {/* Variation 6: Extreme Dark Box Shadow */}
+          {/* Variation 6: Even Stronger Codenest-Style */}
           <div className="text-center">
-            <h2 className="text-2xl font-medium mb-4">Variation 6: Extreme Dark Box Shadow</h2>
-            <h1 className="text-6xl font-medium text-foreground inline-block bg-accent px-3 py-1 rounded-sm transform -rotate-1 font-work" style={{boxShadow: '0 8px 0 rgba(0, 0, 0, 0.9), 0 12px 20px rgba(0, 0, 0, 0.3)'}}>
+            <h2 className="text-2xl font-medium mb-4">Variation 6: Even Stronger Codenest-Style</h2>
+            <h1 className="text-6xl font-medium text-foreground inline-block bg-accent px-3 py-1 rounded-sm transform -rotate-1 font-work" style={{boxShadow: '0 8px 0 0 rgba(0, 0, 0, 1), 0 12px 30px 0 rgba(0, 0, 0, 0.2)'}}>
               Books into Podcasts
             </h1>
           </div>
 
-          {/* Variation 7: Solid Black Offset */}
+          {/* Variation 7: Perfect Codenest Match */}
           <div className="text-center">
-            <h2 className="text-2xl font-medium mb-4">Variation 7: Solid Black Offset (Most Similar to Screenshot)</h2>
-            <h1 className="text-6xl font-medium text-foreground inline-block bg-accent px-3 py-1 rounded-sm transform -rotate-1 font-work" style={{boxShadow: '0 4px 0 rgba(0, 0, 0, 1), 0 6px 10px rgba(0, 0, 0, 0.2)'}}>
+            <h2 className="text-2xl font-medium mb-4">Variation 7: Perfect Codenest Match</h2>
+            <h1 className="text-6xl font-medium text-foreground inline-block bg-accent px-3 py-1 rounded-sm transform -rotate-1 font-work" style={{boxShadow: '0 4px 0 0 rgba(0, 0, 0, 0.95), 0 8px 20px 0 rgba(0, 0, 0, 0.1)'}}>
               Books into Podcasts
             </h1>
           </div>
