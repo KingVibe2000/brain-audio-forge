@@ -40,10 +40,18 @@ const Test = () => {
             </h1>
           </div>
 
-          {/* Variation 5: Custom Deep Shadow with Card Effect */}
+          {/* Variation 5: Strong Navigation-Style Shadow */}
           <div className="text-center">
-            <h2 className="text-2xl font-medium mb-4">Variation 5: Custom Deep Shadow with Card Effect</h2>
-            <h1 className="text-6xl font-medium text-foreground inline-block bg-accent px-3 py-1 rounded-sm transform -rotate-1 font-work" style={{boxShadow: '0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)'}}>
+            <h2 className="text-2xl font-medium mb-4">Variation 5: Strong Navigation-Style Shadow</h2>
+            <h1 className="text-6xl font-medium text-foreground inline-block bg-accent px-3 py-1 rounded-sm transform -rotate-1 font-work" style={{boxShadow: '0 4px 20px rgba(0, 0, 0, 0.15), 0 2px 10px rgba(0, 0, 0, 0.1)'}}>
+              Books into Podcasts
+            </h1>
+          </div>
+
+          {/* Variation 6: Even Stronger Card-Style Shadow */}
+          <div className="text-center">
+            <h2 className="text-2xl font-medium mb-4">Variation 6: Even Stronger Card-Style Shadow</h2>
+            <h1 className="text-6xl font-medium text-foreground inline-block bg-accent px-3 py-1 rounded-sm transform -rotate-1 font-work" style={{boxShadow: '0 8px 30px rgba(0, 0, 0, 0.2), 0 4px 15px rgba(0, 0, 0, 0.15)'}}>
               Books into Podcasts
             </h1>
           </div>
