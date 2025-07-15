@@ -52,6 +52,19 @@ export default {
 					DEFAULT: 'hsl(var(--card))',
 					foreground: 'hsl(var(--card-foreground))'
 				},
+				// Custom design tokens
+				yellow: {
+					primary: 'hsl(var(--yellow-primary))',
+					soft: 'hsl(var(--yellow-soft))'
+				},
+				grey: {
+					light: 'hsl(var(--grey-light))',
+					medium: 'hsl(var(--grey-medium))',
+					dark: 'hsl(var(--grey-dark))'
+				},
+				surface: {
+					elevated: 'hsl(var(--surface-elevated))'
+				},
 				sidebar: {
 					DEFAULT: 'hsl(var(--sidebar-background))',
 					foreground: 'hsl(var(--sidebar-foreground))',
