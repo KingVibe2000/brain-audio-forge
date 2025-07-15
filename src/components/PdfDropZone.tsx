@@ -44,7 +44,7 @@ const PdfDropZone = () => {
         {/* Minimalist Drop Zone */}
         <div
           className={`
-            relative border border-dashed rounded-lg p-16 text-center transition-all duration-300
+            relative border-2 border-dashed rounded-lg p-16 text-center transition-all duration-300
             ${isDragOver 
               ? 'border-accent bg-accent/5' 
               : 'border-border hover:border-accent/60'
@@ -63,9 +63,6 @@ const PdfDropZone = () => {
               <h2 className="text-xl font-medium text-foreground">
                 Drop PDF here
               </h2>
-              <p className="text-muted-foreground text-sm">
-                or click to browse
-              </p>
             </div>
 
             <Button 
