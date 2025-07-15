@@ -154,12 +154,12 @@ const PdfDropZone = () => {
             {/* Form Steps with Numbers and Dotted Lines */}
             <div className="relative">
               {/* Vertical Dotted Line */}
-              <div className="absolute left-3 top-6 bottom-6 w-px border-l-2 border-dashed border-muted-foreground/30"></div>
+              <div className="absolute left-3 top-6 bottom-6 w-px border-l-2 border-dashed border-muted-foreground/15"></div>
               
               <div className="space-y-8">
                 {/* Book Type */}
                 <div className="relative flex gap-6">
-                  <div className="w-6 h-6 bg-accent text-accent-foreground rounded-full flex items-center justify-center text-sm font-medium relative z-10">
+                  <div className="w-6 h-6 bg-accent text-accent-foreground rounded-full flex items-center justify-center text-sm font-medium relative z-10 ring-4 ring-background">
                     1
                   </div>
                   <div className="flex-1 space-y-3">
@@ -184,7 +184,7 @@ const PdfDropZone = () => {
 
                 {/* Book Title and Author */}
                 <div className="relative flex gap-6">
-                  <div className="w-6 h-6 bg-accent text-accent-foreground rounded-full flex items-center justify-center text-sm font-medium relative z-10">
+                  <div className="w-6 h-6 bg-accent text-accent-foreground rounded-full flex items-center justify-center text-sm font-medium relative z-10 ring-4 ring-background">
                     2
                   </div>
                   <div className="flex-1 space-y-3">
@@ -222,7 +222,7 @@ const PdfDropZone = () => {
 
                 {/* Book Cover Image */}
                 <div className="relative flex gap-6">
-                  <div className="w-6 h-6 bg-accent text-accent-foreground rounded-full flex items-center justify-center text-sm font-medium relative z-10">
+                  <div className="w-6 h-6 bg-accent text-accent-foreground rounded-full flex items-center justify-center text-sm font-medium relative z-10 ring-4 ring-background">
                     3
                   </div>
                   <div className="flex-1 space-y-3">
@@ -259,7 +259,7 @@ const PdfDropZone = () => {
 
                 {/* Upload Button */}
                 <div className="relative flex gap-6">
-                  <div className="w-6 h-6 bg-accent text-accent-foreground rounded-full flex items-center justify-center text-sm font-medium relative z-10">
+                  <div className="w-6 h-6 bg-accent text-accent-foreground rounded-full flex items-center justify-center text-sm font-medium relative z-10 ring-4 ring-background">
                     4
                   </div>
                   <div className="flex-1">
