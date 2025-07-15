@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Upload, FileText, Headphones, ArrowRight } from "lucide-react";
+import { Upload, ArrowDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const PdfDropZone = () => {
@@ -25,10 +25,15 @@ const PdfDropZone = () => {
     <div className="flex-1 flex items-center justify-center px-8 py-16">
       <div className="w-full max-w-2xl">
         {/* Main Heading with Marker Effect */}
-        <div className="text-center mb-12">
+        <div className="text-center mb-8">
           <h1 className="text-3xl font-medium text-foreground inline-block bg-accent px-3 py-1 rounded-sm transform -rotate-1">
             Your Books into your Podcasts
           </h1>
+        </div>
+        
+        {/* Pointing Arrow */}
+        <div className="text-center mb-8">
+          <ArrowDown className="h-8 w-8 text-accent mx-auto animate-bounce" />
         </div>
         {/* Minimalist Drop Zone */}
         <div
