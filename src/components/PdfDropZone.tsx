@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Upload, ArrowDown, FileText, X, Image } from "lucide-react";
+import { Upload, ArrowDown, Brain, X, Image } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -137,7 +137,7 @@ const PdfDropZone = () => {
             <div className="flex items-center justify-between p-6 bg-card border rounded-lg">
               <div className="flex items-center space-x-4">
                 <div className="p-3 bg-accent/10 rounded-lg">
-                  <FileText className="h-6 w-6 text-accent" />
+                  <Brain className="h-6 w-6 text-accent" />
                 </div>
                 <div>
                   <p className="font-medium text-foreground">{uploadedFile.name}</p>
