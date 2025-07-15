@@ -70,7 +70,7 @@ const PdfDropZone = () => {
       <div className="w-full max-w-2xl">
         {/* Main Heading with Marker Effect */}
         <div className="text-center mb-8">
-          <h1 className="text-5xl font-medium text-foreground inline-block bg-accent px-3 py-1 rounded-sm transform -rotate-1 shadow-lg font-work">
+          <h1 className="text-7xl font-medium text-foreground inline-block bg-accent px-3 py-1 rounded-sm transform -rotate-1 shadow-lg font-work">
             Books into Podcasts
           </h1>
         </div>
@@ -95,7 +95,7 @@ const PdfDropZone = () => {
               relative border-4 border-dashed rounded-lg p-16 text-center transition-all duration-300
               ${isDragOver 
                 ? 'border-accent bg-accent/5' 
-                : 'border-border hover:border-accent/60'
+                : 'border-muted-foreground/30 hover:border-accent/60'
               }
             `}
             onDragOver={handleDragOver}
