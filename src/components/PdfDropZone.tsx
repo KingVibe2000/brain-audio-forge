@@ -26,15 +26,15 @@ const PdfDropZone = () => {
       <div className="w-full max-w-2xl">
         {/* Main Heading with Marker Effect */}
         <div className="text-center mb-8">
-          <h1 className="text-5xl font-medium text-foreground inline-block bg-accent px-3 py-1 rounded-sm transform -rotate-1 shadow-lg">
+          <h1 className="text-5xl font-medium text-foreground inline-block bg-accent px-3 py-1 rounded-sm transform -rotate-1 shadow-lg font-work">
             Your Books into your Podcasts
           </h1>
         </div>
         
         {/* Explanatory Text */}
         <div className="text-center mb-8 space-y-2">
-          <p className="text-lg text-muted-foreground">Transform any PDF into an engaging audio experience</p>
-          <p className="text-lg text-muted-foreground">Upload your document and let AI create a personalized podcast for you</p>
+          <p className="text-xl text-muted-foreground">Transform any PDF into an engaging audio experience</p>
+          <p className="text-xl text-muted-foreground">Upload your document and let AI create a personalized podcast for you</p>
         </div>
         
         {/* Pointing Arrow */}
