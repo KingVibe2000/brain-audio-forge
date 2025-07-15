@@ -153,9 +153,14 @@ const PdfDropZone = () => {
 
             {/* Book Type */}
             <div className="space-y-3">
-              <Label htmlFor="book-type" className="text-lg font-medium text-foreground">
-                Book Type <span className="text-accent">*</span>
-              </Label>
+              <div className="flex items-center gap-3">
+                <div className="w-6 h-6 bg-accent text-accent-foreground rounded-full flex items-center justify-center text-sm font-medium">
+                  1
+                </div>
+                <Label htmlFor="book-type" className="text-lg font-medium text-foreground">
+                  Book Type <span className="text-accent">*</span>
+                </Label>
+              </div>
               <Select value={bookType} onValueChange={setBookType}>
                 <SelectTrigger id="book-type" className="w-full h-12 text-base">
                   <SelectValue placeholder="Select book type" />
@@ -172,38 +177,53 @@ const PdfDropZone = () => {
             </div>
 
             {/* Book Title and Author */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div className="space-y-3">
-                <Label htmlFor="book-title" className="text-lg font-medium text-foreground">
-                  Book Title <span className="text-accent">*</span>
+            <div className="space-y-3">
+              <div className="flex items-center gap-3 mb-3">
+                <div className="w-6 h-6 bg-accent text-accent-foreground rounded-full flex items-center justify-center text-sm font-medium">
+                  2
+                </div>
+                <Label className="text-lg font-medium text-foreground">
+                  Book Details
                 </Label>
-                <Input
-                  id="book-title"
-                  value={bookTitle}
-                  onChange={(e) => setBookTitle(e.target.value)}
-                  placeholder="Enter book title"
-                  className="h-12 text-base"
-                />
               </div>
-              <div className="space-y-3">
-                <Label htmlFor="author-name" className="text-lg font-medium text-foreground">
-                  Author Name
-                </Label>
-                <Input
-                  id="author-name"
-                  value={authorName}
-                  onChange={(e) => setAuthorName(e.target.value)}
-                  placeholder="Enter author name"
-                  className="h-12 text-base"
-                />
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="space-y-3">
+                  <Label htmlFor="book-title" className="text-lg font-medium text-foreground">
+                    Book Title <span className="text-accent">*</span>
+                  </Label>
+                  <Input
+                    id="book-title"
+                    value={bookTitle}
+                    onChange={(e) => setBookTitle(e.target.value)}
+                    placeholder="Enter book title"
+                    className="h-12 text-base"
+                  />
+                </div>
+                <div className="space-y-3">
+                  <Label htmlFor="author-name" className="text-lg font-medium text-foreground">
+                    Author Name
+                  </Label>
+                  <Input
+                    id="author-name"
+                    value={authorName}
+                    onChange={(e) => setAuthorName(e.target.value)}
+                    placeholder="Enter author name"
+                    className="h-12 text-base"
+                  />
+                </div>
               </div>
             </div>
 
             {/* Book Cover Image */}
             <div className="space-y-3">
-              <Label className="text-lg font-medium text-foreground">
-                Book Cover Image
-              </Label>
+              <div className="flex items-center gap-3">
+                <div className="w-6 h-6 bg-accent text-accent-foreground rounded-full flex items-center justify-center text-sm font-medium">
+                  3
+                </div>
+                <Label className="text-lg font-medium text-foreground">
+                  Book Cover Image
+                </Label>
+              </div>
               <p className="text-muted-foreground">
                 Add a cover image to display in the podcast player
               </p>
@@ -232,9 +252,14 @@ const PdfDropZone = () => {
             </div>
 
             {/* Upload Button */}
-            <Button className="w-full bg-accent hover:bg-accent/90 text-accent-foreground py-6 text-lg font-medium font-work shadow-lg">
-              Upload and Extract Bookmarks
-            </Button>
+            <div className="flex items-center gap-3">
+              <div className="w-6 h-6 bg-accent text-accent-foreground rounded-full flex items-center justify-center text-sm font-medium">
+                4
+              </div>
+              <Button className="flex-1 bg-accent hover:bg-accent/90 text-accent-foreground py-6 text-lg font-medium font-work shadow-lg">
+                Upload and Extract Bookmarks
+              </Button>
+            </div>
           </div>
         )}
 
