@@ -263,7 +263,8 @@ const PdfDropZone = () => {
                     4
                   </div>
                   <div className="flex-1">
-                    <Button className="w-full bg-accent hover:bg-accent/90 text-accent-foreground py-6 text-lg font-medium font-work shadow-lg">
+                    <Button className="w-full bg-accent hover:bg-accent/90 text-accent-foreground py-6 text-lg font-medium font-work shadow-lg flex items-center justify-center gap-3">
+                      <div className="w-2 h-2 bg-black rounded-full"></div>
                       Upload and Extract Bookmarks
                     </Button>
                   </div>
