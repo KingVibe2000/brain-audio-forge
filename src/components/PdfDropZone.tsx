@@ -132,12 +132,12 @@ const PdfDropZone = () => {
           </div>
         ) : (
           /* Upload Form */
-          <div className="space-y-6">
+          <div className="space-y-8 max-w-2xl mx-auto">
             {/* Uploaded File Display */}
-            <div className="flex items-center justify-between p-4 bg-muted rounded-lg">
-              <div className="flex items-center space-x-3">
-                <div className="p-2 bg-red-100 rounded-lg">
-                  <FileText className="h-6 w-6 text-red-600" />
+            <div className="flex items-center justify-between p-6 bg-card border rounded-lg">
+              <div className="flex items-center space-x-4">
+                <div className="p-3 bg-accent/10 rounded-lg">
+                  <FileText className="h-6 w-6 text-accent" />
                 </div>
                 <div>
                   <p className="font-medium text-foreground">{uploadedFile.name}</p>
@@ -146,19 +146,19 @@ const PdfDropZone = () => {
                   </p>
                 </div>
               </div>
-              <Button variant="ghost" size="sm" onClick={removeFile}>
+              <Button variant="ghost" size="sm" onClick={removeFile} className="hover:bg-destructive/10 hover:text-destructive">
                 <X className="h-4 w-4" />
               </Button>
             </div>
 
             {/* Book Type */}
-            <div className="space-y-2">
-              <Label htmlFor="book-type" className="text-base font-medium">
-                Book Type <span className="text-red-500">*</span>
+            <div className="space-y-3">
+              <Label htmlFor="book-type" className="text-lg font-medium text-foreground">
+                Book Type <span className="text-accent">*</span>
               </Label>
               <Select value={bookType} onValueChange={setBookType}>
-                <SelectTrigger id="book-type" className="w-full">
-                  <SelectValue placeholder="Business Book" />
+                <SelectTrigger id="book-type" className="w-full h-12 text-base">
+                  <SelectValue placeholder="Select book type" />
                 </SelectTrigger>
                 <SelectContent>
                   <SelectItem value="business">Business Book</SelectItem>
@@ -172,20 +172,21 @@ const PdfDropZone = () => {
             </div>
 
             {/* Book Title and Author */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div className="space-y-2">
-                <Label htmlFor="book-title" className="text-base font-medium">
-                  Book Title <span className="text-red-500">*</span>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="space-y-3">
+                <Label htmlFor="book-title" className="text-lg font-medium text-foreground">
+                  Book Title <span className="text-accent">*</span>
                 </Label>
                 <Input
                   id="book-title"
                   value={bookTitle}
                   onChange={(e) => setBookTitle(e.target.value)}
                   placeholder="Enter book title"
+                  className="h-12 text-base"
                 />
               </div>
-              <div className="space-y-2">
-                <Label htmlFor="author-name" className="text-base font-medium">
+              <div className="space-y-3">
+                <Label htmlFor="author-name" className="text-lg font-medium text-foreground">
                   Author Name
                 </Label>
                 <Input
@@ -193,24 +194,25 @@ const PdfDropZone = () => {
                   value={authorName}
                   onChange={(e) => setAuthorName(e.target.value)}
                   placeholder="Enter author name"
+                  className="h-12 text-base"
                 />
               </div>
             </div>
 
             {/* Book Cover Image */}
-            <div className="space-y-2">
-              <Label className="text-base font-medium">
-                Book Cover Image (Optional)
+            <div className="space-y-3">
+              <Label className="text-lg font-medium text-foreground">
+                Book Cover Image
               </Label>
-              <p className="text-sm text-muted-foreground mb-4">
+              <p className="text-muted-foreground">
                 Add a cover image to display in the podcast player
               </p>
               <div
                 className={`
-                  border-2 border-dashed rounded-lg p-12 text-center transition-all duration-300
+                  border-2 border-dashed rounded-lg p-8 text-center transition-all duration-300
                   ${coverImageDragOver 
-                    ? 'border-primary bg-primary/5' 
-                    : 'border-border hover:border-primary/60'
+                    ? 'border-accent bg-accent/5' 
+                    : 'border-border hover:border-accent/60'
                   }
                 `}
                 onDragOver={handleCoverImageDragOver}
@@ -218,11 +220,11 @@ const PdfDropZone = () => {
                 onDrop={handleCoverImageDrop}
               >
                 <div className="flex flex-col items-center space-y-4">
-                  <div className="p-3 bg-primary/10 rounded-full">
-                    <Image className="h-8 w-8 text-primary" />
+                  <div className="p-3 bg-accent/10 rounded-full">
+                    <Image className="h-6 w-6 text-accent" />
                   </div>
                   <div>
-                    <p className="font-medium text-foreground">Click or drag cover image here</p>
+                    <p className="text-foreground">Click or drag cover image here</p>
                     <p className="text-sm text-muted-foreground mt-1">JPEG, PNG, or WebP • Max 5MB</p>
                   </div>
                 </div>
@@ -230,7 +232,7 @@ const PdfDropZone = () => {
             </div>
 
             {/* Upload Button */}
-            <Button className="w-full bg-green-600 hover:bg-green-700 text-white py-6 text-lg font-medium">
+            <Button className="w-full bg-accent hover:bg-accent/90 text-accent-foreground py-6 text-lg font-medium font-work shadow-lg">
               Upload and Extract Bookmarks
             </Button>
           </div>
