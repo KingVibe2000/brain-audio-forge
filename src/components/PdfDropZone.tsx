@@ -154,7 +154,7 @@ const PdfDropZone = () => {
             {/* Form Steps with Numbers and Dotted Lines */}
             <div className="relative">
               {/* Vertical Dotted Line */}
-              <div className="absolute left-3 top-6 bottom-6 w-px border-l-2 border-dashed border-muted-foreground/15"></div>
+              <div className="absolute left-3 top-6 bottom-6 w-px border-l-2 border-dotted border-muted-foreground/15"></div>
               
               <div className="space-y-8">
                 {/* Book Type */}
