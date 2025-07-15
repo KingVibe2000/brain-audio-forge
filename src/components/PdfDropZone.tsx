@@ -39,7 +39,7 @@ const PdfDropZone = () => {
         
         {/* Pointing Arrow */}
         <div className="text-center mb-8">
-          <ArrowDown className="h-8 w-8 text-accent mx-auto animate-bounce" />
+          <ArrowDown className="h-12 w-12 text-accent mx-auto animate-bounce" />
         </div>
         {/* Minimalist Drop Zone */}
         <div
