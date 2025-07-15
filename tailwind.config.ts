@@ -18,6 +18,13 @@ export default {
 			}
 		},
 		extend: {
+			fontFamily: {
+				'fredoka': ['Fredoka One', 'cursive'],
+				'nunito': ['Nunito', 'sans-serif'],
+				'comfortaa': ['Comfortaa', 'sans-serif'],
+				'quicksand': ['Quicksand', 'sans-serif'],
+				'pacifico': ['Pacifico', 'cursive'],
+			},
 			colors: {
 				border: 'hsl(var(--border))',
 				input: 'hsl(var(--input))',
