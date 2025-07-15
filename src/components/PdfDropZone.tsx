@@ -31,6 +31,12 @@ const PdfDropZone = () => {
           </h1>
         </div>
         
+        {/* Explanatory Text */}
+        <div className="text-center mb-8 space-y-2">
+          <p className="text-lg text-muted-foreground">Transform any PDF into an engaging audio experience</p>
+          <p className="text-sm text-muted-foreground">Upload your document and let AI create a personalized podcast for you</p>
+        </div>
+        
         {/* Pointing Arrow */}
         <div className="text-center mb-8">
           <ArrowDown className="h-8 w-8 text-accent mx-auto animate-bounce" />
