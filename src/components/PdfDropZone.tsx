@@ -70,12 +70,12 @@ const PdfDropZone = () => {
     <div className="flex-1 flex items-center justify-center px-8 pt-8 pb-16">
       <div className="w-full max-w-2xl">
         {/* Main Heading with Marker Effect */}
-        <div className="text-center mb-8 relative">
+        <div className="text-center mb-8 relative py-8">
           <div 
-            className="absolute inset-0 bg-center bg-no-repeat bg-contain opacity-10 pointer-events-none"
+            className="absolute inset-0 bg-center bg-no-repeat opacity-20 pointer-events-none"
             style={{
               backgroundImage: `url(${booksBackground})`,
-              backgroundSize: 'contain',
+              backgroundSize: '400px auto',
               backgroundPosition: 'center',
               filter: 'grayscale(100%)'
             }}
