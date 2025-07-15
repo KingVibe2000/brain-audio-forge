@@ -44,7 +44,7 @@ const PdfDropZone = () => {
         {/* Minimalist Drop Zone */}
         <div
           className={`
-            relative border-2 border-dashed rounded-lg p-16 text-center transition-all duration-300 shadow-md
+            relative border-4 border-dashed rounded-lg p-16 text-center transition-all duration-300
             ${isDragOver 
               ? 'border-accent bg-accent/5' 
               : 'border-border hover:border-accent/60'
