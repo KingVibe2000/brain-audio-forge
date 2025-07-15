@@ -26,7 +26,7 @@ const PdfDropZone = () => {
       <div className="w-full max-w-2xl">
         {/* Main Heading with Marker Effect */}
         <div className="text-center mb-8">
-          <h1 className="text-4xl font-medium text-foreground inline-block bg-accent px-3 py-1 rounded-sm transform -rotate-1">
+          <h1 className="text-5xl font-medium text-foreground inline-block bg-accent px-3 py-1 rounded-sm transform -rotate-1 shadow-lg">
             Your Books into your Podcasts
           </h1>
         </div>
