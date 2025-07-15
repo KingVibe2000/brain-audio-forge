@@ -55,8 +55,8 @@ const PdfDropZone = () => {
           onDrop={handleDrop}
         >
           <div className="flex flex-col items-center space-y-8">
-            <Upload className={`h-12 w-12 transition-colors duration-300 ${
-              isDragOver ? 'text-accent' : 'text-muted-foreground'
+            <div className={`h-12 w-12 rounded-full transition-colors duration-300 ${
+              isDragOver ? 'bg-accent' : 'bg-accent/80'
             }`} />
             
             <div className="space-y-3">
