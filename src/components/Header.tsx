@@ -1,5 +1,11 @@
-import { Book, Play, Settings, FileText } from "lucide-react";
+import { Book, Play, Settings, FileText, ChevronDown, Sparkles, User, Shield } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
 const Header = () => {
   return (
@@ -23,10 +29,36 @@ const Header = () => {
             <Play className="h-4 w-4 mr-2" />
             Player
           </Button>
-          <Button variant="ghost" size="sm" className="text-muted-foreground hover:text-foreground">
-            <Settings className="h-4 w-4 mr-2" />
-            Setup
-          </Button>
+          
+          {/* Setup Dropdown */}
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button variant="ghost" size="sm" className="text-muted-foreground hover:text-foreground">
+                <Settings className="h-4 w-4 mr-2" />
+                Setup
+                <ChevronDown className="h-3 w-3 ml-1" />
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="end" className="w-56 bg-card border border-border rounded-lg shadow-lg p-1">
+              <DropdownMenuItem className="flex items-center gap-3 px-3 py-2 hover:bg-accent/10 cursor-pointer rounded-md">
+                <Book className="h-4 w-4 text-muted-foreground" />
+                <span className="text-foreground">Business Book Settings</span>
+              </DropdownMenuItem>
+              <DropdownMenuItem className="flex items-center gap-3 px-3 py-2 hover:bg-accent/10 cursor-pointer rounded-md">
+                <Sparkles className="h-4 w-4 text-muted-foreground" />
+                <span className="text-foreground">Self Improvement Settings</span>
+              </DropdownMenuItem>
+              <DropdownMenuItem className="flex items-center gap-3 px-3 py-2 hover:bg-accent/10 cursor-pointer rounded-md">
+                <User className="h-4 w-4 text-muted-foreground" />
+                <span className="text-foreground">Author Settings</span>
+              </DropdownMenuItem>
+              <DropdownMenuItem className="flex items-center gap-3 px-3 py-2 hover:bg-accent/10 cursor-pointer rounded-md">
+                <Shield className="h-4 w-4 text-muted-foreground" />
+                <span className="text-foreground">Admin</span>
+              </DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
+
           <Button variant="ghost" size="sm" className="text-muted-foreground hover:text-foreground">
             <FileText className="h-4 w-4 mr-2" />
             Logs
