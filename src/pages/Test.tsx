@@ -40,18 +40,18 @@ const Test = () => {
             </h1>
           </div>
 
-          {/* Variation 5: Codenest-Style Shadow (Larger) */}
+          {/* Variation 5: Codenest-Style Shadow (Right Offset + Blur) */}
           <div className="text-center">
-            <h2 className="text-2xl font-medium mb-4">Variation 5: Codenest-Style Shadow (Larger)</h2>
-            <h1 className="text-6xl font-medium text-foreground inline-block bg-accent px-3 py-1 rounded-sm transform -rotate-1 font-work" style={{boxShadow: '0 10px 0 0 rgba(0, 0, 0, 0.9), 0 15px 35px 0 rgba(0, 0, 0, 0.15)'}}>
+            <h2 className="text-2xl font-medium mb-4">Variation 5: Codenest-Style Shadow (Right Offset + Blur)</h2>
+            <h1 className="text-6xl font-medium text-foreground inline-block bg-accent px-3 py-1 rounded-sm transform -rotate-1 font-work" style={{boxShadow: '6px 8px 15px 0 rgba(0, 0, 0, 0.25)'}}>
               Books into Podcasts
             </h1>
           </div>
 
-          {/* Variation 6: Extra Large Codenest-Style */}
+          {/* Variation 6: Stronger Codenest Shadow */}
           <div className="text-center">
-            <h2 className="text-2xl font-medium mb-4">Variation 6: Extra Large Codenest-Style</h2>
-            <h1 className="text-6xl font-medium text-foreground inline-block bg-accent px-3 py-1 rounded-sm transform -rotate-1 font-work" style={{boxShadow: '0 12px 0 0 rgba(0, 0, 0, 1), 0 18px 40px 0 rgba(0, 0, 0, 0.2)'}}>
+            <h2 className="text-2xl font-medium mb-4">Variation 6: Stronger Codenest Shadow</h2>
+            <h1 className="text-6xl font-medium text-foreground inline-block bg-accent px-3 py-1 rounded-sm transform -rotate-1 font-work" style={{boxShadow: '8px 10px 20px 0 rgba(0, 0, 0, 0.3)'}}>
               Books into Podcasts
             </h1>
           </div>
@@ -59,7 +59,7 @@ const Test = () => {
           {/* Variation 7: Maximum Codenest Shadow */}
           <div className="text-center">
             <h2 className="text-2xl font-medium mb-4">Variation 7: Maximum Codenest Shadow</h2>
-            <h1 className="text-6xl font-medium text-foreground inline-block bg-accent px-3 py-1 rounded-sm transform -rotate-1 font-work" style={{boxShadow: '0 15px 0 0 rgba(0, 0, 0, 0.95), 0 20px 50px 0 rgba(0, 0, 0, 0.15)'}}>
+            <h1 className="text-6xl font-medium text-foreground inline-block bg-accent px-3 py-1 rounded-sm transform -rotate-1 font-work" style={{boxShadow: '10px 12px 25px 0 rgba(0, 0, 0, 0.35)'}}>
               Books into Podcasts
             </h1>
           </div>
