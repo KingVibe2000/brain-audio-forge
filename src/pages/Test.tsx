@@ -59,7 +59,7 @@ const Test = () => {
           {/* Variation 7: Maximum Codenest Shadow */}
           <div className="text-center">
             <h2 className="text-2xl font-medium mb-4">Variation 7: Maximum Codenest Shadow</h2>
-            <h1 className="text-6xl font-medium text-foreground inline-block bg-accent px-3 py-1 rounded-sm transform -rotate-1 font-work" style={{boxShadow: '10px 12px 25px 0 rgba(0, 0, 0, 0.35)'}}>
+            <h1 className="text-6xl font-medium text-foreground inline-block bg-accent px-3 py-1 rounded-sm transform -rotate-1 font-work" style={{boxShadow: '6px 8px 0 0 rgba(0, 0, 0, 0.8), 10px 12px 25px 0 rgba(0, 0, 0, 0.35)'}}>
               Books into Podcasts
             </h1>
           </div>
