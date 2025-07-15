@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import booksBackground from "@/assets/books-background.png";
 
 const PdfDropZone = () => {
   const [isDragOver, setIsDragOver] = useState(false);
@@ -69,8 +70,17 @@ const PdfDropZone = () => {
     <div className="flex-1 flex items-center justify-center px-8 pt-8 pb-16">
       <div className="w-full max-w-2xl">
         {/* Main Heading with Marker Effect */}
-        <div className="text-center mb-8">
-          <h1 className="text-6xl font-medium text-foreground inline-block bg-accent px-3 py-1 rounded-sm transform -rotate-1 font-work" style={{boxShadow: '6px 8px 3px 0 rgba(0, 0, 0, 0.8), 10px 12px 25px 0 rgba(0, 0, 0, 0.35)'}}>
+        <div className="text-center mb-8 relative">
+          <div 
+            className="absolute inset-0 bg-center bg-no-repeat bg-contain opacity-10 pointer-events-none"
+            style={{
+              backgroundImage: `url(${booksBackground})`,
+              backgroundSize: 'contain',
+              backgroundPosition: 'center',
+              filter: 'grayscale(100%)'
+            }}
+          />
+          <h1 className="text-6xl font-medium text-foreground inline-block bg-accent px-3 py-1 rounded-sm transform -rotate-1 font-work relative z-10" style={{boxShadow: '6px 8px 3px 0 rgba(0, 0, 0, 0.8), 10px 12px 25px 0 rgba(0, 0, 0, 0.35)'}}>
             Books into Podcasts
           </h1>
         </div>
