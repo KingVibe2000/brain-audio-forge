@@ -30,11 +30,6 @@ const Header = () => {
 
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center space-x-2">
-          <Button variant="outline" size="sm" className="text-foreground border-border hover:bg-accent hover:text-accent-foreground hover:border-accent">
-            <Headphones className="h-4 w-4" />
-            Player
-          </Button>
-          
           {/* Setup Dropdown */}
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
@@ -65,6 +60,11 @@ const Header = () => {
 
           <Button variant="ghost" size="sm" className="text-muted-foreground hover:text-foreground">
             Logs
+          </Button>
+
+          <Button variant="outline" size="sm" className="text-foreground border-border hover:bg-accent hover:text-accent-foreground hover:border-accent">
+            <Headphones className="h-4 w-4" />
+            Player
           </Button>
         </nav>
 
