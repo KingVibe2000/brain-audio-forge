@@ -38,7 +38,6 @@ const Header = () => {
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <Button variant="ghost" size="sm" className="text-muted-foreground hover:text-foreground">
-                <Settings className="h-4 w-4 mr-2" />
                 Setup
                 <ChevronDown className="h-3 w-3 ml-1" />
               </Button>
@@ -64,7 +63,6 @@ const Header = () => {
           </DropdownMenu>
 
           <Button variant="ghost" size="sm" className="text-muted-foreground hover:text-foreground">
-            <FileText className="h-4 w-4 mr-2" />
             Logs
           </Button>
         </nav>
@@ -104,7 +102,6 @@ const Header = () => {
               </div>
 
               <Button variant="ghost" className="justify-start text-muted-foreground hover:text-foreground h-12">
-                <FileText className="h-4 w-4 mr-3" />
                 Logs
               </Button>
             </div>
