@@ -129,13 +129,11 @@ const MyBooks = () => {
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-3xl font-bold text-foreground flex items-center gap-3">
-            <div className="w-10 h-10 bg-accent rounded-lg flex items-center justify-center">
-              <Book className="h-5 w-5 text-accent-foreground" />
-            </div>
+          <h1 className="text-3xl font-bold text-foreground relative">
             Book Management
+            <div className="absolute -bottom-2 left-0 w-12 h-0.5 bg-accent"></div>
           </h1>
-          <p className="text-muted-foreground mt-1">Manage your book library and processing pipeline</p>
+          <p className="text-muted-foreground mt-3">Manage your book library and processing pipeline</p>
         </div>
         <Button variant="outline" size="sm" className="gap-2">
           <RefreshCw className="h-4 w-4" />
@@ -165,10 +163,7 @@ const MyBooks = () => {
       {/* Filters & Search */}
       <Card className="border border-border">
         <CardContent className="p-6">
-          <div className="flex items-center gap-2 mb-4">
-            <Filter className="h-4 w-4 text-muted-foreground" />
-            <h3 className="font-medium text-foreground">Filters & Search</h3>
-          </div>
+          <h3 className="font-medium text-foreground mb-4">Filters & Search</h3>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
             <div className="space-y-2">
@@ -249,10 +244,7 @@ const MyBooks = () => {
       <Card className="border border-border">
         <CardContent className="p-6">
           <div className="flex items-center justify-between mb-6">
-            <div className="flex items-center gap-2">
-              <Book className="h-4 w-4 text-muted-foreground" />
-              <h3 className="font-medium text-foreground">Books ({books.length})</h3>
-            </div>
+            <h3 className="font-medium text-foreground">Books ({books.length})</h3>
             <Button
               variant="outline"
               size="sm"
