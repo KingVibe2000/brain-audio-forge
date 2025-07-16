@@ -70,7 +70,7 @@ const PdfDropZone = () => {
     <div className="flex-1 flex items-center justify-center px-8 pt-8 pb-16 relative">
       {/* Background image with reduced opacity */}
       <div 
-        className="absolute inset-0 bg-[url(/lovable-uploads/24c60627-e30e-4e9d-8b61-6eeedcdfc8f2.png)] bg-[length:50%] bg-no-repeat bg-fixed bg-[position:center_-20px] opacity-[0.03]"
+        className="absolute inset-0 bg-[url(/lovable-uploads/24c60627-e30e-4e9d-8b61-6eeedcdfc8f2.png)] bg-[length:50%] bg-no-repeat bg-[position:center_-20px] opacity-[0.03]"
       ></div>
       <div className="w-full max-w-2xl relative z-10">
         {/* Main Heading with Marker Effect */}
