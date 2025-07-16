@@ -146,7 +146,7 @@ const MyBooks = () => {
   };
 
   return (
-    <div className="container mx-auto px-4 pl-8 py-8 space-y-8">
+    <div className="max-w-7xl mx-auto px-4 md:px-6 py-8 space-y-8">
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
