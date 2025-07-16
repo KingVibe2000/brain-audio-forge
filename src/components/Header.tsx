@@ -1,20 +1,9 @@
 import { Book, Play, Settings, FileText, ChevronDown, Sparkles, User, Shield, Menu, Headphones } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-import {
-  Sheet,
-  SheetContent,
-  SheetTrigger,
-} from "@/components/ui/sheet";
-
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 const Header = () => {
-  return (
-    <header className="border-b border-border bg-surface-elevated px-4 md:px-6 py-4">
+  return <header className="border-b border-border bg-surface-elevated px-4 md:px-6 py-4">
       <div className="flex items-center justify-between max-w-7xl mx-auto">
         {/* Logo */}
         <div className="flex items-center space-x-2 md:space-x-3">
@@ -23,7 +12,7 @@ const Header = () => {
             <div className="absolute -top-1 -right-1 w-2 h-2 md:w-3 md:h-3 bg-accent rounded-full"></div>
           </div>
           <div>
-            <h1 className="text-lg md:text-xl font-bold text-foreground">book to brain</h1>
+            <h1 className="text-lg md:text-xl font-bold text-foreground">books to brain</h1>
             <p className="text-xs text-muted-foreground">PDF to Podcast</p>
           </div>
         </div>
@@ -110,8 +99,6 @@ const Header = () => {
           </SheetContent>
         </Sheet>
       </div>
-    </header>
-  );
+    </header>;
 };
-
 export default Header;
