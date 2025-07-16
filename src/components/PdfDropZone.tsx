@@ -127,14 +127,6 @@ const PdfDropZone = () => {
                 className="hidden"
                 id="file-input"
               />
-              <Button 
-                variant="outline" 
-                size="sm"
-                className="mt-4"
-                onClick={() => document.getElementById('file-input')?.click()}
-              >
-                Browse Files
-              </Button>
             </div>
           </div>
         ) : (
