@@ -30,14 +30,14 @@ const Header = () => {
 
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center space-x-2">
-          <Button variant="ghost" size="sm" className="text-muted-foreground hover:text-foreground">
+          <Button variant="ghost" size="sm" className="text-muted-foreground hover:text-foreground relative after:content-[''] after:absolute after:w-full after:scale-x-0 after:h-0.5 after:bottom-0 after:left-0 after:bg-primary after:origin-bottom-right after:transition-transform after:duration-300 hover:after:scale-x-100 hover:after:origin-bottom-left">
             My Books
           </Button>
 
           {/* Settings Dropdown */}
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
-              <Button variant="ghost" size="sm" className="text-muted-foreground hover:text-foreground">
+              <Button variant="ghost" size="sm" className="text-muted-foreground hover:text-foreground relative after:content-[''] after:absolute after:w-full after:scale-x-0 after:h-0.5 after:bottom-0 after:left-0 after:bg-primary after:origin-bottom-right after:transition-transform after:duration-300 hover:after:scale-x-100 hover:after:origin-bottom-left">
                 Settings
                 <ChevronDown className="h-3 w-3 ml-1" />
               </Button>
@@ -62,7 +62,7 @@ const Header = () => {
             </DropdownMenuContent>
           </DropdownMenu>
 
-          <Button variant="outline" size="sm" className="text-foreground border-border hover:bg-accent hover:text-accent-foreground hover:border-accent">
+          <Button variant="outline" size="sm" className="bg-accent text-accent-foreground border-accent hover:bg-accent/90 hover:text-accent-foreground hover:border-accent/90">
             <Headphones className="h-4 w-4" />
             Player
           </Button>
@@ -77,7 +77,7 @@ const Header = () => {
           </SheetTrigger>
           <SheetContent side="right" className="w-80">
             <div className="flex flex-col space-y-4 mt-8">
-              <Button variant="ghost" className="justify-start text-muted-foreground hover:text-foreground h-12">
+              <Button variant="ghost" className="justify-start text-muted-foreground hover:text-foreground h-12 relative after:content-[''] after:absolute after:w-full after:scale-x-0 after:h-0.5 after:bottom-0 after:left-0 after:bg-primary after:origin-bottom-right after:transition-transform after:duration-300 hover:after:scale-x-100 hover:after:origin-bottom-left">
                 My Books
               </Button>
 
@@ -102,7 +102,7 @@ const Header = () => {
                 </Button>
               </div>
 
-              <Button variant="outline" className="justify-start text-foreground border-border hover:bg-accent hover:text-accent-foreground hover:border-accent h-12">
+              <Button variant="outline" className="justify-start bg-accent text-accent-foreground border-accent hover:bg-accent/90 hover:text-accent-foreground hover:border-accent/90 h-12">
                 <Headphones className="h-4 w-4 mr-2" />
                 Player
               </Button>
