@@ -63,7 +63,7 @@ const Header = () => {
           </DropdownMenu>
 
           <Button variant="outline" size="sm" className="bg-accent text-accent-foreground border-accent hover:bg-accent/90 hover:text-accent-foreground hover:border-accent/90 group">
-            <Headphones className="h-4 w-4 transition-transform duration-200 group-hover:scale-110" />
+            <Headphones className="h-4 w-4 transition-transform duration-200 group-hover:scale-125" />
             Player
           </Button>
         </nav>
