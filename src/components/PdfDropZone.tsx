@@ -85,8 +85,8 @@ const PdfDropZone = () => {
         
         {/* Explanatory Text */}
         <div className="text-center mb-8 space-y-2">
-          <p className="text-xl font-medium text-foreground tracking-tight relative inline-block after:content-[''] after:absolute after:w-full after:scale-x-0 after:h-0.5 after:bottom-0 after:left-0 after:bg-accent after:origin-bottom-right after:transition-transform after:duration-300 hover:after:scale-x-100 hover:after:origin-bottom-left">Transform any PDF into an engaging audio experience</p>
-          <p className="text-xl font-medium text-foreground tracking-tight relative inline-block after:content-[''] after:absolute after:w-full after:scale-x-0 after:h-0.5 after:bottom-0 after:left-0 after:bg-accent after:origin-bottom-right after:transition-transform after:duration-300 hover:after:scale-x-100 hover:after:origin-bottom-left">Upload your document and let AI create a personalized podcast for you</p>
+          <p className="text-xl font-medium text-foreground tracking-tight">Transform any PDF into an <span className="relative after:content-[''] after:absolute after:w-full after:h-0.5 after:bottom-0 after:left-0 after:bg-accent">engaging audio experience</span></p>
+          <p className="text-xl font-medium text-foreground tracking-tight">Upload your document and let AI create a personalized podcast for you</p>
         </div>
         
         {/* Pointing Arrow - only show when no file uploaded */}
