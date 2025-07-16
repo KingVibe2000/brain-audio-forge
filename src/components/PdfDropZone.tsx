@@ -70,13 +70,14 @@ const PdfDropZone = () => {
     <div className="flex-1 flex items-center justify-center px-8 pt-8 pb-16 relative">
       {/* Background image with reduced opacity */}
       <div 
-        className="absolute inset-0"
+        className="absolute inset-0 bg-background"
         style={{
           backgroundImage: `url(/lovable-uploads/24c60627-e30e-4e9d-8b61-6eeedcdfc8f2.png)`,
           backgroundSize: '50%',
           backgroundPosition: 'center -50px',
           backgroundRepeat: 'no-repeat',
-          opacity: '0.3'
+          backgroundBlendMode: 'soft-light',
+          opacity: '0.6'
         }}
       ></div>
       <div className="w-full max-w-2xl relative z-10">
