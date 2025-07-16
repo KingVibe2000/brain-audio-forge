@@ -78,15 +78,15 @@ const PdfDropZone = () => {
       <div className="w-full max-w-2xl relative z-10">
         {/* Main Heading with Marker Effect */}
         <div className="text-center mb-8 relative py-8">
-          <h1 className="text-6xl font-medium text-foreground inline-block bg-accent px-3 py-1 rounded-sm transform -rotate-1 font-work relative z-10" style={{boxShadow: '6px 8px 3px 0 rgba(0, 0, 0, 0.8), 10px 12px 25px 0 rgba(0, 0, 0, 0.35)'}}>
+          <h1 className="text-6xl font-medium text-foreground inline-block bg-accent px-3 py-1 rounded-sm transform -rotate-1 font-space relative z-10" style={{boxShadow: '6px 8px 3px 0 rgba(0, 0, 0, 0.8), 10px 12px 25px 0 rgba(0, 0, 0, 0.35)'}}>
             Books into Podcasts
           </h1>
         </div>
         
         {/* Explanatory Text */}
         <div className="text-center mb-8 space-y-2">
-          <p className="text-xl font-medium text-foreground tracking-tight border-b-4 border-primary/60 inline-block">Transform any PDF into an engaging audio experience</p>
-          <p className="text-xl font-medium text-foreground tracking-tight border-b-4 border-primary/60 inline-block">Upload your document and let AI create a personalized podcast for you</p>
+          <p className="text-xl font-medium text-foreground tracking-tight border-b-4 border-primary/60 inline-block font-sans">Transform any PDF into an engaging audio experience</p>
+          <p className="text-xl font-medium text-foreground tracking-tight border-b-4 border-primary/60 inline-block font-sans">Upload your document and let AI create a personalized podcast for you</p>
         </div>
         
         {/* Pointing Arrow - only show when no file uploaded */}
@@ -257,7 +257,7 @@ const PdfDropZone = () => {
                     4
                   </div>
                   <div className="flex-1">
-                    <Button className="w-full bg-accent hover:bg-accent/90 text-accent-foreground py-6 text-lg font-medium font-work shadow-lg flex items-center justify-center gap-3">
+                    <Button className="w-full bg-accent hover:bg-accent/90 text-accent-foreground py-6 text-lg font-medium font-sans shadow-lg flex items-center justify-center gap-3">
                       <div className="w-2 h-2 bg-black rounded-full"></div>
                       Upload and Extract Bookmarks
                     </Button>

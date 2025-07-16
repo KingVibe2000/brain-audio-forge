@@ -151,13 +151,13 @@ const MyBooks = () => {
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-3xl font-bold text-foreground relative">
+          <h1 className="text-3xl font-bold text-foreground relative font-space">
             My Books
             <div className="absolute -bottom-2 left-0 w-12 h-0.5 bg-accent"></div>
           </h1>
-          <p className="text-muted-foreground mt-3">
+          <p className="text-muted-foreground mt-3 font-sans">
             Your personal library of audiobooks and documents 
-            <span className="ml-2 inline-flex items-center gap-1 px-2 py-1 bg-muted text-foreground rounded-full text-sm font-medium">
+            <span className="ml-2 inline-flex items-center gap-1 px-2 py-1 bg-muted text-foreground rounded-full text-sm font-medium font-sans">
               <Book className="h-3 w-3" />
               {books.length} books
             </span>
@@ -331,7 +331,7 @@ const MyBooks = () => {
         <Card className="border-dashed">
           <CardContent className="flex flex-col items-center justify-center py-12">
             <Book className="h-12 w-12 text-muted-foreground mb-4" />
-            <h3 className="text-lg font-semibold text-foreground mb-2">No books found</h3>
+            <h3 className="text-lg font-semibold text-foreground mb-2 font-space">No books found</h3>
             <p className="text-muted-foreground text-center max-w-md">
               {searchQuery || statusFilter !== "all" 
                 ? "Try adjusting your search or filter criteria."

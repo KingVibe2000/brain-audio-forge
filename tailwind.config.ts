@@ -19,19 +19,7 @@ export default {
 		},
 		extend: {
 			fontFamily: {
-				'fredoka': ['Fredoka One', 'cursive'],
-				'nunito': ['Nunito', 'sans-serif'],
-				'comfortaa': ['Comfortaa', 'sans-serif'],
-				'quicksand': ['Quicksand', 'sans-serif'],
-				'pacifico': ['Pacifico', 'cursive'],
-				'kalam': ['Kalam', 'cursive'],
-				'caveat': ['Caveat', 'cursive'],
-				'dancing': ['Dancing Script', 'cursive'],
-				'indie': ['Indie Flower', 'cursive'],
-				'inter': ['Inter', 'sans-serif'],
-				'poppins': ['Poppins', 'sans-serif'],
-				'montserrat': ['Montserrat', 'sans-serif'],
-				'work': ['Work Sans', 'sans-serif'],
+				'sans': ['Inter', 'sans-serif'],
 				'space': ['Space Grotesk', 'sans-serif'],
 			},
 			colors: {
