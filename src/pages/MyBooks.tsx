@@ -229,8 +229,8 @@ const MyBooks = () => {
             onClick={() => toggleBookSelection(book.id)}
           >
             <CardContent className="p-0">
-              {/* Status Header - full width at top */}
-              <div className="w-full px-3 py-2 flex items-center justify-between bg-card border-b">
+              {/* Status Header - full width at top with rounded corners */}
+              <div className="w-full px-3 py-2 flex items-center justify-between bg-card border-b rounded-t-lg">
                 {getStatusBadge(book.status)}
                 {/* Selection Indicator moved to header */}
                 {isSelected(book.id) && (
