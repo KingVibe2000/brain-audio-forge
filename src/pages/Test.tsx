@@ -121,7 +121,7 @@ const Test = () => {
               {/* Variation 5: Gradient Background */}
               <div className="text-center">
                 <h2 className="text-2xl font-medium mb-4 text-white bg-black/50 px-4 py-2 rounded">Variation 5: Gradient Background</h2>
-                <div className="bg-gradient-to-b from-background/90 via-background/60 to-background/10 backdrop-blur-sm rounded-lg p-6 max-w-xl mx-auto">
+                <div className="bg-gradient-to-b from-background/90 via-background/60 to-background/5 backdrop-blur-sm rounded-lg p-6 max-w-xl mx-auto">
                   <div className="space-y-2">
                     <p className="text-xl font-medium text-foreground tracking-tight">Transform any PDF into an engaging audio experience</p>
                     <p className="text-xl font-medium text-foreground tracking-tight">Upload your document and let AI create a personalized podcast for you</p>
