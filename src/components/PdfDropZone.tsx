@@ -79,15 +79,6 @@ const PdfDropZone = () => {
       <div className="w-full max-w-2xl">
         {/* Main Heading with Marker Effect */}
         <div className="text-center mb-8 relative py-8">
-          <div 
-            className="absolute inset-0 bg-center bg-no-repeat opacity-20 pointer-events-none"
-            style={{
-              backgroundImage: `url(${booksBackground})`,
-              backgroundSize: '400px auto',
-              backgroundPosition: 'center',
-              filter: 'grayscale(100%)'
-            }}
-          />
           <h1 className="text-6xl font-medium text-foreground inline-block bg-accent px-3 py-1 rounded-sm transform -rotate-1 font-work relative z-10" style={{boxShadow: '6px 8px 3px 0 rgba(0, 0, 0, 0.8), 10px 12px 25px 0 rgba(0, 0, 0, 0.35)'}}>
             Books into Podcasts
           </h1>
