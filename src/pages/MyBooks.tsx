@@ -27,7 +27,7 @@ const MyBooks = () => {
       audio: false,
       size: "1.8 MB",
       uploaded: "15.7.2025",
-      cover: "https://images.unsplash.com/photo-1649972904349-6e44c42644a7?w=400&h=600&fit=crop"
+      cover: "/lovable-uploads/98374442-0f40-425a-81f5-28294fbcb030.png"
     },
     {
       id: "2", 
@@ -41,7 +41,7 @@ const MyBooks = () => {
       audio: false,
       size: "8.4 MB",
       uploaded: "17.7.2025",
-      cover: "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?w=400&h=600&fit=crop"
+      cover: "https://images.unsplash.com/photo-1543002588-bfa74002ed7e?w=300&h=450&fit=crop"
     },
     {
       id: "3",
@@ -55,7 +55,7 @@ const MyBooks = () => {
       audio: false,
       size: "6.6 MB",
       uploaded: "10.7.2025",
-      cover: "https://images.unsplash.com/photo-1518770660439-4636190af475?w=400&h=600&fit=crop"
+      cover: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&h=450&fit=crop"
     },
     {
       id: "4",
@@ -69,7 +69,7 @@ const MyBooks = () => {
       audio: false,
       size: "1.3 MB",
       uploaded: "10.7.2025",
-      cover: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=400&h=600&fit=crop"
+      cover: "https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=300&h=450&fit=crop"
     },
     {
       id: "5",
@@ -84,7 +84,7 @@ const MyBooks = () => {
       duration: "5h 0m",
       size: "4 MB",
       uploaded: "9.7.2025",
-      cover: "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=400&h=600&fit=crop"
+      cover: "https://images.unsplash.com/photo-1544947950-fa07a98d237f?w=300&h=450&fit=crop"
     },
     {
       id: "6",
@@ -98,7 +98,7 @@ const MyBooks = () => {
       audio: false,
       size: "3.2 MB",
       uploaded: "20.7.2025",
-      cover: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=400&h=600&fit=crop"
+      cover: "https://images.unsplash.com/photo-1554415707-6e8cfc93fe23?w=300&h=450&fit=crop"
     }
   ];
 
@@ -231,8 +231,8 @@ const MyBooks = () => {
         </Card>
       )}
 
-      {/* Books Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+      {/* Books Grid - adjusted for book cover aspect ratio */}
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-4">
         {filteredBooks.map((book) => (
           <Card 
             key={book.id} 
@@ -242,12 +242,13 @@ const MyBooks = () => {
             onClick={() => toggleBookSelection(book.id)}
           >
             <CardContent className="p-0">
-              {/* Book Cover */}
+              {/* Book Cover with proper aspect ratio */}
               <div className="relative">
                 <img 
                   src={book.cover} 
                   alt={book.title}
-                  className="w-full h-32 object-cover rounded-t-lg"
+                  className="w-full h-56 object-cover rounded-t-lg"
+                  style={{ aspectRatio: '3/4' }}
                 />
                 
                 {/* Status Badge */}
@@ -276,22 +277,22 @@ const MyBooks = () => {
                 )}
               </div>
 
-              {/* Book Info */}
-              <div className="p-4 space-y-3">
+              {/* Book Info - more compact for smaller cards */}
+              <div className="p-3 space-y-2">
                 <div>
-                  <h3 className="font-semibold text-foreground group-hover:text-accent transition-colors line-clamp-2">
+                  <h3 className="font-semibold text-foreground group-hover:text-accent transition-colors line-clamp-2 text-sm leading-tight">
                     {book.title}
                   </h3>
-                  <p className="text-sm text-muted-foreground">{book.author}</p>
+                  <p className="text-xs text-muted-foreground">{book.author}</p>
                 </div>
 
                 {/* Metadata */}
                 <div className="flex items-center justify-between text-xs text-muted-foreground">
                   <div className="flex items-center gap-1">
                     <Calendar className="h-3 w-3" />
-                    {book.uploaded}
+                    <span className="truncate">{book.uploaded}</span>
                   </div>
-                  <div>{book.size}</div>
+                  <div className="text-xs">{book.size}</div>
                 </div>
 
                 {/* Audio indicator */}
@@ -302,28 +303,28 @@ const MyBooks = () => {
                   </div>
                 )}
 
-                {/* Progress */}
-                <div className="space-y-2">
+                {/* Progress - more compact */}
+                <div className="space-y-1">
                   <div className="flex justify-between text-xs">
                     <span className="text-muted-foreground">Progress</span>
-                    <span className="font-medium">{book.chapters}</span>
+                    <span className="font-medium text-xs">{book.chapters}</span>
                   </div>
                   <Progress 
                     value={book.progress} 
-                    className="h-2"
+                    className="h-1.5"
                   />
                 </div>
 
-                {/* Actions */}
-                <div className="flex gap-2 pt-2" onClick={(e) => e.stopPropagation()}>
-                  <Button size="sm" className="flex-1 gap-1 bg-accent hover:bg-accent/90 text-accent-foreground">
+                {/* Actions - more compact */}
+                <div className="flex gap-1 pt-1" onClick={(e) => e.stopPropagation()}>
+                  <Button size="sm" className="flex-1 gap-1 bg-accent hover:bg-accent/90 text-accent-foreground text-xs h-7">
                     <Play className="h-3 w-3" />
                     Play
                   </Button>
                   <DropdownMenu>
                     <DropdownMenuTrigger asChild>
-                      <Button size="sm" variant="outline" className="px-2">
-                        <MoreHorizontal className="h-4 w-4" />
+                      <Button size="sm" variant="outline" className="px-2 h-7">
+                        <MoreHorizontal className="h-3 w-3" />
                       </Button>
                     </DropdownMenuTrigger>
                     <DropdownMenuContent align="end">
