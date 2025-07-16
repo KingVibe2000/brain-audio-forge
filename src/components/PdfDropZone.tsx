@@ -71,7 +71,7 @@ const PdfDropZone = () => {
       className="flex-1 flex items-center justify-center px-8 pt-8 pb-16"
       style={{
         backgroundImage: `url(/lovable-uploads/be07b07a-2a08-445d-9fdb-d7a830669b67.png)`,
-        backgroundSize: 'cover',
+        backgroundSize: '50%',
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat'
       }}
