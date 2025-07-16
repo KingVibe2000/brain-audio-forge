@@ -67,7 +67,15 @@ const PdfDropZone = () => {
   };
 
   return (
-    <div className="flex-1 flex items-center justify-center px-8 pt-8 pb-16">
+    <div 
+      className="flex-1 flex items-center justify-center px-8 pt-8 pb-16"
+      style={{
+        backgroundImage: `url(/lovable-uploads/be07b07a-2a08-445d-9fdb-d7a830669b67.png)`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat'
+      }}
+    >
       <div className="w-full max-w-2xl">
         {/* Main Heading with Marker Effect */}
         <div className="text-center mb-8 relative py-8">
