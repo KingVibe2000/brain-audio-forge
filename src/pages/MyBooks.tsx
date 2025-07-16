@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Search, Filter, MoreVertical, Play, Edit3, Download, Trash2, RefreshCw } from "lucide-react";
+import { Search, Filter, MoreVertical, Play, Edit3, Download, Trash2, RefreshCw, Book, CheckCircle, Headphones, HardDrive } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
@@ -93,10 +93,10 @@ const MyBooks = () => {
   ];
 
   const stats = [
-    { label: "Total Books", value: "10", icon: "📚" },
-    { label: "Completed Chapters", value: "146", icon: "✅" },
-    { label: "Total Audio", value: "19h 22m", icon: "🎧" },
-    { label: "Storage Used", value: "47.6 MB", icon: "💾" }
+    { label: "Total Books", value: "10", icon: Book },
+    { label: "Completed Chapters", value: "146", icon: CheckCircle },
+    { label: "Total Audio", value: "19h 22m", icon: Headphones },
+    { label: "Storage Used", value: "47.6 MB", icon: HardDrive }
   ];
 
   const getStatusBadge = (status: string) => {
@@ -131,7 +131,7 @@ const MyBooks = () => {
         <div>
           <h1 className="text-3xl font-bold text-foreground flex items-center gap-3">
             <div className="w-10 h-10 bg-accent rounded-lg flex items-center justify-center">
-              📚
+              <Book className="h-5 w-5 text-accent-foreground" />
             </div>
             Book Management
           </h1>
@@ -149,7 +149,9 @@ const MyBooks = () => {
           <Card key={index} className="border border-border">
             <CardContent className="p-6">
               <div className="flex items-center gap-4">
-                <div className="text-2xl">{stat.icon}</div>
+                <div className="w-10 h-10 bg-accent/10 rounded-lg flex items-center justify-center">
+                  <stat.icon className="h-5 w-5 text-accent" />
+                </div>
                 <div>
                   <div className="text-2xl font-bold text-foreground">{stat.value}</div>
                   <div className="text-sm text-muted-foreground">{stat.label}</div>
@@ -248,7 +250,8 @@ const MyBooks = () => {
         <CardContent className="p-6">
           <div className="flex items-center justify-between mb-6">
             <div className="flex items-center gap-2">
-              <h3 className="font-medium text-foreground">📚 Books ({books.length})</h3>
+              <Book className="h-4 w-4 text-muted-foreground" />
+              <h3 className="font-medium text-foreground">Books ({books.length})</h3>
             </div>
             <Button
               variant="outline"
@@ -321,7 +324,7 @@ const MyBooks = () => {
                   <div className="text-sm text-foreground">
                     {book.audio ? (
                       <div className="flex items-center gap-1">
-                        <div className="text-xs text-green-600">✓</div>
+                        <CheckCircle className="h-3 w-3 text-green-600" />
                         <span className="text-xs">{book.duration}</span>
                       </div>
                     ) : (
