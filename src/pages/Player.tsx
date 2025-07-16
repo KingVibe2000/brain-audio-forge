@@ -4,7 +4,7 @@ import { Progress } from "@/components/ui/progress";
 import { Slider } from "@/components/ui/slider";
 import { Card } from "@/components/ui/card";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
-import { Play, Pause, SkipBack, SkipForward, ChevronLeft, Check, Bookmark, FileText, RotateCcw, RotateCw, Settings, ScrollText, X } from "lucide-react";
+import { Play, Pause, SkipBack, SkipForward, ChevronLeft, Check, Bookmark, FileText, RotateCcw, RotateCw, Settings, ScrollText, X, ChevronUp, ChevronDown } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
 interface Chapter {
@@ -125,6 +125,9 @@ const Player = () => {
   const [showSummaryModal, setShowSummaryModal] = useState(false);
   const [showPdfModal, setShowPdfModal] = useState(false);
   const [selectedChapter, setSelectedChapter] = useState<Chapter | null>(null);
+  
+  // Player state
+  const [isPlayerExpanded, setIsPlayerExpanded] = useState(true);
 
   useEffect(() => {
     const audio = audioRef.current;
@@ -348,98 +351,171 @@ const Player = () => {
         ))}
       </div>
 
-      {/* Fixed Bottom Player */}
-      <div className="fixed bottom-0 left-0 right-0 bg-card border-t border-border pb-safe">
-        <div className="container max-w-md mx-auto px-4 py-4">
-          {/* Progress Bar */}
-          <div className="mb-4">
-            <Slider
-              value={[progress]}
-              onValueChange={handleProgressChange}
-              max={100}
-              step={0.1}
-              className="w-full"
-            />
-            <div className="flex justify-between text-xs text-muted-foreground mt-1">
-              <span>{formatTime(currentTime)}</span>
-              <span>{formatTime(duration)}</span>
-            </div>
-          </div>
-
-          {/* Current Chapter Info */}
-          <div className="text-center mb-4">
-            <h4 className="font-medium text-sm">
-              {chapters.find(c => c.id === currentChapter)?.title}
-            </h4>
-            <p className="text-xs text-muted-foreground">
-              Chapter {currentChapter} of {bookData.totalChapters}
-            </p>
-          </div>
-
-          {/* Main Playback Controls */}
-          <div className="flex items-center justify-center gap-6 mb-3">
-            <Button
-              variant="ghost"
-              size="icon"
-              onClick={skipToPrevious}
-              disabled={currentChapter === 1}
-              className="w-12 h-12"
-            >
-              <SkipBack className="w-6 h-6" />
-            </Button>
-
-            <Button
-              size="icon"
-              onClick={togglePlayPause}
-              className="w-16 h-16 bg-accent hover:bg-accent/90 text-accent-foreground"
-            >
-              {isPlaying ? (
-                <Pause className="w-8 h-8" />
-              ) : (
-                <Play className="w-8 h-8 ml-1" />
-              )}
-            </Button>
-
-            <Button
-              variant="ghost"
-              size="icon"
-              onClick={skipToNext}
-              disabled={currentChapter === chapters.length}
-              className="w-12 h-12"
-            >
-              <SkipForward className="w-6 h-6" />
-            </Button>
-          </div>
-
-          {/* Secondary Controls */}
-          <div className="flex items-center justify-center gap-4">
-            <Button
-              variant="ghost"
-              size="icon"
-              onClick={skip15Backward}
-              className="w-10 h-10"
-            >
-              <RotateCcw className="w-4 h-4" />
-            </Button>
-
+      {/* Fixed Bottom Player - Collapsible */}
+      <div className={`fixed bottom-0 left-0 right-0 bg-card border-t border-border pb-safe transition-all duration-300 ease-in-out ${
+        isPlayerExpanded ? 'translate-y-0' : 'translate-y-[calc(100%-4rem)]'
+      }`}>
+        <div className="container max-w-md mx-auto px-4">
+          {/* Collapse/Expand Toggle */}
+          <div className="flex items-center justify-center py-2">
             <Button
               variant="ghost"
               size="sm"
-              onClick={toggleSpeed}
-              className="text-xs font-medium min-w-[44px] h-8"
+              onClick={() => setIsPlayerExpanded(!isPlayerExpanded)}
+              className="w-8 h-6 p-0"
+              aria-label={isPlayerExpanded ? "Minimize player" : "Expand player"}
             >
-              {playbackSpeed}x
-            </Button>
-
-            <Button
-              variant="ghost"
-              size="icon"
-              onClick={skip15Forward}
-              className="w-10 h-10"
-            >
-              <RotateCw className="w-4 h-4" />
+              {isPlayerExpanded ? (
+                <ChevronDown className="w-4 h-4" />
+              ) : (
+                <ChevronUp className="w-4 h-4" />
+              )}
             </Button>
           </div>
+
+          {isPlayerExpanded ? (
+            /* Expanded Player */
+            <div className="pb-4">
+              {/* Progress Bar */}
+              <div className="mb-4">
+                <Slider
+                  value={[progress]}
+                  onValueChange={handleProgressChange}
+                  max={100}
+                  step={0.1}
+                  className="w-full"
+                />
+                <div className="flex justify-between text-xs text-muted-foreground mt-1">
+                  <span>{formatTime(currentTime)}</span>
+                  <span>{formatTime(duration)}</span>
+                </div>
+              </div>
+
+              {/* Current Chapter Info */}
+              <div className="text-center mb-4">
+                <h4 className="font-medium text-sm">
+                  {chapters.find(c => c.id === currentChapter)?.title}
+                </h4>
+                <p className="text-xs text-muted-foreground">
+                  Chapter {currentChapter} of {bookData.totalChapters}
+                </p>
+              </div>
+
+              {/* Main Playback Controls */}
+              <div className="flex items-center justify-center gap-6 mb-3">
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  onClick={skipToPrevious}
+                  disabled={currentChapter === 1}
+                  className="w-12 h-12"
+                >
+                  <SkipBack className="w-6 h-6" />
+                </Button>
+
+                <Button
+                  size="icon"
+                  onClick={togglePlayPause}
+                  className="w-16 h-16 bg-accent hover:bg-accent/90 text-accent-foreground"
+                >
+                  {isPlaying ? (
+                    <Pause className="w-8 h-8" />
+                  ) : (
+                    <Play className="w-8 h-8 ml-1" />
+                  )}
+                </Button>
+
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  onClick={skipToNext}
+                  disabled={currentChapter === chapters.length}
+                  className="w-12 h-12"
+                >
+                  <SkipForward className="w-6 h-6" />
+                </Button>
+              </div>
+
+              {/* Secondary Controls */}
+              <div className="flex items-center justify-center gap-4">
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  onClick={skip15Backward}
+                  className="w-10 h-10"
+                >
+                  <RotateCcw className="w-4 h-4" />
+                </Button>
+
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  onClick={toggleSpeed}
+                  className="text-xs font-medium min-w-[44px] h-8"
+                >
+                  {playbackSpeed}x
+                </Button>
+
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  onClick={skip15Forward}
+                  className="w-10 h-10"
+                >
+                  <RotateCw className="w-4 h-4" />
+                </Button>
+              </div>
+            </div>
+          ) : (
+            /* Mini Player */
+            <div className="flex items-center gap-3 pb-4">
+              {/* Mini Progress Bar */}
+              <div className="flex-1">
+                <Slider
+                  value={[progress]}
+                  onValueChange={handleProgressChange}
+                  max={100}
+                  step={0.1}
+                  className="w-full h-2"
+                />
+              </div>
+
+              {/* Compact Controls */}
+              <div className="flex items-center gap-2 shrink-0">
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  onClick={skipToPrevious}
+                  disabled={currentChapter === 1}
+                  className="w-8 h-8"
+                >
+                  <SkipBack className="w-4 h-4" />
+                </Button>
+
+                <Button
+                  size="icon"
+                  onClick={togglePlayPause}
+                  className="w-10 h-10 bg-accent hover:bg-accent/90 text-accent-foreground"
+                >
+                  {isPlaying ? (
+                    <Pause className="w-5 h-5" />
+                  ) : (
+                    <Play className="w-5 h-5 ml-0.5" />
+                  )}
+                </Button>
+
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  onClick={skipToNext}
+                  disabled={currentChapter === chapters.length}
+                  className="w-8 h-8"
+                >
+                  <SkipForward className="w-4 h-4" />
+                </Button>
+              </div>
+            </div>
+          )}
         </div>
       </div>
 
