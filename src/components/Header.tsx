@@ -1,4 +1,4 @@
-import { Book, Play, Settings, FileText, ChevronDown, Sparkles, User, Shield, Menu } from "lucide-react";
+import { Book, Play, Settings, FileText, ChevronDown, Sparkles, User, Shield, Menu, Headphones } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -30,7 +30,8 @@ const Header = () => {
 
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center space-x-2">
-          <Button variant="ghost" size="sm" className="text-muted-foreground hover:text-foreground">
+          <Button variant="outline" size="sm" className="text-foreground border-border hover:bg-accent hover:text-accent-foreground hover:border-accent">
+            <Headphones className="h-4 w-4" />
             Player
           </Button>
           
@@ -76,7 +77,8 @@ const Header = () => {
           </SheetTrigger>
           <SheetContent side="right" className="w-80">
             <div className="flex flex-col space-y-4 mt-8">
-              <Button variant="ghost" className="justify-start text-muted-foreground hover:text-foreground h-12">
+              <Button variant="outline" className="justify-start text-foreground border-border hover:bg-accent hover:text-accent-foreground hover:border-accent h-12">
+                <Headphones className="h-4 w-4 mr-2" />
                 Player
               </Button>
               
