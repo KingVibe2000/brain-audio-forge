@@ -3,7 +3,8 @@ import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
 import { Slider } from "@/components/ui/slider";
 import { Card } from "@/components/ui/card";
-import { Play, Pause, SkipBack, SkipForward, ChevronLeft, Check, Bookmark, FileText, RotateCcw, RotateCw, Settings } from "lucide-react";
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import { Play, Pause, SkipBack, SkipForward, ChevronLeft, Check, Bookmark, FileText, RotateCcw, RotateCw, Settings, ScrollText, X } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
 interface Chapter {
@@ -13,6 +14,8 @@ interface Chapter {
   audioUrl: string;
   completed: boolean;
   bookmarked: boolean;
+  summary: string;
+  pdfUrl: string;
 }
 
 const Player = () => {
@@ -28,14 +31,86 @@ const Player = () => {
   };
 
   const chapters: Chapter[] = [
-    { id: 1, title: "Talk, Talk, Talk", duration: "5:24", audioUrl: "", completed: true, bookmarked: false },
-    { id: 2, title: "To Be or To Do", duration: "4:56", audioUrl: "", completed: true, bookmarked: true },
-    { id: 3, title: "Become a Student", duration: "6:12", audioUrl: "", completed: false, bookmarked: false },
-    { id: 4, title: "Restrain Yourself", duration: "5:43", audioUrl: "", completed: false, bookmarked: false },
-    { id: 5, title: "Get Out of Your Own Head", duration: "4:28", audioUrl: "", completed: false, bookmarked: true },
-    { id: 6, title: "The Danger of Early Pride", duration: "5:17", audioUrl: "", completed: false, bookmarked: false },
-    { id: 7, title: "Work, Work, Work", duration: "6:33", audioUrl: "", completed: false, bookmarked: false },
-    { id: 8, title: "For Everything That Comes Next", duration: "4:42", audioUrl: "", completed: false, bookmarked: false },
+    { 
+      id: 1, 
+      title: "Talk, Talk, Talk", 
+      duration: "5:24", 
+      audioUrl: "", 
+      completed: true, 
+      bookmarked: false,
+      summary: "This chapter explores the danger of talking too much and not acting enough. It emphasizes how constant discussion can become a substitute for real work and progress.",
+      pdfUrl: "/pdf/chapter-1.pdf"
+    },
+    { 
+      id: 2, 
+      title: "To Be or To Do", 
+      duration: "4:56", 
+      audioUrl: "", 
+      completed: true, 
+      bookmarked: true,
+      summary: "A critical examination of the choice between being someone and doing something meaningful. This chapter challenges readers to prioritize substance over status.",
+      pdfUrl: "/pdf/chapter-2.pdf"
+    },
+    { 
+      id: 3, 
+      title: "Become a Student", 
+      duration: "6:12", 
+      audioUrl: "", 
+      completed: false, 
+      bookmarked: false,
+      summary: "The importance of maintaining a student mindset throughout life. This chapter discusses how ego prevents learning and growth.",
+      pdfUrl: "/pdf/chapter-3.pdf"
+    },
+    { 
+      id: 4, 
+      title: "Restrain Yourself", 
+      duration: "5:43", 
+      audioUrl: "", 
+      completed: false, 
+      bookmarked: false,
+      summary: "Learning to control impulses and ego-driven reactions. This chapter teaches the value of patience and strategic thinking.",
+      pdfUrl: "/pdf/chapter-4.pdf"
+    },
+    { 
+      id: 5, 
+      title: "Get Out of Your Own Head", 
+      duration: "4:28", 
+      audioUrl: "", 
+      completed: false, 
+      bookmarked: true,
+      summary: "Breaking free from overthinking and self-sabotage. This chapter focuses on moving beyond mental barriers to take action.",
+      pdfUrl: "/pdf/chapter-5.pdf"
+    },
+    { 
+      id: 6, 
+      title: "The Danger of Early Pride", 
+      duration: "5:17", 
+      audioUrl: "", 
+      completed: false, 
+      bookmarked: false,
+      summary: "How early success can lead to complacency and failure. This chapter warns against letting initial achievements inflate the ego.",
+      pdfUrl: "/pdf/chapter-6.pdf"
+    },
+    { 
+      id: 7, 
+      title: "Work, Work, Work", 
+      duration: "6:33", 
+      audioUrl: "", 
+      completed: false, 
+      bookmarked: false,
+      summary: "The fundamental importance of consistent effort and dedication. This chapter emphasizes that there are no shortcuts to mastery.",
+      pdfUrl: "/pdf/chapter-7.pdf"
+    },
+    { 
+      id: 8, 
+      title: "For Everything That Comes Next", 
+      duration: "4:42", 
+      audioUrl: "", 
+      completed: false, 
+      bookmarked: false,
+      summary: "Preparing for future challenges by building character and resilience. This chapter discusses long-term thinking and preparation.",
+      pdfUrl: "/pdf/chapter-8.pdf"
+    },
   ];
 
   const [isPlaying, setIsPlaying] = useState(false);
@@ -45,6 +120,11 @@ const Player = () => {
   const [progress, setProgress] = useState(0);
   const [playbackSpeed, setPlaybackSpeed] = useState(1);
   const [showSpeedMenu, setShowSpeedMenu] = useState(false);
+  
+  // Modal states
+  const [showSummaryModal, setShowSummaryModal] = useState(false);
+  const [showPdfModal, setShowPdfModal] = useState(false);
+  const [selectedChapter, setSelectedChapter] = useState<Chapter | null>(null);
 
   useEffect(() => {
     const audio = audioRef.current;
@@ -137,6 +217,16 @@ const Player = () => {
     }
   };
 
+  const handleShowSummary = (chapter: Chapter) => {
+    setSelectedChapter(chapter);
+    setShowSummaryModal(true);
+  };
+
+  const handleShowPdf = (chapter: Chapter) => {
+    setSelectedChapter(chapter);
+    setShowPdfModal(true);
+  };
+
   return (
     <div className="min-h-screen bg-background pb-24">
       {/* Header */}
@@ -187,7 +277,7 @@ const Player = () => {
                 : 'hover:bg-muted/50'
             }`}
           >
-            <div className="flex items-center gap-4 p-4 min-h-[60px]">
+            <div className="flex items-center gap-3 p-4 min-h-[60px]">
               {/* Chapter Info */}
               <div className="flex-1 min-w-0">
                 <h3 className="font-medium text-base leading-tight mb-1">
@@ -210,23 +300,49 @@ const Player = () => {
                 )}
               </div>
               
-              {/* Play Button - Larger Touch Target */}
-              <Button
-                size="icon"
-                variant={currentChapter === chapter.id && isPlaying ? "default" : "outline"}
-                onClick={() => handleChapterPlay(chapter.id)}
-                className={`shrink-0 w-12 h-12 ${
-                  currentChapter === chapter.id && isPlaying 
-                    ? 'bg-accent hover:bg-accent/90 text-accent-foreground border-accent' 
-                    : 'bg-accent hover:bg-accent/90 text-accent-foreground border-accent'
-                }`}
-              >
-                {currentChapter === chapter.id && isPlaying ? (
-                  <Pause className="w-5 h-5" />
-                ) : (
-                  <Play className="w-5 h-5 ml-0.5" />
-                )}
-              </Button>
+              {/* Action Icons */}
+              <div className="flex items-center gap-2 shrink-0">
+                {/* Summary Button */}
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  onClick={() => handleShowSummary(chapter)}
+                  className="w-11 h-11 text-muted-foreground hover:text-foreground"
+                  aria-label={`View summary for ${chapter.title}`}
+                >
+                  <ScrollText className="w-4 h-4" />
+                </Button>
+                
+                {/* PDF Button */}
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  onClick={() => handleShowPdf(chapter)}
+                  className="w-11 h-11 text-muted-foreground hover:text-foreground"
+                  aria-label={`View PDF for ${chapter.title}`}
+                >
+                  <FileText className="w-4 h-4" />
+                </Button>
+                
+                {/* Play Button - Larger Touch Target */}
+                <Button
+                  size="icon"
+                  variant={currentChapter === chapter.id && isPlaying ? "default" : "outline"}
+                  onClick={() => handleChapterPlay(chapter.id)}
+                  className={`w-12 h-12 ${
+                    currentChapter === chapter.id && isPlaying 
+                      ? 'bg-accent hover:bg-accent/90 text-accent-foreground border-accent' 
+                      : 'bg-accent hover:bg-accent/90 text-accent-foreground border-accent'
+                  }`}
+                  aria-label={`${isPlaying ? 'Pause' : 'Play'} ${chapter.title}`}
+                >
+                  {currentChapter === chapter.id && isPlaying ? (
+                    <Pause className="w-5 h-5" />
+                  ) : (
+                    <Play className="w-5 h-5 ml-0.5" />
+                  )}
+                </Button>
+              </div>
             </div>
           </Card>
         ))}
@@ -329,6 +445,60 @@ const Player = () => {
 
       {/* Hidden Audio Element */}
       <audio ref={audioRef} />
+
+      {/* Summary Modal */}
+      <Dialog open={showSummaryModal} onOpenChange={setShowSummaryModal}>
+        <DialogContent className="max-w-md mx-auto max-h-[80vh] overflow-hidden">
+          <DialogHeader>
+            <DialogTitle className="text-left">
+              {selectedChapter?.title}
+            </DialogTitle>
+          </DialogHeader>
+          <div className="overflow-y-auto max-h-[60vh] pr-2">
+            <div className="space-y-4">
+              <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                <span>Duration: {selectedChapter?.duration}</span>
+                {selectedChapter?.completed && (
+                  <Check className="w-4 h-4 text-green-600 fill-current" />
+                )}
+                {selectedChapter?.bookmarked && (
+                  <Bookmark className="w-4 h-4 text-accent fill-current" />
+                )}
+              </div>
+              <div className="text-sm leading-relaxed">
+                {selectedChapter?.summary}
+              </div>
+            </div>
+          </div>
+        </DialogContent>
+      </Dialog>
+
+      {/* PDF Modal */}
+      <Dialog open={showPdfModal} onOpenChange={setShowPdfModal}>
+        <DialogContent className="max-w-4xl w-[95vw] h-[90vh] max-h-[90vh] overflow-hidden p-0">
+          <DialogHeader className="px-6 py-4 border-b">
+            <DialogTitle className="text-left">
+              {selectedChapter?.title} - Original Text
+            </DialogTitle>
+          </DialogHeader>
+          <div className="flex-1 overflow-hidden">
+            {selectedChapter?.pdfUrl ? (
+              <iframe
+                src={selectedChapter.pdfUrl}
+                className="w-full h-full border-0"
+                title={`PDF for ${selectedChapter.title}`}
+              />
+            ) : (
+              <div className="flex items-center justify-center h-full text-muted-foreground">
+                <div className="text-center">
+                  <FileText className="w-12 h-12 mx-auto mb-4 opacity-50" />
+                  <p>PDF not available for this chapter</p>
+                </div>
+              </div>
+            )}
+          </div>
+        </DialogContent>
+      </Dialog>
     </div>
   );
 };
