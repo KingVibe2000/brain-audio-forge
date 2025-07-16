@@ -146,7 +146,8 @@ const MyBooks = () => {
   };
 
   return (
-    <div className="max-w-7xl mx-auto px-4 md:px-6 py-8 space-y-8">
+    <div className="px-4 md:px-6 py-8">
+      <div className="max-w-7xl mx-auto space-y-8">
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
@@ -340,6 +341,7 @@ const MyBooks = () => {
           </CardContent>
         </Card>
       )}
+      </div>
     </div>
   );
 };
