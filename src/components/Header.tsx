@@ -34,11 +34,11 @@ const Header = () => {
             My Books
           </Button>
 
-          {/* Setup Dropdown */}
+          {/* Settings Dropdown */}
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <Button variant="ghost" size="sm" className="text-muted-foreground hover:text-foreground">
-                Setup
+                Settings
                 <ChevronDown className="h-3 w-3 ml-1" />
               </Button>
             </DropdownMenuTrigger>
@@ -85,9 +85,9 @@ const Header = () => {
                 My Books
               </Button>
 
-              {/* Mobile Setup Menu Items */}
+              {/* Mobile Settings Menu Items */}
               <div className="space-y-2">
-                <div className="px-3 py-2 text-sm font-medium text-muted-foreground">Setup</div>
+                <div className="px-3 py-2 text-sm font-medium text-muted-foreground">Settings</div>
                 <Button variant="ghost" className="justify-start text-muted-foreground hover:text-foreground h-12 w-full">
                   <div className="w-3 h-3 border border-muted-foreground/60 rounded-full mr-3"></div>
                   Business Book Settings
