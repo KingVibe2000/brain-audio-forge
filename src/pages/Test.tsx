@@ -64,6 +64,85 @@ const Test = () => {
             </h1>
           </div>
         </div>
+
+        {/* Background Text Variations Section */}
+        <div className="w-full max-w-4xl space-y-12 mt-16">
+          <h1 className="text-4xl font-bold text-center mb-12">Background Text Variations</h1>
+          
+          {/* Background for testing variations */}
+          <div className="relative min-h-screen bg-cover bg-center bg-no-repeat rounded-lg overflow-hidden" style={{backgroundImage: 'url(/src/assets/books-background.png)'}}>
+            <div className="absolute inset-0 bg-black/20"></div>
+            <div className="relative z-10 flex flex-col items-center justify-center min-h-screen px-8 py-16 space-y-16">
+              
+              {/* Variation 1: Simple Solid Background */}
+              <div className="text-center">
+                <h2 className="text-2xl font-medium mb-4 text-white bg-black/50 px-4 py-2 rounded">Variation 1: Simple Solid Background</h2>
+                <div className="bg-background rounded-lg p-6 max-w-xl mx-auto">
+                  <div className="space-y-2">
+                    <p className="text-xl font-medium text-foreground tracking-tight">Transform any PDF into an engaging audio experience</p>
+                    <p className="text-xl font-medium text-foreground tracking-tight">Upload your document and let AI create a personalized podcast for you</p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Variation 2: Semi-Transparent with Backdrop Blur */}
+              <div className="text-center">
+                <h2 className="text-2xl font-medium mb-4 text-white bg-black/50 px-4 py-2 rounded">Variation 2: Semi-Transparent with Backdrop Blur</h2>
+                <div className="bg-background/80 backdrop-blur-sm rounded-lg p-6 max-w-xl mx-auto">
+                  <div className="space-y-2">
+                    <p className="text-xl font-medium text-foreground tracking-tight">Transform any PDF into an engaging audio experience</p>
+                    <p className="text-xl font-medium text-foreground tracking-tight">Upload your document and let AI create a personalized podcast for you</p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Variation 3: Subtle Card-Style Background */}
+              <div className="text-center">
+                <h2 className="text-2xl font-medium mb-4 text-white bg-black/50 px-4 py-2 rounded">Variation 3: Subtle Card-Style Background</h2>
+                <div className="bg-background/90 backdrop-blur-sm rounded-lg p-6 shadow-lg border border-border/50 max-w-xl mx-auto">
+                  <div className="space-y-2">
+                    <p className="text-xl font-medium text-foreground tracking-tight">Transform any PDF into an engaging audio experience</p>
+                    <p className="text-xl font-medium text-foreground tracking-tight">Upload your document and let AI create a personalized podcast for you</p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Variation 4: Accent Color Background */}
+              <div className="text-center">
+                <h2 className="text-2xl font-medium mb-4 text-white bg-black/50 px-4 py-2 rounded">Variation 4: Accent Color Background</h2>
+                <div className="bg-accent rounded-lg p-6 max-w-xl mx-auto">
+                  <div className="space-y-2">
+                    <p className="text-xl font-medium text-accent-foreground tracking-tight">Transform any PDF into an engaging audio experience</p>
+                    <p className="text-xl font-medium text-accent-foreground tracking-tight">Upload your document and let AI create a personalized podcast for you</p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Variation 5: Gradient Background */}
+              <div className="text-center">
+                <h2 className="text-2xl font-medium mb-4 text-white bg-black/50 px-4 py-2 rounded">Variation 5: Gradient Background</h2>
+                <div className="bg-gradient-to-r from-background/90 to-background/70 backdrop-blur-sm rounded-lg p-6 max-w-xl mx-auto">
+                  <div className="space-y-2">
+                    <p className="text-xl font-medium text-foreground tracking-tight">Transform any PDF into an engaging audio experience</p>
+                    <p className="text-xl font-medium text-foreground tracking-tight">Upload your document and let AI create a personalized podcast for you</p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Variation 6: Paper-Style Background */}
+              <div className="text-center">
+                <h2 className="text-2xl font-medium mb-4 text-white bg-black/50 px-4 py-2 rounded">Variation 6: Paper-Style Background</h2>
+                <div className="bg-background rounded-lg p-6 shadow-xl border border-border max-w-xl mx-auto" style={{boxShadow: '0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)'}}>
+                  <div className="space-y-2">
+                    <p className="text-xl font-medium text-foreground tracking-tight">Transform any PDF into an engaging audio experience</p>
+                    <p className="text-xl font-medium text-foreground tracking-tight">Upload your document and let AI create a personalized podcast for you</p>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );
