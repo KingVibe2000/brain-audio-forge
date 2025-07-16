@@ -146,7 +146,7 @@ const MyBooks = () => {
   };
 
   return (
-    <div className="container mx-auto px-4 py-8 space-y-8">
+    <div className="container mx-auto px-4 pl-8 py-8 space-y-8">
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
@@ -219,7 +219,7 @@ const MyBooks = () => {
       )}
 
       {/* Books Grid - adjusted for book cover aspect ratio */}
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-4">
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
         {filteredBooks.map((book) => (
           <Card 
             key={book.id} 
