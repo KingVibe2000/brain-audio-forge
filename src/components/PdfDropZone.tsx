@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Upload, ArrowUpFromDot, Book, X, Image } from "lucide-react";
+import { Upload, ArrowDownToDot, Book, X, Image } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -92,7 +92,7 @@ const PdfDropZone = () => {
         {/* Pointing Arrow - only show when no file uploaded */}
         {!uploadedFile && (
           <div className="text-center mb-8">
-            <ArrowUpFromDot className="h-20 w-20 text-yellow-primary mx-auto animate-bounce" />
+            <ArrowDownToDot className="h-20 w-20 text-yellow-primary mx-auto animate-bounce" />
           </div>
         )}
         
