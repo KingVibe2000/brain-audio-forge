@@ -41,7 +41,7 @@ const MyBooks = () => {
       audio: false,
       size: "8.4 MB",
       uploaded: "17.7.2025",
-      cover: "https://images.unsplash.com/photo-1543002588-bfa74002ed7e?w=300&h=450&fit=crop"
+      cover: "/lovable-uploads/98374442-0f40-425a-81f5-28294fbcb030.png"
     },
     {
       id: "3",
@@ -55,7 +55,7 @@ const MyBooks = () => {
       audio: false,
       size: "6.6 MB",
       uploaded: "10.7.2025",
-      cover: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&h=450&fit=crop"
+      cover: "/lovable-uploads/98374442-0f40-425a-81f5-28294fbcb030.png"
     },
     {
       id: "4",
@@ -69,7 +69,7 @@ const MyBooks = () => {
       audio: false,
       size: "1.3 MB",
       uploaded: "10.7.2025",
-      cover: "https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=300&h=450&fit=crop"
+      cover: "/lovable-uploads/98374442-0f40-425a-81f5-28294fbcb030.png"
     },
     {
       id: "5",
@@ -84,7 +84,7 @@ const MyBooks = () => {
       duration: "5h 0m",
       size: "4 MB",
       uploaded: "9.7.2025",
-      cover: "https://images.unsplash.com/photo-1544947950-fa07a98d237f?w=300&h=450&fit=crop"
+      cover: "/lovable-uploads/98374442-0f40-425a-81f5-28294fbcb030.png"
     },
     {
       id: "6",
@@ -98,7 +98,7 @@ const MyBooks = () => {
       audio: false,
       size: "3.2 MB",
       uploaded: "20.7.2025",
-      cover: "https://images.unsplash.com/photo-1554415707-6e8cfc93fe23?w=300&h=450&fit=crop"
+      cover: "/lovable-uploads/98374442-0f40-425a-81f5-28294fbcb030.png"
     }
   ];
 
