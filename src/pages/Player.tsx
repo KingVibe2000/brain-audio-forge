@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
 import { Slider } from "@/components/ui/slider";
 import { Card } from "@/components/ui/card";
-import { Play, Pause, SkipBack, SkipForward, ChevronLeft, Check, Bookmark, FileText } from "lucide-react";
+import { Play, Pause, SkipBack, SkipForward, ChevronLeft, Check, Bookmark, FileText, RotateCcw, RotateCw, Settings } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
 interface Chapter {
@@ -43,6 +43,8 @@ const Player = () => {
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);
   const [progress, setProgress] = useState(0);
+  const [playbackSpeed, setPlaybackSpeed] = useState(1);
+  const [showSpeedMenu, setShowSpeedMenu] = useState(false);
 
   useEffect(() => {
     const audio = audioRef.current;
@@ -111,6 +113,30 @@ const Player = () => {
     }
   };
 
+  const skip15Forward = () => {
+    const audio = audioRef.current;
+    if (!audio) return;
+    audio.currentTime = Math.min(audio.currentTime + 15, audio.duration);
+  };
+
+  const skip15Backward = () => {
+    const audio = audioRef.current;
+    if (!audio) return;
+    audio.currentTime = Math.max(audio.currentTime - 15, 0);
+  };
+
+  const toggleSpeed = () => {
+    const speeds = [0.75, 1, 1.25, 1.5, 2];
+    const currentIndex = speeds.indexOf(playbackSpeed);
+    const nextSpeed = speeds[(currentIndex + 1) % speeds.length];
+    setPlaybackSpeed(nextSpeed);
+    
+    const audio = audioRef.current;
+    if (audio) {
+      audio.playbackRate = nextSpeed;
+    }
+  };
+
   return (
     <div className="min-h-screen bg-background pb-24">
       {/* Header */}
@@ -151,91 +177,63 @@ const Player = () => {
       </div>
 
       {/* Chapter List */}
-      <div className="container max-w-md mx-auto px-4 pb-6 space-y-3">
+      <div className="container max-w-md mx-auto px-4 pb-6 space-y-2">
         {chapters.map((chapter) => (
           <Card 
             key={chapter.id}
-            className={`p-4 transition-all duration-200 ${
+            className={`transition-all duration-200 ${
               currentChapter === chapter.id 
                 ? 'bg-accent/10 border-accent' 
                 : 'hover:bg-muted/50'
             }`}
           >
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-4 p-4 min-h-[60px]">
+              {/* Chapter Info */}
               <div className="flex-1 min-w-0">
-                <h3 className="font-medium text-sm leading-5 mb-1">
+                <h3 className="font-medium text-base leading-tight mb-1">
                   {chapter.title}
                 </h3>
-                <div className="flex items-center justify-between text-xs text-muted-foreground mb-2">
-                  <span>Chapter {chapter.id} of {bookData.totalChapters}</span>
+                <div className="flex items-center gap-2 text-sm text-muted-foreground">
                   <span>{chapter.duration}</span>
+                  {chapter.completed && (
+                    <Check className="w-4 h-4 text-green-600 fill-current" />
+                  )}
+                  {chapter.bookmarked && (
+                    <Bookmark className="w-4 h-4 text-accent fill-current" />
+                  )}
                 </div>
                 
                 {currentChapter === chapter.id && (
-                  <div className="mb-2">
+                  <div className="mt-2">
                     <Progress value={progress} className="h-1" />
                   </div>
                 )}
               </div>
               
-              {/* Action Icons */}
-              <div className="flex items-center gap-2 shrink-0">
-                {/* Completed Checkmark */}
-                <Button
-                  size="icon"
-                  variant="ghost"
-                  className={`w-8 h-8 ${
-                    chapter.completed 
-                      ? 'text-green-600 hover:text-green-700' 
-                      : 'text-muted-foreground hover:text-foreground'
-                  }`}
-                >
-                  <Check className={`w-4 h-4 ${chapter.completed ? 'fill-current' : ''}`} />
-                </Button>
-                
-                {/* Bookmark */}
-                <Button
-                  size="icon"
-                  variant="ghost"
-                  className={`w-8 h-8 ${
-                    chapter.bookmarked 
-                      ? 'text-accent hover:text-accent/80' 
-                      : 'text-muted-foreground hover:text-foreground'
-                  }`}
-                >
-                  <Bookmark className={`w-4 h-4 ${chapter.bookmarked ? 'fill-current' : ''}`} />
-                </Button>
-                
-                {/* Notes/Transcript */}
-                <Button
-                  size="icon"
-                  variant="ghost"
-                  className="w-8 h-8 text-muted-foreground hover:text-foreground"
-                >
-                  <FileText className="w-4 h-4" />
-                </Button>
-                
-                {/* Play Button */}
-                <Button
-                  size="icon"
-                  variant={currentChapter === chapter.id && isPlaying ? "default" : "outline"}
-                  onClick={() => handleChapterPlay(chapter.id)}
-                  className="shrink-0 w-10 h-10 bg-blue-600 hover:bg-blue-700 text-white border-blue-600"
-                >
-                  {currentChapter === chapter.id && isPlaying ? (
-                    <Pause className="w-4 h-4" />
-                  ) : (
-                    <Play className="w-4 h-4" />
-                  )}
-                </Button>
-              </div>
+              {/* Play Button - Larger Touch Target */}
+              <Button
+                size="icon"
+                variant={currentChapter === chapter.id && isPlaying ? "default" : "outline"}
+                onClick={() => handleChapterPlay(chapter.id)}
+                className={`shrink-0 w-12 h-12 ${
+                  currentChapter === chapter.id && isPlaying 
+                    ? 'bg-accent hover:bg-accent/90 text-accent-foreground border-accent' 
+                    : 'bg-accent hover:bg-accent/90 text-accent-foreground border-accent'
+                }`}
+              >
+                {currentChapter === chapter.id && isPlaying ? (
+                  <Pause className="w-5 h-5" />
+                ) : (
+                  <Play className="w-5 h-5 ml-0.5" />
+                )}
+              </Button>
             </div>
           </Card>
         ))}
       </div>
 
       {/* Fixed Bottom Player */}
-      <div className="fixed bottom-0 left-0 right-0 bg-card border-t border-border">
+      <div className="fixed bottom-0 left-0 right-0 bg-card border-t border-border pb-safe">
         <div className="container max-w-md mx-auto px-4 py-4">
           {/* Progress Bar */}
           <div className="mb-4">
@@ -262,8 +260,8 @@ const Player = () => {
             </p>
           </div>
 
-          {/* Playback Controls */}
-          <div className="flex items-center justify-center gap-6">
+          {/* Main Playback Controls */}
+          <div className="flex items-center justify-center gap-6 mb-3">
             <Button
               variant="ghost"
               size="icon"
@@ -294,6 +292,36 @@ const Player = () => {
               className="w-12 h-12"
             >
               <SkipForward className="w-6 h-6" />
+            </Button>
+          </div>
+
+          {/* Secondary Controls */}
+          <div className="flex items-center justify-center gap-4">
+            <Button
+              variant="ghost"
+              size="icon"
+              onClick={skip15Backward}
+              className="w-10 h-10"
+            >
+              <RotateCcw className="w-4 h-4" />
+            </Button>
+
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={toggleSpeed}
+              className="text-xs font-medium min-w-[44px] h-8"
+            >
+              {playbackSpeed}x
+            </Button>
+
+            <Button
+              variant="ghost"
+              size="icon"
+              onClick={skip15Forward}
+              className="w-10 h-10"
+            >
+              <RotateCw className="w-4 h-4" />
             </Button>
           </div>
         </div>
