@@ -254,12 +254,11 @@ const MyBooks = () => {
               </div>
 
               {/* Book Cover with gradient background and rounded cover image */}
-              <div className="relative bg-gradient-to-br from-muted via-muted/80 to-muted/60 p-4">
+              <div className="relative bg-gradient-to-br from-muted via-muted/80 to-muted/60 p-4 min-h-[280px] flex items-center justify-center">
                 <img 
                   src={book.cover} 
                   alt={book.title}
-                  className="w-full h-56 object-contain rounded-lg shadow-lg"
-                  style={{ aspectRatio: '3/4' }}
+                  className="max-w-full max-h-[240px] object-contain rounded-lg shadow-lg"
                 />
 
                 {/* Progress Overlay for incomplete books */}
