@@ -81,7 +81,7 @@ const PdfDropZone = () => {
       ></div>
       {/* Gradient overlay */}
       <div 
-        className="absolute inset-0 bg-gradient-to-b from-background/80 via-background/50 to-background/90"
+        className="absolute inset-0 bg-gradient-to-b from-background/60 via-background/70 to-background/95"
         style={{ zIndex: 1 }}
       ></div>
       <div className="w-full max-w-2xl relative z-10">
