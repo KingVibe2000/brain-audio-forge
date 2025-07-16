@@ -72,7 +72,7 @@ const PdfDropZone = () => {
       style={{
         backgroundImage: `url(/lovable-uploads/be07b07a-2a08-445d-9fdb-d7a830669b67.png)`,
         backgroundSize: '50%',
-        backgroundPosition: 'top center',
+        backgroundPosition: 'center -50px',
         backgroundRepeat: 'no-repeat'
       }}
     >
