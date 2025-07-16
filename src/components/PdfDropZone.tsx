@@ -70,14 +70,16 @@ const PdfDropZone = () => {
     <>
       {/* Background image fixed behind heading - stays in place during scroll */}
       <div 
-        className="fixed inset-0 flex items-start justify-center pt-32 pointer-events-none z-0"
-      >
-        <img 
-          src="/lovable-uploads/24c60627-e30e-4e9d-8b61-6eeedcdfc8f2.png"
-          alt=""
-          className="w-2/3 max-w-2xl opacity-[0.03]"
-        />
-      </div>
+        className="fixed inset-0 pointer-events-none z-0"
+        style={{
+          backgroundImage: "url('/lovable-uploads/24c60627-e30e-4e9d-8b61-6eeedcdfc8f2.png')",
+          backgroundSize: "contain",
+          backgroundRepeat: "no-repeat",
+          backgroundPosition: "center top 8rem",
+          backgroundAttachment: "fixed",
+          opacity: 0.03
+        }}
+      />
       <div className="flex-1 flex items-center justify-center px-8 pt-8 pb-16 relative z-10">
       <div className="w-full max-w-2xl relative z-10">
         {/* Main Heading with Marker Effect */}
