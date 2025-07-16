@@ -68,15 +68,21 @@ const PdfDropZone = () => {
 
   return (
     <div 
-      className="flex-1 flex items-center justify-center px-8 pt-8 pb-16"
+      className="flex-1 flex items-center justify-center px-8 pt-8 pb-16 relative"
       style={{
         backgroundImage: `url(/lovable-uploads/be07b07a-2a08-445d-9fdb-d7a830669b67.png)`,
         backgroundSize: '50%',
         backgroundPosition: 'center -50px',
-        backgroundRepeat: 'no-repeat'
+        backgroundRepeat: 'no-repeat',
+        opacity: '0.3'
       }}
     >
-      <div className="w-full max-w-2xl">
+      {/* Gradient overlay */}
+      <div 
+        className="absolute inset-0 bg-gradient-to-b from-background/80 via-background/50 to-background/90"
+        style={{ zIndex: 1 }}
+      ></div>
+      <div className="w-full max-w-2xl relative z-10">
         {/* Main Heading with Marker Effect */}
         <div className="text-center mb-8 relative py-8">
           <h1 className="text-6xl font-medium text-foreground inline-block bg-accent px-3 py-1 rounded-sm transform -rotate-1 font-work relative z-10" style={{boxShadow: '6px 8px 3px 0 rgba(0, 0, 0, 0.8), 10px 12px 25px 0 rgba(0, 0, 0, 0.35)'}}>
