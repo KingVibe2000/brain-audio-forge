@@ -13,7 +13,7 @@ const Header = () => {
           </div>
           <div>
             <h1 className="text-lg md:text-xl font-bold text-foreground">books to brain</h1>
-            <p className="text-xs text-muted-foreground">PDF to Podcast</p>
+            <p className="text-xs text-muted-foreground">Listen. Learn. Anywhere.</p>
           </div>
         </div>
 
