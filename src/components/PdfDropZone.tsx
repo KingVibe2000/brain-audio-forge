@@ -110,32 +110,6 @@ const PdfDropZone = () => {
             onDragLeave={handleDragLeave}
             onDrop={handleDrop}
           >
-            <div className="flex flex-col items-center space-y-8">
-              <div className={`h-20 w-20 rounded-full transition-colors duration-300 flex items-center justify-center ${
-                isDragOver ? 'bg-accent' : 'bg-accent/80'
-              }`}>
-                <FileText className="h-8 w-8 text-accent-foreground" />
-              </div>
-              
-              <div className="space-y-3">
-              </div>
-
-              <input
-                type="file"
-                accept=".pdf"
-                onChange={handleFileInput}
-                className="hidden"
-                id="file-input"
-              />
-              <Button 
-                variant="outline" 
-                size="sm"
-                className="mt-4"
-                onClick={() => document.getElementById('file-input')?.click()}
-              >
-                Browse Files
-              </Button>
-            </div>
           </div>
         ) : (
           /* Upload Form */
