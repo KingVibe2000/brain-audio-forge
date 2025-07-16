@@ -79,17 +79,6 @@ const PdfDropZone = () => {
           opacity: '0.3'
         }}
       ></div>
-      {/* Gradient overlay positioned over the background image area */}
-      <div 
-        className="absolute top-0 left-1/2 transform -translate-x-1/2"
-        style={{ 
-          width: '50%',
-          height: '60%',
-          background: 'linear-gradient(to bottom, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.4) 30%, rgba(255,255,255,0.8) 100%)',
-          zIndex: 1,
-          marginTop: '-50px'
-        }}
-      ></div>
       <div className="w-full max-w-2xl relative z-10">
         {/* Main Heading with Marker Effect */}
         <div className="text-center mb-8 relative py-8">
