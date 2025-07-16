@@ -30,6 +30,10 @@ const Header = () => {
 
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center space-x-2">
+          <Button variant="ghost" size="sm" className="text-muted-foreground hover:text-foreground">
+            My Books
+          </Button>
+
           {/* Setup Dropdown */}
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
@@ -77,11 +81,10 @@ const Header = () => {
           </SheetTrigger>
           <SheetContent side="right" className="w-80">
             <div className="flex flex-col space-y-4 mt-8">
-              <Button variant="outline" className="justify-start text-foreground border-border hover:bg-accent hover:text-accent-foreground hover:border-accent h-12">
-                <Headphones className="h-4 w-4 mr-2" />
-                Player
+              <Button variant="ghost" className="justify-start text-muted-foreground hover:text-foreground h-12">
+                My Books
               </Button>
-              
+
               {/* Mobile Setup Menu Items */}
               <div className="space-y-2">
                 <div className="px-3 py-2 text-sm font-medium text-muted-foreground">Setup</div>
@@ -105,6 +108,11 @@ const Header = () => {
 
               <Button variant="ghost" className="justify-start text-muted-foreground hover:text-foreground h-12">
                 Logs
+              </Button>
+
+              <Button variant="outline" className="justify-start text-foreground border-border hover:bg-accent hover:text-accent-foreground hover:border-accent h-12">
+                <Headphones className="h-4 w-4 mr-2" />
+                Player
               </Button>
             </div>
           </SheetContent>
