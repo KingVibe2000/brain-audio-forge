@@ -59,10 +59,12 @@ const Header = () => {
             </DropdownMenuContent>
           </DropdownMenu>
 
-          <Button variant="outline" size="sm" className="font-sans bg-accent text-accent-foreground border-accent hover:bg-accent/90 hover:text-accent-foreground hover:border-accent/90 group">
-            <Headphones className="h-4 w-4 transition-transform duration-200 group-hover:scale-125" />
-            Player
-          </Button>
+          <Link to="/player">
+            <Button variant="outline" size="sm" className="font-sans bg-accent text-accent-foreground border-accent hover:bg-accent/90 hover:text-accent-foreground hover:border-accent/90 group">
+              <Headphones className="h-4 w-4 transition-transform duration-200 group-hover:scale-125" />
+              Player
+            </Button>
+          </Link>
         </nav>
 
         {/* Mobile Navigation */}
@@ -106,10 +108,12 @@ const Header = () => {
                 </Button>
               </div>
 
-              <Button variant="outline" className="font-sans justify-start bg-accent text-accent-foreground border-accent hover:bg-accent/90 hover:text-accent-foreground hover:border-accent/90 h-12">
-                <Headphones className="h-4 w-4 mr-2" />
-                Player
-              </Button>
+              <Link to="/player">
+                <Button variant="outline" className="font-sans justify-start bg-accent text-accent-foreground border-accent hover:bg-accent/90 hover:text-accent-foreground hover:border-accent/90 h-12">
+                  <Headphones className="h-4 w-4 mr-2" />
+                  Player
+                </Button>
+              </Link>
             </div>
           </SheetContent>
         </Sheet>
