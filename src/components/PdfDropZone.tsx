@@ -76,8 +76,8 @@ const PdfDropZone = () => {
           backgroundSize: '50%',
           backgroundPosition: 'center -50px',
           backgroundRepeat: 'no-repeat',
-          backgroundBlendMode: 'soft-light',
-          opacity: '0.6'
+          backgroundBlendMode: 'multiply',
+          opacity: '0.8'
         }}
       ></div>
       <div className="w-full max-w-2xl relative z-10">
