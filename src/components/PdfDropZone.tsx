@@ -81,8 +81,11 @@ const PdfDropZone = () => {
       ></div>
       {/* Gradient overlay */}
       <div 
-        className="absolute inset-0 bg-gradient-to-b from-background/30 via-background/60 to-background"
-        style={{ zIndex: 1 }}
+        className="absolute inset-0"
+        style={{ 
+          background: 'linear-gradient(to bottom, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0.6) 50%, rgba(255,255,255,0.95) 100%)',
+          zIndex: 1 
+        }}
       ></div>
       <div className="w-full max-w-2xl relative z-10">
         {/* Main Heading with Marker Effect */}
