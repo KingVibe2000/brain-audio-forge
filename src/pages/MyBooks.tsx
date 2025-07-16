@@ -112,20 +112,20 @@ const MyBooks = () => {
   const getStatusBadge = (status: string) => {
     switch (status) {
       case "Completed":
-        return <Badge className="bg-green-100 text-green-800 hover:bg-green-100 dark:bg-green-900/20 dark:text-green-400">Completed</Badge>;
+        return <Badge className="bg-green-100 text-green-800 hover:bg-green-100 dark:bg-green-900/20 dark:text-green-400 border-0">Completed</Badge>;
       case "Errors":
-        return <Badge variant="destructive">Errors</Badge>;
+        return <Badge variant="destructive" className="border-0">Errors</Badge>;
       case "Processing":
-        return <Badge className="bg-yellow-100 text-yellow-800 hover:bg-yellow-100 dark:bg-yellow-900/20 dark:text-yellow-400">Processing</Badge>;
+        return <Badge className="bg-yellow-100 text-yellow-800 hover:bg-yellow-100 dark:bg-yellow-900/20 dark:text-yellow-400 border-0">Processing</Badge>;
       default:
-        return <Badge variant="secondary">{status}</Badge>;
+        return <Badge variant="secondary" className="border-0">{status}</Badge>;
     }
   };
 
   const getProgressColor = (progress: number, status: string) => {
     if (status === "Errors") return "bg-destructive";
     if (progress === 100) return "bg-green-500";
-    return "bg-primary";
+    return "bg-accent";
   };
 
   const filteredBooks = books.filter(book => {
@@ -168,8 +168,8 @@ const MyBooks = () => {
           <Card key={index} className="border border-border hover:shadow-md transition-shadow">
             <CardContent className="p-6">
               <div className="flex items-center gap-4">
-                <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center">
-                  <stat.icon className="h-6 w-6 text-primary" />
+                <div className="w-12 h-12 bg-accent/10 rounded-xl flex items-center justify-center">
+                  <stat.icon className="h-6 w-6 text-accent" />
                 </div>
                 <div>
                   <div className="text-2xl font-bold text-foreground">{stat.value}</div>
@@ -207,7 +207,7 @@ const MyBooks = () => {
 
       {/* Selected Books Actions */}
       {selectedBooks.length > 0 && (
-        <Card className="border-primary/20 bg-primary/5">
+        <Card className="border-accent/20 bg-accent/5">
           <CardContent className="p-4">
             <div className="flex items-center justify-between">
               <span className="text-sm font-medium">
@@ -237,7 +237,7 @@ const MyBooks = () => {
           <Card 
             key={book.id} 
             className={`group border transition-all duration-200 hover:shadow-lg hover:scale-105 cursor-pointer ${
-              isSelected(book.id) ? 'ring-2 ring-primary bg-primary/5' : 'hover:border-primary/30'
+              isSelected(book.id) ? 'ring-2 ring-accent bg-accent/5' : 'hover:border-accent/30'
             }`}
             onClick={() => toggleBookSelection(book.id)}
           >
@@ -247,7 +247,7 @@ const MyBooks = () => {
                 <img 
                   src={book.cover} 
                   alt={book.title}
-                  className="w-full h-48 object-cover rounded-t-lg"
+                  className="w-full h-32 object-cover rounded-t-lg"
                 />
                 
                 {/* Status Badge */}
@@ -258,8 +258,8 @@ const MyBooks = () => {
                 {/* Selection Indicator */}
                 {isSelected(book.id) && (
                   <div className="absolute top-3 left-3">
-                    <div className="w-6 h-6 bg-primary rounded-full flex items-center justify-center">
-                      <CheckCircle className="h-4 w-4 text-primary-foreground" />
+                    <div className="w-6 h-6 bg-accent rounded-full flex items-center justify-center">
+                      <CheckCircle className="h-4 w-4 text-accent-foreground" />
                     </div>
                   </div>
                 )}
@@ -279,7 +279,7 @@ const MyBooks = () => {
               {/* Book Info */}
               <div className="p-4 space-y-3">
                 <div>
-                  <h3 className="font-semibold text-foreground group-hover:text-primary transition-colors line-clamp-2">
+                  <h3 className="font-semibold text-foreground group-hover:text-accent transition-colors line-clamp-2">
                     {book.title}
                   </h3>
                   <p className="text-sm text-muted-foreground">{book.author}</p>
@@ -316,7 +316,7 @@ const MyBooks = () => {
 
                 {/* Actions */}
                 <div className="flex gap-2 pt-2" onClick={(e) => e.stopPropagation()}>
-                  <Button size="sm" className="flex-1 gap-1">
+                  <Button size="sm" className="flex-1 gap-1 bg-accent hover:bg-accent/90 text-accent-foreground">
                     <Play className="h-3 w-3" />
                     Play
                   </Button>
