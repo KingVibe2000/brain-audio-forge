@@ -253,12 +253,12 @@ const MyBooks = () => {
                 )}
               </div>
 
-              {/* Book Cover with proper aspect ratio and background */}
-              <div className="relative bg-muted/30">
+              {/* Book Cover with modern gradient background and rounded edges */}
+              <div className="relative bg-gradient-to-br from-muted via-muted/80 to-muted/60 p-4">
                 <img 
                   src={book.cover} 
                   alt={book.title}
-                  className="w-full h-56 object-contain"
+                  className="w-full h-56 object-contain rounded-lg shadow-lg"
                   style={{ aspectRatio: '3/4' }}
                 />
 
