@@ -245,7 +245,7 @@ const Player = () => {
               <ChevronLeft className="w-5 h-5" />
             </Button>
             <div className="min-w-0 flex-1">
-              <h1 className="text-lg font-medium text-foreground inline-block bg-accent px-2 py-1 rounded-sm transform -rotate-1 font-space relative" style={{boxShadow: '3px 4px 2px 0 rgba(0, 0, 0, 0.6), 5px 6px 15px 0 rgba(0, 0, 0, 0.25)'}}>{bookData.title}</h1>
+              <h1 className="text-lg font-medium text-foreground inline-block bg-accent px-2 py-1 pb-2 rounded-sm transform -rotate-1 font-space relative" style={{boxShadow: '3px 4px 2px 0 rgba(0, 0, 0, 0.6), 5px 6px 15px 0 rgba(0, 0, 0, 0.25)'}}>{bookData.title}</h1>
               <p className="text-sm text-muted-foreground">by {bookData.author}</p>
             </div>
           </div>
