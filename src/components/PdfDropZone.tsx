@@ -92,8 +92,8 @@ const PdfDropZone = () => {
         {/* Pointing Arrow - only show when no file uploaded */}
         {!uploadedFile && (
           <div className="text-center mb-8">
-            <div className="w-16 h-16 bg-primary/10 border-2 border-primary/20 rounded-full flex items-center justify-center mx-auto">
-              <ArrowDown className="h-8 w-8 text-primary animate-bounce" />
+            <div className="w-16 h-16 bg-yellow/10 border-2 border-yellow/20 rounded-full flex items-center justify-center mx-auto">
+              <ArrowDown className="h-10 w-10 text-yellow animate-bounce" />
             </div>
           </div>
         )}
