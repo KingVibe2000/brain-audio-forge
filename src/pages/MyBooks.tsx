@@ -154,31 +154,18 @@ const MyBooks = () => {
             My Books
             <div className="absolute -bottom-2 left-0 w-12 h-0.5 bg-accent"></div>
           </h1>
-          <p className="text-muted-foreground mt-3">Your personal library of audiobooks and documents</p>
+          <p className="text-muted-foreground mt-3">
+            Your personal library of audiobooks and documents 
+            <span className="ml-2 inline-flex items-center gap-1 px-2 py-1 bg-accent/10 text-accent rounded-full text-sm font-medium">
+              <Book className="h-3 w-3" />
+              {books.length} books
+            </span>
+          </p>
         </div>
         <Button variant="outline" size="sm" className="gap-2">
           <RefreshCw className="h-4 w-4" />
           Refresh
         </Button>
-      </div>
-
-      {/* Stats Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        {stats.map((stat, index) => (
-          <Card key={index} className="border border-border hover:shadow-md transition-shadow">
-            <CardContent className="p-6">
-              <div className="flex items-center gap-4">
-                <div className="w-12 h-12 bg-accent/10 rounded-xl flex items-center justify-center">
-                  <stat.icon className="h-6 w-6 text-accent" />
-                </div>
-                <div>
-                  <div className="text-2xl font-bold text-foreground">{stat.value}</div>
-                  <div className="text-sm text-muted-foreground">{stat.label}</div>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-        ))}
       </div>
 
       {/* Search and Filter */}
