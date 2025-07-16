@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
 import { Slider } from "@/components/ui/slider";
 import { Card } from "@/components/ui/card";
-import { Play, Pause, SkipBack, SkipForward, ChevronLeft } from "lucide-react";
+import { Play, Pause, SkipBack, SkipForward, ChevronLeft, Check, Bookmark, FileText } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
 interface Chapter {
@@ -12,6 +12,7 @@ interface Chapter {
   duration: string;
   audioUrl: string;
   completed: boolean;
+  bookmarked: boolean;
 }
 
 const Player = () => {
@@ -27,14 +28,14 @@ const Player = () => {
   };
 
   const chapters: Chapter[] = [
-    { id: 1, title: "Talk, Talk, Talk", duration: "5:24", audioUrl: "", completed: false },
-    { id: 2, title: "To Be or To Do", duration: "4:56", audioUrl: "", completed: false },
-    { id: 3, title: "Become a Student", duration: "6:12", audioUrl: "", completed: false },
-    { id: 4, title: "Restrain Yourself", duration: "5:43", audioUrl: "", completed: false },
-    { id: 5, title: "Get Out of Your Own Head", duration: "4:28", audioUrl: "", completed: false },
-    { id: 6, title: "The Danger of Early Pride", duration: "5:17", audioUrl: "", completed: false },
-    { id: 7, title: "Work, Work, Work", duration: "6:33", audioUrl: "", completed: false },
-    { id: 8, title: "For Everything That Comes Next", duration: "4:42", audioUrl: "", completed: false },
+    { id: 1, title: "Talk, Talk, Talk", duration: "5:24", audioUrl: "", completed: true, bookmarked: false },
+    { id: 2, title: "To Be or To Do", duration: "4:56", audioUrl: "", completed: true, bookmarked: true },
+    { id: 3, title: "Become a Student", duration: "6:12", audioUrl: "", completed: false, bookmarked: false },
+    { id: 4, title: "Restrain Yourself", duration: "5:43", audioUrl: "", completed: false, bookmarked: false },
+    { id: 5, title: "Get Out of Your Own Head", duration: "4:28", audioUrl: "", completed: false, bookmarked: true },
+    { id: 6, title: "The Danger of Early Pride", duration: "5:17", audioUrl: "", completed: false, bookmarked: false },
+    { id: 7, title: "Work, Work, Work", duration: "6:33", audioUrl: "", completed: false, bookmarked: false },
+    { id: 8, title: "For Everything That Comes Next", duration: "4:42", audioUrl: "", completed: false, bookmarked: false },
   ];
 
   const [isPlaying, setIsPlaying] = useState(false);
@@ -132,8 +133,25 @@ const Player = () => {
         </div>
       </div>
 
+      {/* Book Cover Section */}
+      <div className="container max-w-md mx-auto px-4 py-6">
+        <div className="flex flex-col items-center text-center mb-8">
+          <div className="w-48 h-48 mb-4 rounded-lg overflow-hidden shadow-lg bg-gradient-to-br from-red-500 to-red-700">
+            <div className="w-full h-full flex items-center justify-center text-white">
+              <div className="p-6">
+                <h2 className="text-xl font-bold mb-2">{bookData.title}</h2>
+                <p className="text-sm opacity-90">by {bookData.author}</p>
+              </div>
+            </div>
+          </div>
+          <div className="text-sm text-muted-foreground">
+            Chapter {currentChapter} of {bookData.totalChapters}
+          </div>
+        </div>
+      </div>
+
       {/* Chapter List */}
-      <div className="container max-w-md mx-auto px-4 py-6 space-y-3">
+      <div className="container max-w-md mx-auto px-4 pb-6 space-y-3">
         {chapters.map((chapter) => (
           <Card 
             key={chapter.id}
@@ -143,34 +161,73 @@ const Player = () => {
                 : 'hover:bg-muted/50'
             }`}
           >
-            <div className="flex items-center gap-4">
-              <Button
-                size="icon"
-                variant={currentChapter === chapter.id && isPlaying ? "default" : "outline"}
-                onClick={() => handleChapterPlay(chapter.id)}
-                className="shrink-0 w-12 h-12"
-              >
-                {currentChapter === chapter.id && isPlaying ? (
-                  <Pause className="w-5 h-5" />
-                ) : (
-                  <Play className="w-5 h-5" />
-                )}
-              </Button>
-              
+            <div className="flex items-center gap-3">
               <div className="flex-1 min-w-0">
                 <h3 className="font-medium text-sm leading-5 mb-1">
                   {chapter.title}
                 </h3>
-                <div className="flex items-center justify-between text-xs text-muted-foreground">
+                <div className="flex items-center justify-between text-xs text-muted-foreground mb-2">
                   <span>Chapter {chapter.id} of {bookData.totalChapters}</span>
                   <span>{chapter.duration}</span>
                 </div>
                 
                 {currentChapter === chapter.id && (
-                  <div className="mt-2">
+                  <div className="mb-2">
                     <Progress value={progress} className="h-1" />
                   </div>
                 )}
+              </div>
+              
+              {/* Action Icons */}
+              <div className="flex items-center gap-2 shrink-0">
+                {/* Completed Checkmark */}
+                <Button
+                  size="icon"
+                  variant="ghost"
+                  className={`w-8 h-8 ${
+                    chapter.completed 
+                      ? 'text-green-600 hover:text-green-700' 
+                      : 'text-muted-foreground hover:text-foreground'
+                  }`}
+                >
+                  <Check className={`w-4 h-4 ${chapter.completed ? 'fill-current' : ''}`} />
+                </Button>
+                
+                {/* Bookmark */}
+                <Button
+                  size="icon"
+                  variant="ghost"
+                  className={`w-8 h-8 ${
+                    chapter.bookmarked 
+                      ? 'text-accent hover:text-accent/80' 
+                      : 'text-muted-foreground hover:text-foreground'
+                  }`}
+                >
+                  <Bookmark className={`w-4 h-4 ${chapter.bookmarked ? 'fill-current' : ''}`} />
+                </Button>
+                
+                {/* Notes/Transcript */}
+                <Button
+                  size="icon"
+                  variant="ghost"
+                  className="w-8 h-8 text-muted-foreground hover:text-foreground"
+                >
+                  <FileText className="w-4 h-4" />
+                </Button>
+                
+                {/* Play Button */}
+                <Button
+                  size="icon"
+                  variant={currentChapter === chapter.id && isPlaying ? "default" : "outline"}
+                  onClick={() => handleChapterPlay(chapter.id)}
+                  className="shrink-0 w-10 h-10 bg-blue-600 hover:bg-blue-700 text-white border-blue-600"
+                >
+                  {currentChapter === chapter.id && isPlaying ? (
+                    <Pause className="w-4 h-4" />
+                  ) : (
+                    <Play className="w-4 h-4" />
+                  )}
+                </Button>
               </div>
             </div>
           </Card>
