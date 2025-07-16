@@ -253,7 +253,7 @@ const MyBooks = () => {
                 )}
               </div>
 
-              {/* Book Cover with modern gradient background and rounded edges */}
+              {/* Book Cover with gradient background and rounded cover image */}
               <div className="relative bg-gradient-to-br from-muted via-muted/80 to-muted/60 p-4">
                 <img 
                   src={book.cover} 
