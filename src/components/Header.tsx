@@ -30,14 +30,14 @@ const Header = () => {
 
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center space-x-2">
-          <Button variant="ghost" size="sm" className="text-muted-foreground hover:text-foreground hover:bg-transparent relative after:content-[''] after:absolute after:w-full after:scale-x-0 after:h-0.5 after:bottom-0 after:left-0 after:bg-primary after:origin-bottom-right after:transition-transform after:duration-300 hover:after:scale-x-100 hover:after:origin-bottom-left">
+          <Button variant="ghost" size="sm" className="text-muted-foreground hover:text-foreground hover:bg-transparent relative after:content-[''] after:absolute after:w-3/4 after:scale-x-0 after:h-0.5 after:bottom-0 after:left-1/2 after:-translate-x-1/2 after:bg-primary after:origin-center after:transition-transform after:duration-300 hover:after:scale-x-100">
             My Books
           </Button>
 
           {/* Settings Dropdown */}
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
-              <Button variant="ghost" size="sm" className="text-muted-foreground hover:text-foreground hover:bg-transparent relative after:content-[''] after:absolute after:w-full after:scale-x-0 after:h-0.5 after:bottom-0 after:left-0 after:bg-primary after:origin-bottom-right after:transition-transform after:duration-300 hover:after:scale-x-100 hover:after:origin-bottom-left">
+              <Button variant="ghost" size="sm" className="text-muted-foreground hover:text-foreground hover:bg-transparent relative after:content-[''] after:absolute after:w-3/4 after:scale-x-0 after:h-0.5 after:bottom-0 after:left-1/2 after:-translate-x-1/2 after:bg-primary after:origin-center after:transition-transform after:duration-300 hover:after:scale-x-100">
                 Settings
                 <ChevronDown className="h-3 w-3 ml-1" />
               </Button>
@@ -77,7 +77,7 @@ const Header = () => {
           </SheetTrigger>
           <SheetContent side="right" className="w-80">
             <div className="flex flex-col space-y-4 mt-8">
-              <Button variant="ghost" className="justify-start text-muted-foreground hover:text-foreground hover:bg-transparent h-12 relative after:content-[''] after:absolute after:w-full after:scale-x-0 after:h-0.5 after:bottom-0 after:left-0 after:bg-primary after:origin-bottom-right after:transition-transform after:duration-300 hover:after:scale-x-100 hover:after:origin-bottom-left">
+              <Button variant="ghost" className="justify-start text-muted-foreground hover:text-foreground hover:bg-transparent h-12 relative after:content-[''] after:absolute after:w-3/4 after:scale-x-0 after:h-0.5 after:bottom-0 after:left-1/2 after:-translate-x-1/2 after:bg-primary after:origin-center after:transition-transform after:duration-300 hover:after:scale-x-100">
                 My Books
               </Button>
 
