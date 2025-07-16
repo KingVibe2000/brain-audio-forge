@@ -242,12 +242,12 @@ const MyBooks = () => {
             onClick={() => toggleBookSelection(book.id)}
           >
             <CardContent className="p-0">
-              {/* Book Cover with proper aspect ratio */}
-              <div className="relative">
+              {/* Book Cover with proper aspect ratio and background */}
+              <div className="relative bg-muted/30">
                 <img 
                   src={book.cover} 
                   alt={book.title}
-                  className="w-full h-56 object-cover rounded-t-lg"
+                  className="w-full h-56 object-contain rounded-t-lg"
                   style={{ aspectRatio: '3/4' }}
                 />
                 
