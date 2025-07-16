@@ -100,7 +100,7 @@ const PdfDropZone = () => {
           /* Drop Zone */
           <div
             className={`
-              relative border-4 border-dashed rounded-lg p-16 text-center transition-all duration-300 flex items-center justify-center
+              relative border-4 border-dashed rounded-lg p-24 text-center transition-all duration-300 flex items-center justify-center min-h-80
               ${isDragOver 
                 ? 'border-accent bg-accent/5' 
                 : 'border-muted-foreground/30 hover:border-accent/60'
