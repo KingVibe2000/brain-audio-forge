@@ -72,7 +72,7 @@ const PdfDropZone = () => {
       <div 
         className="absolute inset-0"
         style={{
-          backgroundImage: `url(/lovable-uploads/be07b07a-2a08-445d-9fdb-d7a830669b67.png)`,
+          backgroundImage: `url(/lovable-uploads/24c60627-e30e-4e9d-8b61-6eeedcdfc8f2.png)`,
           backgroundSize: '50%',
           backgroundPosition: 'center -50px',
           backgroundRepeat: 'no-repeat',
