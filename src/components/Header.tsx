@@ -62,10 +62,6 @@ const Header = () => {
             </DropdownMenuContent>
           </DropdownMenu>
 
-          <Button variant="ghost" size="sm" className="text-muted-foreground hover:text-foreground">
-            Logs
-          </Button>
-
           <Button variant="outline" size="sm" className="text-foreground border-border hover:bg-accent hover:text-accent-foreground hover:border-accent">
             <Headphones className="h-4 w-4" />
             Player
@@ -105,10 +101,6 @@ const Header = () => {
                   Admin
                 </Button>
               </div>
-
-              <Button variant="ghost" className="justify-start text-muted-foreground hover:text-foreground h-12">
-                Logs
-              </Button>
 
               <Button variant="outline" className="justify-start text-foreground border-border hover:bg-accent hover:text-accent-foreground hover:border-accent h-12">
                 <Headphones className="h-4 w-4 mr-2" />
