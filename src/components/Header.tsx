@@ -2,11 +2,12 @@ import { Book, Play, Settings, FileText, ChevronDown, Sparkles, User, Shield, Me
 import { Button } from "@/components/ui/button";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { Link } from "react-router-dom";
 const Header = () => {
   return <header className="border-b border-border bg-surface-elevated px-4 md:px-6 py-4">
       <div className="flex items-center justify-between max-w-7xl mx-auto">
         {/* Logo */}
-        <div className="flex items-center space-x-2 md:space-x-3">
+        <Link to="/" className="flex items-center space-x-2 md:space-x-3 hover-scale">
           <div className="relative">
             <Book className="h-6 w-6 md:h-8 md:w-8 text-foreground" />
             <div className="absolute -top-1 -right-1 w-2 h-2 md:w-3 md:h-3 bg-accent rounded-full"></div>
@@ -15,10 +16,15 @@ const Header = () => {
             <h1 className="text-lg md:text-xl font-bold text-foreground">books to brain</h1>
             <p className="text-xs text-muted-foreground">Listen. Learn. Anywhere.</p>
           </div>
-        </div>
+        </Link>
 
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center space-x-2">
+          <Link to="/how-it-works">
+            <Button variant="ghost" size="sm" className="text-muted-foreground hover:text-foreground hover:bg-transparent relative after:content-[''] after:absolute after:w-3/4 after:scale-x-0 after:h-0.5 after:bottom-0 after:left-1/2 after:-translate-x-1/2 after:bg-primary after:origin-center after:transition-transform after:duration-300 hover:after:scale-x-100">
+              How it Works
+            </Button>
+          </Link>
           <Button variant="ghost" size="sm" className="text-muted-foreground hover:text-foreground hover:bg-transparent relative after:content-[''] after:absolute after:w-3/4 after:scale-x-0 after:h-0.5 after:bottom-0 after:left-1/2 after:-translate-x-1/2 after:bg-primary after:origin-center after:transition-transform after:duration-300 hover:after:scale-x-100">
             My Books
           </Button>
@@ -66,6 +72,11 @@ const Header = () => {
           </SheetTrigger>
           <SheetContent side="right" className="w-80">
             <div className="flex flex-col space-y-4 mt-8">
+              <Link to="/how-it-works">
+                <Button variant="ghost" className="justify-start text-muted-foreground hover:text-foreground hover:bg-transparent h-12 relative after:content-[''] after:absolute after:w-3/4 after:scale-x-0 after:h-0.5 after:bottom-0 after:left-1/2 after:-translate-x-1/2 after:bg-primary after:origin-center after:transition-transform after:duration-300 hover:after:scale-x-100">
+                  How it Works
+                </Button>
+              </Link>
               <Button variant="ghost" className="justify-start text-muted-foreground hover:text-foreground hover:bg-transparent h-12 relative after:content-[''] after:absolute after:w-3/4 after:scale-x-0 after:h-0.5 after:bottom-0 after:left-1/2 after:-translate-x-1/2 after:bg-primary after:origin-center after:transition-transform after:duration-300 hover:after:scale-x-100">
                 My Books
               </Button>
