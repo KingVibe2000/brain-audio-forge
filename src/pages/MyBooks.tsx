@@ -282,15 +282,6 @@ const MyBooks = () => {
                   <p className="text-xs text-muted-foreground">{book.author}</p>
                 </div>
 
-                {/* Metadata */}
-                <div className="flex items-center justify-between text-xs text-muted-foreground">
-                  <div className="flex items-center gap-1">
-                    <Calendar className="h-3 w-3" />
-                    <span className="truncate">{book.uploaded}</span>
-                  </div>
-                  <div className="text-xs">{book.size}</div>
-                </div>
-
                 {/* Audio indicator */}
                 {book.audio && (
                   <div className="flex items-center gap-1 text-xs text-green-600">
@@ -299,16 +290,18 @@ const MyBooks = () => {
                   </div>
                 )}
 
-                {/* Progress - more compact */}
+                {/* Progress - with light green color */}
                 <div className="space-y-1">
                   <div className="flex justify-between text-xs">
                     <span className="text-muted-foreground">Progress</span>
                     <span className="font-medium text-xs">{book.chapters}</span>
                   </div>
-                  <Progress 
-                    value={book.progress} 
-                    className="h-1.5"
-                  />
+                  <div className="w-full bg-muted rounded-full h-1.5">
+                    <div 
+                      className="bg-green-400 h-1.5 rounded-full transition-all duration-300" 
+                      style={{ width: `${book.progress}%` }}
+                    />
+                  </div>
                 </div>
 
                 {/* Actions - more compact */}
