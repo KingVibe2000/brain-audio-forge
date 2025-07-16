@@ -68,11 +68,17 @@ const PdfDropZone = () => {
 
   return (
     <>
-      {/* Background image fixed to viewport - completely separate from layout */}
-      <img 
-        src="/lovable-uploads/24c60627-e30e-4e9d-8b61-6eeedcdfc8f2.png"
-        alt=""
+      {/* Background image fixed behind heading */}
+      <div 
         className="fixed top-20 left-1/2 transform -translate-x-1/2 w-2/3 max-w-2xl opacity-[0.03] pointer-events-none z-0"
+        style={{
+          backgroundImage: "url('/lovable-uploads/24c60627-e30e-4e9d-8b61-6eeedcdfc8f2.png')",
+          backgroundSize: "contain",
+          backgroundRepeat: "no-repeat",
+          backgroundPosition: "center",
+          backgroundAttachment: "fixed",
+          aspectRatio: "16/9"
+        }}
       />
       <div className="flex-1 flex items-center justify-center px-8 pt-8 pb-16 relative z-10">
       <div className="w-full max-w-2xl relative z-10">
