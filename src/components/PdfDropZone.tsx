@@ -118,9 +118,6 @@ const PdfDropZone = () => {
               </div>
               
               <div className="space-y-3">
-                <h2 className="text-xl font-medium text-foreground">
-                  Drop PDF here
-                </h2>
               </div>
 
               <input
