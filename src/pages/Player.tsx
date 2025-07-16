@@ -352,9 +352,11 @@ const Player = () => {
       </div>
 
       {/* Fixed Bottom Player - Collapsible */}
-      <div className={`fixed bottom-0 left-0 right-0 bg-card border-t border-border pb-safe transition-all duration-300 ease-in-out ${
-        isPlayerExpanded ? 'translate-y-0' : 'translate-y-[calc(100%-3.5rem-env(safe-area-inset-bottom))]'
-      }`}>
+      <div className={`fixed left-0 right-0 bg-card border-t border-border transition-all duration-300 ease-in-out ${
+        isPlayerExpanded ? 'bottom-0 pb-safe' : 'bottom-0'
+      }`} style={{
+        transform: isPlayerExpanded ? 'translateY(0)' : `translateY(calc(100% - 3.5rem))`
+      }}>
         <div className="container max-w-md mx-auto px-4">
           {/* Collapse/Expand Toggle */}
           <div className="flex items-center justify-center py-2">
