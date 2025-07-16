@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Upload, ArrowDown, Book, X, Image, FileAudio } from "lucide-react";
+import { Upload, ArrowDown, Book, X, Image, FileText } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -113,7 +113,7 @@ const PdfDropZone = () => {
             <div className={`h-20 w-20 rounded-full transition-colors duration-300 flex items-center justify-center ${
               isDragOver ? 'bg-accent' : 'bg-accent/80'
             }`}>
-              <FileAudio className="h-8 w-8 text-accent-foreground" />
+              <FileText className="h-8 w-8 text-accent-foreground" />
             </div>
 
             <input
