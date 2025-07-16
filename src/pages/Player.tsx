@@ -353,7 +353,7 @@ const Player = () => {
 
       {/* Fixed Bottom Player - Collapsible */}
       <div className={`fixed bottom-0 left-0 right-0 bg-card border-t border-border pb-safe transition-all duration-300 ease-in-out ${
-        isPlayerExpanded ? 'translate-y-0' : 'translate-y-[calc(100%-4rem)]'
+        isPlayerExpanded ? 'translate-y-0' : 'translate-y-[calc(100%-3.5rem)]'
       }`}>
         <div className="container max-w-md mx-auto px-4">
           {/* Collapse/Expand Toggle */}
