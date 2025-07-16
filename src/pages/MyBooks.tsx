@@ -156,7 +156,7 @@ const MyBooks = () => {
           </h1>
           <p className="text-muted-foreground mt-3">
             Your personal library of audiobooks and documents 
-            <span className="ml-2 inline-flex items-center gap-1 px-2 py-1 bg-accent/10 text-accent rounded-full text-sm font-medium">
+            <span className="ml-2 inline-flex items-center gap-1 px-2 py-1 bg-muted text-foreground rounded-full text-sm font-medium">
               <Book className="h-3 w-3" />
               {books.length} books
             </span>
