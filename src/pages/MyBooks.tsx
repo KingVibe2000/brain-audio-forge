@@ -242,28 +242,25 @@ const MyBooks = () => {
             onClick={() => toggleBookSelection(book.id)}
           >
             <CardContent className="p-0">
+              {/* Status Header - full width at top */}
+              <div className="w-full px-3 py-2 flex items-center justify-between bg-card border-b">
+                {getStatusBadge(book.status)}
+                {/* Selection Indicator moved to header */}
+                {isSelected(book.id) && (
+                  <div className="w-5 h-5 bg-accent rounded-full flex items-center justify-center">
+                    <CheckCircle className="h-3 w-3 text-accent-foreground" />
+                  </div>
+                )}
+              </div>
+
               {/* Book Cover with proper aspect ratio and background */}
               <div className="relative bg-muted/30">
                 <img 
                   src={book.cover} 
                   alt={book.title}
-                  className="w-full h-56 object-contain rounded-t-lg"
+                  className="w-full h-56 object-contain"
                   style={{ aspectRatio: '3/4' }}
                 />
-                
-                {/* Status Badge */}
-                <div className="absolute top-3 right-3">
-                  {getStatusBadge(book.status)}
-                </div>
-
-                {/* Selection Indicator */}
-                {isSelected(book.id) && (
-                  <div className="absolute top-3 left-3">
-                    <div className="w-6 h-6 bg-accent rounded-full flex items-center justify-center">
-                      <CheckCircle className="h-4 w-4 text-accent-foreground" />
-                    </div>
-                  </div>
-                )}
 
                 {/* Progress Overlay for incomplete books */}
                 {book.progress < 100 && (
