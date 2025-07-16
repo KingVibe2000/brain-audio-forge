@@ -1,16 +1,16 @@
 import { useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { ArrowLeft, Play, Pause, SkipForward, SkipBack, MoreHorizontal, Download, Edit3 } from "lucide-react";
+import { ArrowLeft, Play, ChevronDown, ChevronUp, Download, Edit3, Home } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
+import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from "@/components/ui/breadcrumb";
 
 const BookDetail = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const [selectedChapter, setSelectedChapter] = useState<string | null>(null);
+  const [showAllChapters, setShowAllChapters] = useState(false);
 
   // Mock book data - in real app this would come from API
   const book = {
@@ -51,18 +51,26 @@ const BookDetail = () => {
   };
 
   const getStatusBadge = (status: string) => {
-    const baseClasses = "text-xs font-medium px-2 py-1";
     switch (status) {
       case "FINISHED":
-        return <Badge className={`${baseClasses} bg-yellow-primary/20 text-yellow-primary border-yellow-primary/30`}>{status}</Badge>;
+        return <Badge variant="outline" className="text-xs border-yellow-primary/30 text-yellow-primary bg-yellow-primary/10">Completed</Badge>;
       case "PAUSED":
-        return <Badge className={`${baseClasses} bg-orange-500/20 text-orange-600 border-orange-500/30`}>{status}</Badge>;
+        return <Badge variant="outline" className="text-xs border-muted-foreground/30 text-muted-foreground bg-muted/50">Paused</Badge>;
       case "IN_PROGRESS":
-        return <Badge className={`${baseClasses} bg-blue-500/20 text-blue-600 border-blue-500/30`}>{status}</Badge>;
+        return <Badge variant="outline" className="text-xs border-accent/30 text-accent bg-accent/10">In Progress</Badge>;
       default:
-        return <Badge className={`${baseClasses} bg-muted text-muted-foreground`}>{status}</Badge>;
+        return <Badge variant="outline" className="text-xs">{status}</Badge>;
     }
   };
+
+  // Get current chapter (first non-finished) and next few chapters
+  const currentChapterIndex = book.chapters.findIndex(ch => ch.status !== "FINISHED");
+  const visibleChapters = showAllChapters 
+    ? book.chapters 
+    : book.chapters.slice(Math.max(0, currentChapterIndex - 1), currentChapterIndex + 4);
+  
+  const completedChapters = book.chapters.filter(ch => ch.status === "FINISHED").length;
+  const progressPercentage = Math.round((completedChapters / book.chapters.length) * 100);
 
   const toggleChapterSelection = (chapterId: string) => {
     setSelectedChapter(selectedChapter === chapterId ? null : chapterId);
@@ -70,132 +78,176 @@ const BookDetail = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      {/* Header */}
-      <div className="border-b bg-card">
-        <div className="max-w-7xl mx-auto px-6 py-4">
-          <div className="flex items-center gap-4">
+      {/* Navigation */}
+      <div className="border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+        <div className="max-w-6xl mx-auto px-6 py-4">
+          <div className="flex items-center justify-between">
+            <Breadcrumb>
+              <BreadcrumbList>
+                <BreadcrumbItem>
+                  <BreadcrumbLink 
+                    onClick={() => navigate("/my-books")} 
+                    className="cursor-pointer flex items-center gap-2 text-muted-foreground hover:text-foreground"
+                  >
+                    <Home className="h-4 w-4" />
+                    My Books
+                  </BreadcrumbLink>
+                </BreadcrumbItem>
+                <BreadcrumbSeparator />
+                <BreadcrumbItem>
+                  <BreadcrumbPage className="font-medium">{book.title}</BreadcrumbPage>
+                </BreadcrumbItem>
+              </BreadcrumbList>
+            </Breadcrumb>
+            
             <Button
-              variant="ghost"
+              variant="outline"
               size="sm"
               onClick={() => navigate("/my-books")}
               className="font-sans"
             >
               <ArrowLeft className="h-4 w-4 mr-2" />
-              Back to Library
+              Back
             </Button>
-            
-            <div className="flex items-center gap-4 ml-4">
-              <img 
-                src={book.cover} 
-                alt={book.title}
-                className="w-12 h-16 object-cover rounded border"
-              />
-              <div>
-                <h1 className="text-xl font-semibold text-foreground">{book.title}</h1>
-                <p className="text-sm text-muted-foreground font-sans">by {book.author}</p>
-              </div>
-            </div>
           </div>
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-6 py-6">
-        {/* Book Overview */}
-        <Card className="mb-6">
-          <CardHeader>
-            <CardTitle className="font-sans">Book Overview</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-              <div className="text-center">
-                <div className="text-2xl font-bold text-accent">{book.totalMinutes}</div>
-                <div className="text-sm text-muted-foreground font-sans">Total Minutes</div>
-              </div>
-              <div className="text-center">
-                <div className="text-2xl font-bold text-accent">{book.completedMinutes}</div>
-                <div className="text-sm text-muted-foreground font-sans">Completed</div>
-              </div>
-              <div className="text-center">
-                <div className="text-2xl font-bold text-accent">{book.readAloudMinutes}</div>
-                <div className="text-sm text-muted-foreground font-sans">Read Aloud</div>
-              </div>
-              <div className="text-center">
-                <div className="text-2xl font-bold text-purple-500">{book.timeSaved}</div>
-                <div className="text-sm text-muted-foreground font-sans">Time Saved</div>
-              </div>
+      <div className="max-w-6xl mx-auto px-6 py-8">
+        {/* Hero Section */}
+        <div className="mb-12">
+          <div className="flex flex-col lg:flex-row gap-8 items-start">
+            {/* Book Cover */}
+            <div className="flex-shrink-0">
+              <img 
+                src={book.cover} 
+                alt={book.title}
+                className="w-48 h-64 object-cover rounded-lg shadow-lg"
+              />
             </div>
-          </CardContent>
-        </Card>
-
-        {/* Chapters */}
-        <Card>
-          <CardHeader>
-            <CardTitle className="font-sans">Chapters ({book.chapters.length})</CardTitle>
-          </CardHeader>
-          <CardContent className="p-0">
-            <div className="space-y-0">
-              {book.chapters.map((chapter, index) => (
-                <div
-                  key={chapter.id}
-                  className={`flex items-center gap-4 p-4 border-b border-border last:border-b-0 hover:bg-muted/30 transition-colors ${
-                    selectedChapter === chapter.id.toString() ? 'bg-accent/10' : ''
-                  }`}
-                >
-                  {/* Chapter Number */}
-                  <div className="text-sm font-medium text-muted-foreground w-12 font-sans">
-                    Chapter {chapter.id}
-                  </div>
-
-                  {/* Chapter Title and Status */}
-                  <div className="flex-1">
-                    <div className="flex items-center gap-3 mb-1">
-                      <h4 className="font-medium text-foreground">{chapter.title}</h4>
-                      {getStatusBadge(chapter.status)}
-                    </div>
-                    <div className="text-sm text-muted-foreground font-sans">
-                      Status: {chapter.status.toLowerCase().replace('_', ' ')}
+            
+            {/* Book Details */}
+            <div className="flex-1 space-y-6">
+              <div>
+                <h1 className="text-4xl font-space font-bold text-foreground mb-2">{book.title}</h1>
+                <p className="text-xl text-muted-foreground font-sans">by {book.author}</p>
+              </div>
+              
+              {/* Progress Circle */}
+              <div className="flex items-center gap-6">
+                <div className="relative">
+                  <div className="w-24 h-24 rounded-full border-4 border-muted flex items-center justify-center">
+                    <div className="text-center">
+                      <div className="text-lg font-bold text-foreground">{progressPercentage}%</div>
+                      <div className="text-xs text-muted-foreground">Complete</div>
                     </div>
                   </div>
-
-                  {/* Duration */}
-                  <div className="text-sm text-muted-foreground font-sans min-w-16">
-                    {chapter.duration}
+                  <Progress 
+                    value={progressPercentage} 
+                    className="absolute inset-0 w-24 h-24 rounded-full opacity-20"
+                  />
+                </div>
+                
+                <div className="space-y-2">
+                  <div className="flex items-center gap-4 text-sm text-muted-foreground">
+                    <span>{completedChapters} of {book.chapters.length} chapters completed</span>
                   </div>
-
-                  {/* Audio Controls */}
-                  <div className="flex items-center gap-2">
-                    <Button
-                      variant="ghost"
-                      size="sm"
-                      className="h-8 w-8 p-0"
-                      onClick={() => toggleChapterSelection(chapter.id.toString())}
-                    >
-                      <Play className="h-4 w-4" />
-                    </Button>
-                    
-                    <DropdownMenu>
-                      <DropdownMenuTrigger asChild>
-                        <Button variant="ghost" size="sm" className="h-8 w-8 p-0">
-                          <MoreHorizontal className="h-4 w-4" />
-                        </Button>
-                      </DropdownMenuTrigger>
-                      <DropdownMenuContent align="end" className="bg-card font-sans">
-                        <DropdownMenuItem>
-                          <Download className="h-4 w-4 mr-2" />
-                          Download Audio
-                        </DropdownMenuItem>
-                        <DropdownMenuItem>
-                          <Edit3 className="h-4 w-4 mr-2" />
-                          Edit Chapter
-                        </DropdownMenuItem>
-                      </DropdownMenuContent>
-                    </DropdownMenu>
+                  <div className="flex items-center gap-4 text-sm text-muted-foreground">
+                    <span>{book.totalMinutes} minutes total</span>
                   </div>
                 </div>
-              ))}
+              </div>
+              
+              {/* Primary Action */}
+              <div className="flex gap-3">
+                <Button size="lg" className="bg-yellow-primary hover:bg-yellow-primary/90 text-foreground font-medium">
+                  <Play className="h-5 w-5 mr-2" />
+                  Continue Reading
+                </Button>
+                <Button variant="outline" size="lg">
+                  <Download className="h-5 w-5 mr-2" />
+                  Download All
+                </Button>
+              </div>
             </div>
-          </CardContent>
-        </Card>
+          </div>
+        </div>
+
+        {/* Chapters Section */}
+        <div className="space-y-6">
+          <div className="flex items-center justify-between">
+            <h2 className="text-2xl font-space font-semibold text-foreground">Chapters</h2>
+            <div className="text-sm text-muted-foreground">
+              {showAllChapters ? book.chapters.length : visibleChapters.length} of {book.chapters.length} chapters
+            </div>
+          </div>
+          
+          {/* Chapter List */}
+          <div className="space-y-1 bg-card rounded-lg border">
+            {visibleChapters.map((chapter, index) => (
+              <div
+                key={chapter.id}
+                className={`flex items-center gap-4 p-4 hover:bg-muted/30 transition-colors first:rounded-t-lg last:rounded-b-lg ${
+                  selectedChapter === chapter.id.toString() ? 'bg-yellow-primary/10 border-l-4 border-yellow-primary' : ''
+                }`}
+              >
+                {/* Chapter Number */}
+                <div className="text-sm font-medium text-muted-foreground w-8 text-center font-sans">
+                  {chapter.id}
+                </div>
+
+                {/* Chapter Title and Status */}
+                <div className="flex-1 min-w-0">
+                  <div className="flex items-center gap-3 mb-1">
+                    <h4 className="font-space font-medium text-foreground truncate">{chapter.title}</h4>
+                    {getStatusBadge(chapter.status)}
+                  </div>
+                  {chapter.status === "PAUSED" && (
+                    <div className="text-xs text-muted-foreground font-sans">75% complete</div>
+                  )}
+                </div>
+
+                {/* Duration */}
+                <div className="text-sm text-muted-foreground font-sans flex-shrink-0">
+                  {chapter.duration}
+                </div>
+
+                {/* Play Button */}
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  className="h-9 w-9 p-0 flex-shrink-0 hover:bg-yellow-primary/20"
+                  onClick={() => toggleChapterSelection(chapter.id.toString())}
+                >
+                  <Play className="h-4 w-4" />
+                </Button>
+              </div>
+            ))}
+            
+            {/* Show More/Less Button */}
+            {book.chapters.length > 4 && (
+              <div className="p-4 border-t">
+                <Button
+                  variant="ghost"
+                  onClick={() => setShowAllChapters(!showAllChapters)}
+                  className="w-full text-muted-foreground hover:text-foreground"
+                >
+                  {showAllChapters ? (
+                    <>
+                      <ChevronUp className="h-4 w-4 mr-2" />
+                      Show Less
+                    </>
+                  ) : (
+                    <>
+                      <ChevronDown className="h-4 w-4 mr-2" />
+                      Show All {book.chapters.length} Chapters
+                    </>
+                  )}
+                </Button>
+              </div>
+            )}
+          </div>
+        </div>
       </div>
     </div>
   );
