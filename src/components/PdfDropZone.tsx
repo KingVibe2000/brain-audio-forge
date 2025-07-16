@@ -85,7 +85,7 @@ const PdfDropZone = () => {
         
         {/* Explanatory Text */}
         <div className="text-center mb-8">
-          <div className="bg-gradient-to-b from-background/70 via-background/40 to-background/[0.01] backdrop-blur-sm rounded-lg p-6 max-w-xl mx-auto">
+          <div className="backdrop-blur-sm rounded-lg p-6 max-w-xl mx-auto" style={{background: 'linear-gradient(to bottom, hsl(var(--background) / 0.7), hsl(var(--background) / 0.4), hsl(var(--background) / 0.01))'}}>
             <div className="space-y-2">
               <p className="text-xl font-medium text-foreground tracking-tight">Transform any PDF into an engaging audio experience</p>
               <p className="text-xl font-medium text-foreground tracking-tight">Upload your document and let AI create a personalized podcast for you</p>
