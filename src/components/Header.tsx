@@ -31,7 +31,6 @@ const Header = () => {
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center space-x-2">
           <Button variant="ghost" size="sm" className="text-muted-foreground hover:text-foreground">
-            <Play className="h-4 w-4 mr-2" />
             Player
           </Button>
           
@@ -80,7 +79,6 @@ const Header = () => {
           <SheetContent side="right" className="w-80">
             <div className="flex flex-col space-y-4 mt-8">
               <Button variant="ghost" className="justify-start text-muted-foreground hover:text-foreground h-12">
-                <Play className="h-4 w-4 mr-3" />
                 Player
               </Button>
               
