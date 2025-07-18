@@ -19,9 +19,9 @@ All colors MUST be HSL.
     --popover: 0 0% 100%;
     --popover-foreground: 40 8% 25%;
 
-    /* Primary using warm grey */
-    --primary: 40 8% 25%; /* #433F39 - Primary warm grey */
-    --primary-foreground: 0 0% 98%;
+    /* Primary using yellow for buttons */
+    --primary: 48 100% 62%; /* Bright yellow for primary buttons */
+    --primary-foreground: 40 8% 25%; /* Warm grey text on yellow */
 
     /* Secondary warm grey */
     --secondary: 40 6% 92%; /* Light warm grey background */
