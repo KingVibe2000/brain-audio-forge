@@ -276,7 +276,7 @@ export default function ProcessChapters() {
                   {/* Create Podcast Button */}
                   <div className="pt-4 border-t border-border">
                     <Button 
-                      className="w-full bg-purple-600 hover:bg-purple-700 text-white" 
+                      className="w-full" 
                       size="lg"
                       onClick={handleCreatePodcast}
                       disabled={selectedCount === 0}
@@ -284,7 +284,7 @@ export default function ProcessChapters() {
                       <Mic className="h-4 w-4 mr-2" />
                       Create Podcast
                       {selectedCount > 0 && (
-                        <Badge variant="secondary" className="ml-2 bg-white/20 text-white">
+                        <Badge variant="secondary" className="ml-2 bg-primary-foreground/20 text-primary-foreground">
                           {selectedCount}
                         </Badge>
                       )}
