@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -56,7 +57,7 @@ export default {
 					DEFAULT: 'hsl(var(--card))',
 					foreground: 'hsl(var(--card-foreground))'
 				},
-				// Custom design tokens
+				// Custom warm grey design tokens
 				yellow: {
 					primary: 'hsl(var(--yellow-primary))',
 					soft: 'hsl(var(--yellow-soft))'
@@ -64,7 +65,8 @@ export default {
 				grey: {
 					light: 'hsl(var(--grey-light))',
 					medium: 'hsl(var(--grey-medium))',
-					dark: 'hsl(var(--grey-dark))'
+					dark: 'hsl(var(--grey-dark))',
+					darkest: 'hsl(var(--grey-darkest))'
 				},
 				surface: {
 					elevated: 'hsl(var(--surface-elevated))'
