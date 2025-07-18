@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { Check, Download, Eye, Info, Trash2, Edit, FileText, Mic } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -276,12 +277,12 @@ export default function ProcessChapters() {
                   {/* Create Podcast Button */}
                   <div className="pt-4 border-t border-border">
                     <Button 
-                      className="w-full" 
+                      className="w-full shadow-lg hover:shadow-xl transition-shadow duration-300" 
                       size="lg"
                       onClick={handleCreatePodcast}
                       disabled={selectedCount === 0}
                     >
-                      <Mic className="h-4 w-4 mr-2" />
+                      <Mic className="h-5 w-5 mr-2 drop-shadow-sm" style={{ filter: 'drop-shadow(0 0 4px rgba(255, 255, 255, 0.3))' }} />
                       Create Podcast
                       {selectedCount > 0 && (
                         <Badge variant="secondary" className="ml-2 bg-primary-foreground/20 text-primary-foreground">
