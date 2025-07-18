@@ -3,7 +3,7 @@ import { Check, Download, Eye, Info, Trash2, Edit, FileText } from 'lucide-react
 import { Button } from '@/components/ui/button';
 import { Checkbox } from '@/components/ui/checkbox';
 import { Badge } from '@/components/ui/badge';
-import Layout from '@/components/Layout';
+
 
 // Mock data for processed chapters
 const mockProcessedChapters = [
@@ -95,8 +95,7 @@ export default function ProcessChapters() {
   }, 0);
 
   return (
-    <Layout>
-      <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background">
         <div className="container mx-auto px-4 py-8">
           {/* Header */}
           <div className="mb-8">
@@ -245,6 +244,5 @@ export default function ProcessChapters() {
           </div>
         </div>
       </div>
-    </Layout>
   );
 }
