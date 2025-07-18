@@ -12,6 +12,7 @@ import MyBooks from "./pages/MyBooks";
 import BookDetail from "./pages/BookDetail";
 import Player from "./pages/Player";
 import ReviewChapter from "./pages/ReviewChapter";
+import ProcessChapters from "./pages/ProcessChapters";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -30,6 +31,7 @@ const App = () => (
             <Route path="/book/:id" element={<BookDetail />} />
             <Route path="/player" element={<Player />} />
             <Route path="/review-chapter" element={<ReviewChapter />} />
+            <Route path="/process-chapters" element={<ProcessChapters />} />
             <Route path="/test" element={<Test />} />
             <Route path="/test3" element={<Test3 />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
