@@ -2,13 +2,6 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
 import { Search, Check, X, Filter } from "lucide-react";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
 
 interface ChapterTableHeaderProps {
   selectedCount: number;
@@ -46,18 +39,6 @@ export const ChapterTableHeader = ({
             />
           </div>
         </div>
-        
-        <Select defaultValue="chapter-order">
-          <SelectTrigger className="w-48">
-            <SelectValue placeholder="Sort by" />
-          </SelectTrigger>
-          <SelectContent>
-            <SelectItem value="chapter-order">Chapter Order</SelectItem>
-            <SelectItem value="title">Title A-Z</SelectItem>
-            <SelectItem value="pages">Page Count</SelectItem>
-            <SelectItem value="selected">Selection Status</SelectItem>
-          </SelectContent>
-        </Select>
 
         <Badge variant="secondary" className="text-sm shrink-0">
           {selectedCount} of {totalCount} selected

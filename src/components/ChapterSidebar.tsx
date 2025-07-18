@@ -68,41 +68,6 @@ export const ChapterSidebar = ({
               </div>
             </div>
 
-            {/* Quick Actions - Grouped */}
-            <div className="pt-4 border-t border-border">
-              <h3 className="font-medium mb-3">Quick Actions</h3>
-              <div className="space-y-2">
-                <Button 
-                  variant="outline" 
-                  size="sm" 
-                  className="w-full justify-start gap-2"
-                  onClick={onBulkEdit}
-                >
-                  <Edit className="w-4 h-4" />
-                  Bulk Edit Titles
-                </Button>
-                <Button 
-                  variant="outline" 
-                  size="sm" 
-                  className="w-full justify-start gap-2"
-                  onClick={onPreviewSelected}
-                  disabled={selectedCount === 0}
-                >
-                  <Eye className="w-4 h-4" />
-                  Preview Selected ({selectedCount})
-                </Button>
-                <Button 
-                  variant="outline" 
-                  size="sm" 
-                  className="w-full justify-start gap-2"
-                  disabled={selectedCount === 0}
-                >
-                  <Play className="w-4 h-4" />
-                  Generate Audio Preview
-                </Button>
-              </div>
-            </div>
-
             {/* Progress Indicator */}
             {selectedCount > 0 && (
               <div className="pt-4 border-t border-border">
