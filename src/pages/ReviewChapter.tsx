@@ -1,19 +1,17 @@
 
-import { Button } from "@/components/ui/button";
-import { Card } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { Checkbox } from "@/components/ui/checkbox";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { Input } from "@/components/ui/input";
-import { Search, Edit, Check, X, Eye } from "lucide-react";
+import { Card } from "@/components/ui/card";
+import { useState, useEffect } from "react";
 import {
   Table,
   TableBody,
-  TableCell,
   TableHead,
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import { ChapterTableHeader } from "@/components/ChapterTableHeader";
+import { ChapterRow } from "@/components/ChapterRow";
+import { ChapterSidebar } from "@/components/ChapterSidebar";
 
 // Mock data based on the screenshot
 const detectedChapters = [
@@ -118,6 +116,87 @@ const detectedChapters = [
 ];
 
 const ReviewChapter = () => {
+  const [chapters, setChapters] = useState(detectedChapters);
+  const [searchValue, setSearchValue] = useState("");
+  const [activeChapter, setActiveChapter] = useState<number | null>(null);
+
+  // Filter chapters based on search
+  const filteredChapters = chapters.filter(chapter =>
+    chapter.title.toLowerCase().includes(searchValue.toLowerCase())
+  );
+
+  // Keyboard navigation
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.target instanceof HTMLInputElement) return;
+      
+      const currentIndex = activeChapter ? filteredChapters.findIndex(c => c.id === activeChapter) : -1;
+      
+      if (e.key === 'ArrowDown') {
+        e.preventDefault();
+        const nextIndex = Math.min(currentIndex + 1, filteredChapters.length - 1);
+        setActiveChapter(filteredChapters[nextIndex]?.id || null);
+      } else if (e.key === 'ArrowUp') {
+        e.preventDefault();
+        const prevIndex = Math.max(currentIndex - 1, 0);
+        setActiveChapter(filteredChapters[prevIndex]?.id || null);
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [activeChapter, filteredChapters]);
+
+  const handleSelectionChange = (id: number, selected: boolean) => {
+    setChapters(prev => prev.map(chapter => 
+      chapter.id === id ? { ...chapter, selected } : chapter
+    ));
+  };
+
+  const handleSelectAll = () => {
+    setChapters(prev => prev.map(chapter => ({ ...chapter, selected: true })));
+  };
+
+  const handleDeselectAll = () => {
+    setChapters(prev => prev.map(chapter => ({ ...chapter, selected: false })));
+  };
+
+  const handleSelectMainOnly = () => {
+    setChapters(prev => prev.map(chapter => ({ 
+      ...chapter, 
+      selected: chapter.isMain 
+    })));
+  };
+
+  const handleSelectSubOnly = () => {
+    setChapters(prev => prev.map(chapter => ({ 
+      ...chapter, 
+      selected: chapter.isSub || false 
+    })));
+  };
+
+  const handleEdit = (id: number) => {
+    console.log('Edit chapter:', id);
+  };
+
+  const handlePreview = (id: number) => {
+    console.log('Preview chapter:', id);
+  };
+
+  const handleBulkEdit = () => {
+    console.log('Bulk edit chapters');
+  };
+
+  const handlePreviewSelected = () => {
+    console.log('Preview selected chapters');
+  };
+
+  const handleContinue = () => {
+    console.log('Continue to step 2');
+  };
+
+  const selectedCount = chapters.filter(c => c.selected).length;
+
   return (
     <div className="container mx-auto px-4 py-8 max-w-7xl">
       <div className="mb-8">
@@ -127,87 +206,41 @@ const ReviewChapter = () => {
         </p>
       </div>
 
-      <div className="flex gap-6 mb-6">
-        <Button variant="default" className="gap-2">
-          <Check className="w-4 h-4" />
-          Select All
-        </Button>
-        <Button variant="outline" className="gap-2">
-          <X className="w-4 h-4" />
-          Deselect All
-        </Button>
-        <div className="flex-1 max-w-sm">
-          <div className="relative">
-            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4" />
-            <Input 
-              placeholder="Search chapters..." 
-              className="pl-10"
-            />
-          </div>
-        </div>
-        <div className="ml-auto">
-          <Badge variant="secondary" className="text-sm">
-            {detectedChapters.filter(c => c.selected).length} of {detectedChapters.length} chapters selected
-          </Badge>
-        </div>
-      </div>
-
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Main content area */}
-        <div className="lg:col-span-2">
-          <Card className="border border-border">
-            <ScrollArea className="h-[800px]">
+        <div className="lg:col-span-2 order-2 lg:order-1">
+          <Card className="border border-border overflow-hidden">
+            <ChapterTableHeader
+              selectedCount={selectedCount}
+              totalCount={chapters.length}
+              onSelectAll={handleSelectAll}
+              onDeselectAll={handleDeselectAll}
+              onSelectMainOnly={handleSelectMainOnly}
+              onSelectSubOnly={handleSelectSubOnly}
+              searchValue={searchValue}
+              onSearchChange={setSearchValue}
+            />
+            
+            <ScrollArea className="h-[700px]">
               <Table>
                 <TableHeader>
-                  <TableRow>
-                    <TableHead className="w-12"></TableHead>
-                    <TableHead>Chapter</TableHead>
-                    <TableHead className="w-32">Pages</TableHead>
-                    <TableHead className="w-32 text-right">Actions</TableHead>
+                  <TableRow className="hover:bg-transparent">
+                    <TableHead className="w-12 sticky top-0 bg-background/95 backdrop-blur"></TableHead>
+                    <TableHead className="sticky top-0 bg-background/95 backdrop-blur">Chapter</TableHead>
+                    <TableHead className="w-32 text-right sticky top-0 bg-background/95 backdrop-blur">Pages</TableHead>
                   </TableRow>
                 </TableHeader>
-                <TableBody>
-                  {detectedChapters.map((chapter) => (
-                    <TableRow key={chapter.id} className={chapter.selected ? 'bg-primary/5' : ''}>
-                      <TableCell>
-                        <Checkbox checked={chapter.selected} />
-                      </TableCell>
-                      <TableCell>
-                        <div className="flex items-center gap-2">
-                          {chapter.isSub && (
-                            <Badge variant="outline" className="text-xs bg-blue-50 text-blue-600 border-blue-200">
-                              Sub
-                            </Badge>
-                          )}
-                          <div className="flex items-center gap-2 min-w-0 flex-1">
-                            <span className="font-medium truncate">{chapter.title}</span>
-                            <Button size="sm" variant="ghost" className="h-6 w-6 p-0 shrink-0">
-                              <Edit className="w-3 h-3" />
-                            </Button>
-                          </div>
-                        </div>
-                        <div className="text-sm text-muted-foreground mt-1">
-                          Pages: {chapter.pages.start} - {chapter.pages.end}, {chapter.pages.total} pages
-                        </div>
-                      </TableCell>
-                      <TableCell className="text-sm text-muted-foreground">
-                        {chapter.pages.total} pages
-                      </TableCell>
-                      <TableCell className="text-right">
-                        <div className="flex items-center justify-end gap-2">
-                          <Button size="sm" variant="ghost" className="h-8 px-2 text-xs">
-                            <Eye className="w-3 h-3 mr-1" />
-                            Preview
-                          </Button>
-                          <span className="text-xs text-muted-foreground">Chapter {chapter.chapterNumber}</span>
-                          {chapter.isMain && (
-                            <Badge variant="secondary" className="text-xs bg-green-50 text-green-600 border-green-200">
-                              Main
-                            </Badge>
-                          )}
-                        </div>
-                      </TableCell>
-                    </TableRow>
+                <TableBody className="group">
+                  {filteredChapters.map((chapter) => (
+                    <ChapterRow
+                      key={chapter.id}
+                      chapter={chapter}
+                      isActive={activeChapter === chapter.id}
+                      onSelectionChange={handleSelectionChange}
+                      onEdit={handleEdit}
+                      onPreview={handlePreview}
+                      onRowClick={setActiveChapter}
+                    />
                   ))}
                 </TableBody>
               </Table>
@@ -216,52 +249,13 @@ const ReviewChapter = () => {
         </div>
 
         {/* Sidebar */}
-        <div className="lg:col-span-1">
-          <Card className="border border-border">
-            <div className="p-6">
-              <h2 className="text-lg font-semibold mb-4">Chapter Summary</h2>
-              <div className="space-y-4">
-                <div className="text-sm">
-                  <div className="flex justify-between py-2 border-b border-border">
-                    <span className="text-muted-foreground">Total Chapters:</span>
-                    <span className="font-medium">{detectedChapters.length}</span>
-                  </div>
-                  <div className="flex justify-between py-2 border-b border-border">
-                    <span className="text-muted-foreground">Selected:</span>
-                    <span className="font-medium">{detectedChapters.filter(c => c.selected).length}</span>
-                  </div>
-                  <div className="flex justify-between py-2 border-b border-border">
-                    <span className="text-muted-foreground">Main Chapters:</span>
-                    <span className="font-medium">{detectedChapters.filter(c => c.isMain).length}</span>
-                  </div>
-                  <div className="flex justify-between py-2">
-                    <span className="text-muted-foreground">Sub Chapters:</span>
-                    <span className="font-medium">{detectedChapters.filter(c => c.isSub).length}</span>
-                  </div>
-                </div>
-
-                <div className="pt-4 border-t border-border">
-                  <h3 className="font-medium mb-3">Quick Actions</h3>
-                  <div className="space-y-2">
-                    <Button variant="outline" size="sm" className="w-full justify-start gap-2">
-                      <Edit className="w-4 h-4" />
-                      Bulk Edit Titles
-                    </Button>
-                    <Button variant="outline" size="sm" className="w-full justify-start gap-2">
-                      <Eye className="w-4 h-4" />
-                      Preview Selected
-                    </Button>
-                  </div>
-                </div>
-
-                <div className="pt-4 border-t border-border">
-                  <Button className="w-full" size="lg">
-                    Continue to Step 2
-                  </Button>
-                </div>
-              </div>
-            </div>
-          </Card>
+        <div className="order-1 lg:order-2">
+          <ChapterSidebar
+            chapters={chapters}
+            onBulkEdit={handleBulkEdit}
+            onPreviewSelected={handlePreviewSelected}
+            onContinue={handleContinue}
+          />
         </div>
       </div>
     </div>
