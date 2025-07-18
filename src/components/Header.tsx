@@ -30,6 +30,11 @@ const Header = () => {
               My Books
             </Button>
           </Link>
+          <Link to="/review-chapter">
+            <Button variant="ghost" size="sm" className="font-sans text-muted-foreground hover:text-foreground hover:bg-transparent relative after:content-[''] after:absolute after:w-3/4 after:scale-x-0 after:h-0.5 after:bottom-0 after:left-1/2 after:-translate-x-1/2 after:bg-primary after:origin-center after:transition-transform after:duration-300 hover:after:scale-x-100">
+              Step 1 - Review
+            </Button>
+          </Link>
 
           {/* Settings Dropdown */}
           <DropdownMenu>
@@ -84,6 +89,11 @@ const Header = () => {
               <Link to="/my-books">
                 <Button variant="ghost" className="font-sans justify-start text-muted-foreground hover:text-foreground hover:bg-transparent h-12 relative after:content-[''] after:absolute after:w-3/4 after:scale-x-0 after:h-0.5 after:bottom-0 after:left-1/2 after:-translate-x-1/2 after:bg-primary after:origin-center after:transition-transform after:duration-300 hover:after:scale-x-100">
                   My Books
+                </Button>
+              </Link>
+              <Link to="/review-chapter">
+                <Button variant="ghost" className="font-sans justify-start text-muted-foreground hover:text-foreground hover:bg-transparent h-12 relative after:content-[''] after:absolute after:w-3/4 after:scale-x-0 after:h-0.5 after:bottom-0 after:left-1/2 after:-translate-x-1/2 after:bg-primary after:origin-center after:transition-transform after:duration-300 hover:after:scale-x-100">
+                  Step 1 - Review
                 </Button>
               </Link>
 
