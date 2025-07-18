@@ -68,22 +68,6 @@ export const ChapterSidebar = ({
               </div>
             </div>
 
-            {/* Progress Indicator */}
-            {selectedCount > 0 && (
-              <div className="pt-4 border-t border-border">
-                <div className="flex items-center justify-between text-sm mb-2">
-                  <span className="text-muted-foreground">Selection Progress</span>
-                  <span className="font-medium">{Math.round((selectedCount / chapters.length) * 100)}%</span>
-                </div>
-                <div className="w-full bg-muted rounded-full h-2">
-                  <div 
-                    className="bg-primary h-2 rounded-full transition-all duration-300" 
-                    style={{ width: `${(selectedCount / chapters.length) * 100}%` }}
-                  />
-                </div>
-              </div>
-            )}
-
             {/* Continue Button */}
             <div className="pt-4 border-t border-border">
               <Button 

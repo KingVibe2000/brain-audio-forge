@@ -117,35 +117,29 @@ const detectedChapters = [
 
 const ReviewChapter = () => {
   const [chapters, setChapters] = useState(detectedChapters);
-  const [searchValue, setSearchValue] = useState("");
   const [activeChapter, setActiveChapter] = useState<number | null>(null);
-
-  // Filter chapters based on search
-  const filteredChapters = chapters.filter(chapter =>
-    chapter.title.toLowerCase().includes(searchValue.toLowerCase())
-  );
 
   // Keyboard navigation
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.target instanceof HTMLInputElement) return;
       
-      const currentIndex = activeChapter ? filteredChapters.findIndex(c => c.id === activeChapter) : -1;
+      const currentIndex = activeChapter ? chapters.findIndex(c => c.id === activeChapter) : -1;
       
       if (e.key === 'ArrowDown') {
         e.preventDefault();
-        const nextIndex = Math.min(currentIndex + 1, filteredChapters.length - 1);
-        setActiveChapter(filteredChapters[nextIndex]?.id || null);
+        const nextIndex = Math.min(currentIndex + 1, chapters.length - 1);
+        setActiveChapter(chapters[nextIndex]?.id || null);
       } else if (e.key === 'ArrowUp') {
         e.preventDefault();
         const prevIndex = Math.max(currentIndex - 1, 0);
-        setActiveChapter(filteredChapters[prevIndex]?.id || null);
+        setActiveChapter(chapters[prevIndex]?.id || null);
       }
     };
 
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [activeChapter, filteredChapters]);
+  }, [activeChapter, chapters]);
 
   const handleSelectionChange = (id: number, selected: boolean) => {
     setChapters(prev => prev.map(chapter => 
@@ -217,8 +211,6 @@ const ReviewChapter = () => {
               onDeselectAll={handleDeselectAll}
               onSelectMainOnly={handleSelectMainOnly}
               onSelectSubOnly={handleSelectSubOnly}
-              searchValue={searchValue}
-              onSearchChange={setSearchValue}
             />
             
             <ScrollArea className="h-[700px]">
@@ -231,7 +223,7 @@ const ReviewChapter = () => {
                   </TableRow>
                 </TableHeader>
                 <TableBody className="group">
-                  {filteredChapters.map((chapter) => (
+                  {chapters.map((chapter) => (
                     <ChapterRow
                       key={chapter.id}
                       chapter={chapter}
