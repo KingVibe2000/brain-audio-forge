@@ -9,6 +9,7 @@ import Test from "./pages/Test";
 import Test3 from "./pages/Test3";
 import HowItWorks from "./pages/HowItWorks";
 import MyBooks from "./pages/MyBooks";
+import MediaLibrary from "./pages/MediaLibrary";
 import BookDetail from "./pages/BookDetail";
 import Player from "./pages/Player";
 import ReviewChapter from "./pages/ReviewChapter";
@@ -28,6 +29,7 @@ const App = () => (
             <Route path="/" element={<Index />} />
             <Route path="/how-it-works" element={<HowItWorks />} />
             <Route path="/my-books" element={<MyBooks />} />
+            <Route path="/media-library" element={<MediaLibrary />} />
             <Route path="/book/:id" element={<BookDetail />} />
             <Route path="/player" element={<Player />} />
             <Route path="/review-chapter" element={<ReviewChapter />} />
