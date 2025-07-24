@@ -7,6 +7,7 @@ import { ScrollArea } from '@/components/ui/scroll-area';
 
 // Mock data for demonstration
 const mockPodcasts = [
+  // Recently Added Books
   {
     id: 1,
     title: "The 7 Habits of Highly Effective People",
@@ -46,6 +47,218 @@ const mockPodcasts = [
     id: 6,
     title: "The Power of Now",
     author: "Eckhart Tolle",
+    category: "selfimprovement",
+    coverUrl: `https://images.unsplash.com/photo-1500375592092-40eb2168fd21?w=300&h=300&fit=crop&crop=center`
+  },
+  {
+    id: 7,
+    title: "Mindset: The New Psychology of Success",
+    author: "Carol S. Dweck",
+    category: "selfimprovement",
+    coverUrl: `https://images.unsplash.com/photo-1649972904349-6e44c42644a7?w=300&h=300&fit=crop&crop=center`
+  },
+  {
+    id: 8,
+    title: "Zero to One",
+    author: "Peter Thiel",
+    category: "business",
+    coverUrl: `https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?w=300&h=300&fit=crop&crop=center`
+  },
+  {
+    id: 9,
+    title: "The Four Agreements",
+    author: "Don Miguel Ruiz",
+    category: "selfimprovement",
+    coverUrl: `https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=300&h=300&fit=crop&crop=center`
+  },
+  {
+    id: 10,
+    title: "Blue Ocean Strategy",
+    author: "W. Chan Kim",
+    category: "business",
+    coverUrl: `https://images.unsplash.com/photo-1581090464777-f3220bbe1b8b?w=300&h=300&fit=crop&crop=center`
+  },
+  {
+    id: 11,
+    title: "Daring Greatly",
+    author: "Brené Brown",
+    category: "selfimprovement",
+    coverUrl: `https://images.unsplash.com/photo-1500673922987-e212871fec22?w=300&h=300&fit=crop&crop=center`
+  },
+  // Business Category Books
+  {
+    id: 12,
+    title: "The Innovator's Dilemma",
+    author: "Clayton M. Christensen",
+    category: "business",
+    coverUrl: `https://images.unsplash.com/photo-1500375592092-40eb2168fd21?w=300&h=300&fit=crop&crop=center`
+  },
+  {
+    id: 13,
+    title: "Built to Last",
+    author: "Jim Collins",
+    category: "business",
+    coverUrl: `https://images.unsplash.com/photo-1649972904349-6e44c42644a7?w=300&h=300&fit=crop&crop=center`
+  },
+  {
+    id: 14,
+    title: "The Hard Thing About Hard Things",
+    author: "Ben Horowitz",
+    category: "business",
+    coverUrl: `https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?w=300&h=300&fit=crop&crop=center`
+  },
+  {
+    id: 15,
+    title: "Crossing the Chasm",
+    author: "Geoffrey A. Moore",
+    category: "business",
+    coverUrl: `https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=300&h=300&fit=crop&crop=center`
+  },
+  {
+    id: 16,
+    title: "The E-Myth Revisited",
+    author: "Michael E. Gerber",
+    category: "business",
+    coverUrl: `https://images.unsplash.com/photo-1581090464777-f3220bbe1b8b?w=300&h=300&fit=crop&crop=center`
+  },
+  {
+    id: 17,
+    title: "Competitive Strategy",
+    author: "Michael E. Porter",
+    category: "business",
+    coverUrl: `https://images.unsplash.com/photo-1500673922987-e212871fec22?w=300&h=300&fit=crop&crop=center`
+  },
+  {
+    id: 18,
+    title: "The First 90 Days",
+    author: "Michael Watkins",
+    category: "business",
+    coverUrl: `https://images.unsplash.com/photo-1500375592092-40eb2168fd21?w=300&h=300&fit=crop&crop=center`
+  },
+  {
+    id: 19,
+    title: "Freakonomics",
+    author: "Steven D. Levitt",
+    category: "business",
+    coverUrl: `https://images.unsplash.com/photo-1649972904349-6e44c42644a7?w=300&h=300&fit=crop&crop=center`
+  },
+  {
+    id: 20,
+    title: "The Tipping Point",
+    author: "Malcolm Gladwell",
+    category: "business",
+    coverUrl: `https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?w=300&h=300&fit=crop&crop=center`
+  },
+  {
+    id: 21,
+    title: "Purple Cow",
+    author: "Seth Godin",
+    category: "business",
+    coverUrl: `https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=300&h=300&fit=crop&crop=center`
+  },
+  {
+    id: 22,
+    title: "The Art of War",
+    author: "Sun Tzu",
+    category: "business",
+    coverUrl: `https://images.unsplash.com/photo-1581090464777-f3220bbe1b8b?w=300&h=300&fit=crop&crop=center`
+  },
+  {
+    id: 23,
+    title: "Principles",
+    author: "Ray Dalio",
+    category: "business",
+    coverUrl: `https://images.unsplash.com/photo-1500673922987-e212871fec22?w=300&h=300&fit=crop&crop=center`
+  },
+  // Self-Improvement Category Books
+  {
+    id: 24,
+    title: "Man's Search for Meaning",
+    author: "Viktor E. Frankl",
+    category: "selfimprovement",
+    coverUrl: `https://images.unsplash.com/photo-1500375592092-40eb2168fd21?w=300&h=300&fit=crop&crop=center`
+  },
+  {
+    id: 25,
+    title: "How to Win Friends and Influence People",
+    author: "Dale Carnegie",
+    category: "selfimprovement",
+    coverUrl: `https://images.unsplash.com/photo-1649972904349-6e44c42644a7?w=300&h=300&fit=crop&crop=center`
+  },
+  {
+    id: 26,
+    title: "The Subtle Art of Not Giving a F*ck",
+    author: "Mark Manson",
+    category: "selfimprovement",
+    coverUrl: `https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?w=300&h=300&fit=crop&crop=center`
+  },
+  {
+    id: 27,
+    title: "12 Rules for Life",
+    author: "Jordan B. Peterson",
+    category: "selfimprovement",
+    coverUrl: `https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=300&h=300&fit=crop&crop=center`
+  },
+  {
+    id: 28,
+    title: "The Miracle Morning",
+    author: "Hal Elrod",
+    category: "selfimprovement",
+    coverUrl: `https://images.unsplash.com/photo-1581090464777-f3220bbe1b8b?w=300&h=300&fit=crop&crop=center`
+  },
+  {
+    id: 29,
+    title: "Outliers",
+    author: "Malcolm Gladwell",
+    category: "selfimprovement",
+    coverUrl: `https://images.unsplash.com/photo-1500673922987-e212871fec22?w=300&h=300&fit=crop&crop=center`
+  },
+  {
+    id: 30,
+    title: "The 5 AM Club",
+    author: "Robin Sharma",
+    category: "selfimprovement",
+    coverUrl: `https://images.unsplash.com/photo-1500375592092-40eb2168fd21?w=300&h=300&fit=crop&crop=center`
+  },
+  {
+    id: 31,
+    title: "Grit",
+    author: "Angela Duckworth",
+    category: "selfimprovement",
+    coverUrl: `https://images.unsplash.com/photo-1649972904349-6e44c42644a7?w=300&h=300&fit=crop&crop=center`
+  },
+  {
+    id: 32,
+    title: "The Compound Effect",
+    author: "Darren Hardy",
+    category: "selfimprovement",
+    coverUrl: `https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?w=300&h=300&fit=crop&crop=center`
+  },
+  {
+    id: 33,
+    title: "You Are a Badass",
+    author: "Jen Sincero",
+    category: "selfimprovement",
+    coverUrl: `https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=300&h=300&fit=crop&crop=center`
+  },
+  {
+    id: 34,
+    title: "The Life-Changing Magic of Tidying Up",
+    author: "Marie Kondo",
+    category: "selfimprovement",
+    coverUrl: `https://images.unsplash.com/photo-1581090464777-f3220bbe1b8b?w=300&h=300&fit=crop&crop=center`
+  },
+  {
+    id: 35,
+    title: "Educated",
+    author: "Tara Westover",
+    category: "selfimprovement",
+    coverUrl: `https://images.unsplash.com/photo-1500673922987-e212871fec22?w=300&h=300&fit=crop&crop=center`
+  },
+  {
+    id: 36,
+    title: "Becoming",
+    author: "Michelle Obama",
     category: "selfimprovement",
     coverUrl: `https://images.unsplash.com/photo-1500375592092-40eb2168fd21?w=300&h=300&fit=crop&crop=center`
   }
@@ -120,7 +333,7 @@ const Section = ({ title, podcasts, showAll = false, onSeeAll }: SectionProps) =
 const MediaLibrary = () => {
   const [searchQuery, setSearchQuery] = useState('');
   
-  const recentPodcasts = mockPodcasts.slice(0, 4);
+  const recentPodcasts = mockPodcasts.slice(0, 11);
   const businessPodcasts = mockPodcasts.filter(p => p.category === 'business');
   const selfImprovementPodcasts = mockPodcasts.filter(p => p.category === 'selfimprovement');
 
