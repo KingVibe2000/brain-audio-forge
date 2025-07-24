@@ -3,7 +3,6 @@ import { Search, ChevronRight, Play, Headphones, Star, Clock, Users, TrendingUp,
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
-import { ScrollArea } from '@/components/ui/scroll-area';
 
 // Mock data for demonstration
 const mockPodcasts = [
@@ -270,25 +269,29 @@ interface PodcastCardProps {
 }
 
 const PodcastCard = ({ podcast, size = 'normal' }: PodcastCardProps) => {
-  const cardSize = size === 'compact' ? 'w-32 sm:w-36' : 'w-36 sm:w-40';
-  const imageSize = size === 'compact' ? 'h-32 sm:h-36' : 'h-36 sm:h-40';
+  const cardSize = size === 'compact' ? 'w-44 md:w-40' : 'w-48 md:w-44';
+  const imageSize = size === 'compact' ? 'h-44 md:h-40' : 'h-48 md:h-44';
   
   return (
-    <div className={`flex-shrink-0 ${cardSize} cursor-pointer`}>
+    <div 
+      className={`flex-shrink-0 ${cardSize} cursor-pointer group scroll-snap-start min-w-0`}
+      style={{ scrollSnapAlign: 'start', minHeight: '44px' }}
+    >
       <div className="relative">
         <img 
           src={podcast.coverUrl} 
           alt={podcast.title}
-          className={`${imageSize} w-full rounded-lg object-cover`}
+          loading="lazy"
+          className={`${imageSize} w-full rounded-lg object-cover aspect-[4/5]`}
         />
         <div className="absolute inset-0 flex items-center justify-center">
-          <div className="bg-yellow-primary/80 text-white p-2 rounded-full">
+          <div className="bg-yellow-primary/90 text-white p-2.5 rounded-full shadow-lg">
             <Play className="h-4 w-4 fill-current" />
           </div>
         </div>
       </div>
-      <div className="mt-2 space-y-1">
-        <h3 className="text-sm font-medium text-foreground line-clamp-2">{podcast.title}</h3>
+      <div className="mt-3 space-y-1">
+        <h3 className="text-sm font-medium text-foreground line-clamp-2 leading-tight">{podcast.title}</h3>
         <p className="text-xs text-muted-foreground">{podcast.author}</p>
       </div>
     </div>
@@ -303,18 +306,18 @@ interface SectionProps {
 }
 
 const Section = ({ title, podcasts, showAll = false, onSeeAll }: SectionProps) => {
-  const displayPodcasts = showAll ? podcasts : podcasts.slice(0, 2);
+  const displayPodcasts = showAll ? podcasts : podcasts.slice(0, 6);
   
   return (
     <div className="space-y-4">
-      <div className="flex items-center justify-between">
+      <div className="flex items-center justify-between px-6">
         <h2 className="text-xl font-semibold text-foreground">{title}</h2>
-        {!showAll && podcasts.length > 2 && (
+        {!showAll && podcasts.length > 6 && (
           <Button 
             variant="ghost" 
             size="sm" 
             onClick={onSeeAll}
-            className="text-muted-foreground"
+            className="text-muted-foreground hover:text-foreground"
           >
             <span className="text-sm mr-1">See all</span>
             <ChevronRight className="h-4 w-4" />
@@ -322,13 +325,26 @@ const Section = ({ title, podcasts, showAll = false, onSeeAll }: SectionProps) =
         )}
       </div>
       
-      <ScrollArea className="w-full">
-        <div className="flex space-x-4 pb-4">
+      <div className="relative">
+        <div 
+          className="flex gap-4 md:gap-6 overflow-x-auto scrollbar-none px-6 py-4"
+          style={{
+            scrollBehavior: 'smooth',
+            WebkitOverflowScrolling: 'touch',
+            scrollSnapType: 'x mandatory',
+            scrollPaddingLeft: '24px',
+            overscrollBehaviorX: 'contain',
+            touchAction: 'pan-x'
+          }}
+        >
           {displayPodcasts.map((podcast) => (
             <PodcastCard key={podcast.id} podcast={podcast} />
           ))}
         </div>
-      </ScrollArea>
+        {/* Subtle fade indicators */}
+        <div className="absolute left-0 top-0 bottom-0 w-5 bg-gradient-to-r from-background to-transparent pointer-events-none" />
+        <div className="absolute right-0 top-0 bottom-0 w-5 bg-gradient-to-l from-background to-transparent pointer-events-none" />
+      </div>
     </div>
   );
 };
@@ -383,37 +399,65 @@ const MediaLibrary = () => {
           <h2 className="text-xl font-semibold text-foreground">Browse by Category</h2>
           
           {/* Business Category */}
-          <div className="space-y-3">
-            <div className="flex items-center gap-2">
+          <div className="space-y-4">
+            <div className="flex items-center gap-2 px-6">
               <TrendingUp className="h-4 w-4 text-yellow-primary" />
               <h3 className="text-lg font-medium text-foreground">Business</h3>
               <span className="text-sm text-muted-foreground">({businessPodcasts.length})</span>
             </div>
             
-            <ScrollArea className="w-full">
-              <div className="flex space-x-4 pb-4">
-                {businessPodcasts.slice(0, 8).map((podcast) => (
+            <div className="relative">
+              <div 
+                className="flex gap-4 md:gap-6 overflow-x-auto scrollbar-none px-6 py-4"
+                style={{
+                  scrollBehavior: 'smooth',
+                  WebkitOverflowScrolling: 'touch',
+                  scrollSnapType: 'x mandatory',
+                  scrollPaddingLeft: '24px',
+                  overscrollBehaviorX: 'contain',
+                  touchAction: 'pan-x',
+                  contain: 'layout style'
+                }}
+              >
+                {businessPodcasts.slice(0, 12).map((podcast) => (
                   <PodcastCard key={podcast.id} podcast={podcast} size="compact" />
                 ))}
               </div>
-            </ScrollArea>
+              {/* Subtle fade indicators */}
+              <div className="absolute left-0 top-0 bottom-0 w-5 bg-gradient-to-r from-background to-transparent pointer-events-none" />
+              <div className="absolute right-0 top-0 bottom-0 w-5 bg-gradient-to-l from-background to-transparent pointer-events-none" />
+            </div>
           </div>
 
           {/* Self Improvement Category */}
-          <div className="space-y-3">
-            <div className="flex items-center gap-2">
+          <div className="space-y-4">
+            <div className="flex items-center gap-2 px-6">
               <Star className="h-4 w-4 text-yellow-primary" />
               <h3 className="text-lg font-medium text-foreground">Self Improvement</h3>
               <span className="text-sm text-muted-foreground">({selfImprovementPodcasts.length})</span>
             </div>
             
-            <ScrollArea className="w-full">
-              <div className="flex space-x-4 pb-4">
-                {selfImprovementPodcasts.slice(0, 8).map((podcast) => (
+            <div className="relative">
+              <div 
+                className="flex gap-4 md:gap-6 overflow-x-auto scrollbar-none px-6 py-4"
+                style={{
+                  scrollBehavior: 'smooth',
+                  WebkitOverflowScrolling: 'touch',
+                  scrollSnapType: 'x mandatory',
+                  scrollPaddingLeft: '24px',
+                  overscrollBehaviorX: 'contain',
+                  touchAction: 'pan-x',
+                  contain: 'layout style'
+                }}
+              >
+                {selfImprovementPodcasts.slice(0, 12).map((podcast) => (
                   <PodcastCard key={podcast.id} podcast={podcast} size="compact" />
                 ))}
               </div>
-            </ScrollArea>
+              {/* Subtle fade indicators */}
+              <div className="absolute left-0 top-0 bottom-0 w-5 bg-gradient-to-r from-background to-transparent pointer-events-none" />
+              <div className="absolute right-0 top-0 bottom-0 w-5 bg-gradient-to-l from-background to-transparent pointer-events-none" />
+            </div>
           </div>
         </div>
       </div>
