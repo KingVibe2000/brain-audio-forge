@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Search, ChevronRight, Play } from 'lucide-react';
+import { Search, ChevronRight, Play, Headphones, Star, Clock, Users, TrendingUp, BookOpen } from 'lucide-react';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
@@ -274,20 +274,26 @@ const PodcastCard = ({ podcast, size = 'normal' }: PodcastCardProps) => {
   const imageSize = size === 'compact' ? 'h-32 sm:h-36' : 'h-36 sm:h-40';
   
   return (
-    <div className={`flex-shrink-0 ${cardSize} group cursor-pointer`}>
-      <div className="relative">
+    <div className={`flex-shrink-0 ${cardSize} group cursor-pointer animate-fade-in`}>
+      <div className="relative overflow-hidden">
         <img 
           src={podcast.coverUrl} 
           alt={podcast.title}
-          className={`${imageSize} w-full rounded-lg object-cover shadow-sm transition-transform duration-200 group-hover:scale-105`}
+          className={`${imageSize} w-full rounded-xl object-cover shadow-md transition-all duration-300 group-hover:scale-110 group-hover:shadow-xl group-hover:shadow-accent-warm/25`}
         />
-        <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-200 rounded-lg flex items-center justify-center">
-          <Play className="h-8 w-8 text-white fill-white" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 rounded-xl" />
+        <div className="absolute inset-0 bg-accent-warm/20 opacity-0 group-hover:opacity-100 transition-all duration-300 rounded-xl" />
+        <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300">
+          <div className="bg-accent-warm text-primary-foreground p-3 rounded-full shadow-lg transform scale-75 group-hover:scale-100 transition-transform duration-200">
+            <Play className="h-6 w-6 fill-current" />
+          </div>
         </div>
+        {/* Floating yellow accent dot */}
+        <div className="absolute top-2 right-2 w-2 h-2 bg-accent-warm rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 animate-pulse" />
       </div>
-      <div className="mt-2 space-y-1">
-        <h3 className="text-sm font-medium text-foreground line-clamp-2 leading-tight">{podcast.title}</h3>
-        <p className="text-xs text-muted-foreground">{podcast.author}</p>
+      <div className="mt-3 space-y-1 px-1">
+        <h3 className="text-sm font-semibold text-foreground line-clamp-2 leading-tight group-hover:text-accent-warm transition-colors duration-200">{podcast.title}</h3>
+        <p className="text-xs text-muted-foreground group-hover:text-muted-foreground/80 transition-colors duration-200">{podcast.author}</p>
       </div>
     </div>
   );
@@ -304,25 +310,34 @@ const Section = ({ title, podcasts, showAll = false, onSeeAll }: SectionProps) =
   const displayPodcasts = showAll ? podcasts : podcasts.slice(0, 2);
   
   return (
-    <div className="space-y-3">
-      <div className="flex items-center justify-between">
-        <h2 className="text-lg font-semibold text-foreground">{title}</h2>
+    <div className="space-y-4 animate-fade-in">
+      <div className="flex items-center justify-between group">
+        <div className="flex items-center gap-3">
+          <div className="relative">
+            <h2 className="text-xl font-bold bg-gradient-to-r from-foreground to-accent-warm bg-clip-text text-transparent">{title}</h2>
+            <div className="absolute -bottom-1 left-0 h-0.5 w-8 bg-gradient-to-r from-accent-warm to-transparent opacity-60" />
+          </div>
+          {title === "Recently Added" && <Clock className="h-5 w-5 text-accent-warm" />}
+        </div>
         {!showAll && podcasts.length > 2 && (
           <Button 
             variant="ghost" 
             size="sm" 
             onClick={onSeeAll}
-            className="text-muted-foreground hover:text-foreground p-0 h-auto"
+            className="text-muted-foreground hover:text-accent-warm transition-colors duration-200 p-2 hover:bg-accent-warm/10 rounded-lg"
           >
+            <span className="text-sm mr-1">See all</span>
             <ChevronRight className="h-4 w-4" />
           </Button>
         )}
       </div>
       
       <ScrollArea className="w-full">
-        <div className="flex space-x-4 pb-2">
-          {displayPodcasts.map((podcast) => (
-            <PodcastCard key={podcast.id} podcast={podcast} />
+        <div className="flex space-x-5 pb-4">
+          {displayPodcasts.map((podcast, index) => (
+            <div key={podcast.id} style={{ animationDelay: `${index * 0.1}s` }}>
+              <PodcastCard podcast={podcast} />
+            </div>
           ))}
         </div>
       </ScrollArea>
@@ -343,22 +358,49 @@ const MediaLibrary = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-gradient-to-br from-background via-background to-accent-warm/5">
       {/* Header with Search */}
-      <div className="sticky top-0 z-10 bg-background/95 backdrop-blur border-b border-border">
-        <div className="max-w-7xl mx-auto px-4 py-4">
-          <div className="space-y-4">
-            <h1 className="text-2xl font-bold text-foreground">Media Library</h1>
+      <div className="sticky top-0 z-10 bg-background/95 backdrop-blur-xl border-b border-border/50 shadow-sm">
+        <div className="max-w-7xl mx-auto px-4 py-6">
+          <div className="space-y-5">
+            {/* Hero Section */}
+            <div className="flex items-center justify-between">
+              <div className="space-y-2">
+                <div className="flex items-center gap-3">
+                  <div className="p-2 bg-accent-warm/10 rounded-xl">
+                    <Headphones className="h-6 w-6 text-accent-warm" />
+                  </div>
+                  <h1 className="text-3xl font-bold bg-gradient-to-r from-foreground via-accent-warm to-foreground bg-clip-text text-transparent">
+                    Media Library
+                  </h1>
+                </div>
+                <div className="flex items-center gap-4 text-sm text-muted-foreground">
+                  <div className="flex items-center gap-1">
+                    <BookOpen className="h-4 w-4" />
+                    <span>{mockPodcasts.length} Books</span>
+                  </div>
+                  <div className="flex items-center gap-1">
+                    <Users className="h-4 w-4" />
+                    <span>Top Authors</span>
+                  </div>
+                  <div className="flex items-center gap-1">
+                    <Star className="h-4 w-4 text-accent-warm fill-current" />
+                    <span>Premium Content</span>
+                  </div>
+                </div>
+              </div>
+            </div>
             
             {/* Search Bar */}
-            <div className="relative">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4" />
+            <div className="relative group">
+              <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-muted-foreground h-5 w-5 group-focus-within:text-accent-warm transition-colors duration-200" />
               <Input
-                placeholder="Search podcasts, authors, topics..."
+                placeholder="Discover your next favorite audiobook..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="pl-10 h-12 bg-surface-elevated border-border"
+                className="pl-12 h-14 bg-card/50 backdrop-blur border-border/50 rounded-2xl text-base placeholder:text-muted-foreground/70 focus:border-accent-warm/50 focus:ring-2 focus:ring-accent-warm/20 transition-all duration-200"
               />
+              <div className="absolute inset-0 bg-gradient-to-r from-accent-warm/5 to-transparent opacity-0 group-focus-within:opacity-100 transition-opacity duration-200 rounded-2xl pointer-events-none" />
             </div>
           </div>
         </div>
@@ -373,51 +415,82 @@ const MediaLibrary = () => {
         />
 
         {/* Browse by Category */}
-        <div className="space-y-6">
-          <h2 className="text-xl font-semibold text-foreground">Browse by Category</h2>
+        <div className="space-y-8 animate-fade-in">
+          <div className="relative">
+            <h2 className="text-2xl font-bold bg-gradient-to-r from-foreground to-accent-warm bg-clip-text text-transparent">Browse by Category</h2>
+            <div className="absolute -bottom-1 left-0 h-0.5 w-12 bg-gradient-to-r from-accent-warm to-transparent opacity-60" />
+          </div>
           
           {/* Business Category */}
-          <div className="space-y-3">
-            <div className="flex items-center justify-between">
-              <Button
-                variant="ghost"
-                onClick={() => handleCategoryClick('business')}
-                className="text-lg font-medium text-foreground hover:text-primary p-0 h-auto"
-              >
-                Business
-                <ChevronRight className="h-4 w-4 ml-1" />
-              </Button>
-            </div>
-            
-            <ScrollArea className="w-full">
-              <div className="flex space-x-4 pb-2">
-                {businessPodcasts.slice(0, 10).map((podcast) => (
-                  <PodcastCard key={podcast.id} podcast={podcast} size="compact" />
-                ))}
+          <div className="space-y-4 group">
+            <Card className="p-1 bg-gradient-to-r from-accent-warm/5 to-transparent border-accent-warm/20 hover:border-accent-warm/40 transition-all duration-300">
+              <div className="bg-card rounded-lg p-4">
+                <div className="flex items-center justify-between mb-4">
+                  <div className="flex items-center gap-3">
+                    <div className="p-2 bg-accent-warm/10 rounded-xl">
+                      <TrendingUp className="h-5 w-5 text-accent-warm" />
+                    </div>
+                    <div>
+                      <Button
+                        variant="ghost"
+                        onClick={() => handleCategoryClick('business')}
+                        className="text-xl font-bold text-foreground hover:text-accent-warm p-0 h-auto transition-colors duration-200"
+                      >
+                        Business
+                        <ChevronRight className="h-5 w-5 ml-2 group-hover:translate-x-1 transition-transform duration-200" />
+                      </Button>
+                      <p className="text-sm text-muted-foreground mt-1">{businessPodcasts.length} books • Leadership, Strategy & Growth</p>
+                    </div>
+                  </div>
+                </div>
+                
+                <ScrollArea className="w-full">
+                  <div className="flex space-x-5 pb-4">
+                    {businessPodcasts.slice(0, 10).map((podcast, index) => (
+                      <div key={podcast.id} style={{ animationDelay: `${index * 0.05}s` }}>
+                        <PodcastCard podcast={podcast} size="compact" />
+                      </div>
+                    ))}
+                  </div>
+                </ScrollArea>
               </div>
-            </ScrollArea>
+            </Card>
           </div>
 
           {/* Self Improvement Category */}
-          <div className="space-y-3">
-            <div className="flex items-center justify-between">
-              <Button
-                variant="ghost"
-                onClick={() => handleCategoryClick('selfimprovement')}
-                className="text-lg font-medium text-foreground hover:text-primary p-0 h-auto"
-              >
-                Self Improvement
-                <ChevronRight className="h-4 w-4 ml-1" />
-              </Button>
-            </div>
-            
-            <ScrollArea className="w-full">
-              <div className="flex space-x-4 pb-2">
-                {selfImprovementPodcasts.slice(0, 10).map((podcast) => (
-                  <PodcastCard key={podcast.id} podcast={podcast} size="compact" />
-                ))}
+          <div className="space-y-4 group">
+            <Card className="p-1 bg-gradient-to-r from-accent-warm/5 to-transparent border-accent-warm/20 hover:border-accent-warm/40 transition-all duration-300">
+              <div className="bg-card rounded-lg p-4">
+                <div className="flex items-center justify-between mb-4">
+                  <div className="flex items-center gap-3">
+                    <div className="p-2 bg-accent-warm/10 rounded-xl">
+                      <Star className="h-5 w-5 text-accent-warm fill-current" />
+                    </div>
+                    <div>
+                      <Button
+                        variant="ghost"
+                        onClick={() => handleCategoryClick('selfimprovement')}
+                        className="text-xl font-bold text-foreground hover:text-accent-warm p-0 h-auto transition-colors duration-200"
+                      >
+                        Self Improvement
+                        <ChevronRight className="h-5 w-5 ml-2 group-hover:translate-x-1 transition-transform duration-200" />
+                      </Button>
+                      <p className="text-sm text-muted-foreground mt-1">{selfImprovementPodcasts.length} books • Personal Growth & Mindfulness</p>
+                    </div>
+                  </div>
+                </div>
+                
+                <ScrollArea className="w-full">
+                  <div className="flex space-x-5 pb-4">
+                    {selfImprovementPodcasts.slice(0, 10).map((podcast, index) => (
+                      <div key={podcast.id} style={{ animationDelay: `${index * 0.05}s` }}>
+                        <PodcastCard podcast={podcast} size="compact" />
+                      </div>
+                    ))}
+                  </div>
+                </ScrollArea>
               </div>
-            </ScrollArea>
+            </Card>
           </div>
         </div>
       </div>
